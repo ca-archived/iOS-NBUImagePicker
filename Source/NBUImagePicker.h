@@ -75,7 +75,7 @@
 + (NSString *)version;
 
 /// The NBUImagePickerResources NSBundle.
-+ (NSBundle *)resourcesBundle;
++ (NSBundle *)bundle;
 
 @end
 

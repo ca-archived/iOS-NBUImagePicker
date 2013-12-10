@@ -20,8 +20,6 @@
 
 #import "NBUImagePicker.h"
 
-static NSBundle * _resourcesBundle;
-
 @implementation NBUImagePicker
 
 + (NSString *)version
@@ -29,12 +27,14 @@ static NSBundle * _resourcesBundle;
     return @"1.0.0";
 }
 
-+ (NSBundle *)resourcesBundle
++ (NSBundle *)bundle
 {
+    static NSBundle * _resourcesBundle;
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
     {
-        NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUImagePickerResources.bundle"];
+        NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUImagePicker.bundle"];
         _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
     });
     

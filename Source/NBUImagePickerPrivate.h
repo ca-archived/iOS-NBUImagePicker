@@ -24,10 +24,10 @@
 // Localization
 #undef  NSLocalizedString
 #define NSLocalizedString(key, comment) \
-[NSBundle localizedStringForKey:key value:nil table:@"NBUImagePicker" backupBundle:NBUImagePicker.resourcesBundle]
+[NSBundle localizedStringForKey:key value:nil table:@"NBUImagePicker" backupBundle:NBUImagePicker.bundle]
 #undef NSLocalizedStringWithDefaultValue
-#define NSLocalizedStringWithDefaultValue(key, tableName, bundle, defaultValue, comment) \
-[NSBundle localizedStringForKey:key value:defaultValue table:@"NBUImagePicker" backupBundle:NBUImagePicker.resourcesBundle]
+#define NSLocalizedStringWithDefaultValue(key, tableName, defaultBundle, defaultValue, comment) \
+[NSBundle localizedStringForKey:key value:defaultValue table:@"NBUImagePicker" backupBundle:NBUImagePicker.bundle]
 
 
 // a) Use NBULog for logging when available
