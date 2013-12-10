@@ -21,6 +21,10 @@
 #import "NBUGalleryView.h"
 #import "NBUImagePickerPrivate.h"
 
+// Define module
+#undef  NBUIMAGEPICKER_MODULE
+#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_GALLERY
+
 // Private class
 @interface NBUGalleryScrollView : UIScrollView <UIScrollViewDelegate>
 

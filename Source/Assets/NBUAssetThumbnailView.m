@@ -23,7 +23,7 @@
 
 // Define module
 #undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_CAMERA_ASSETS
+#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_ASSETS
 
 NSString * const NBUAssetThumbnailViewSelectionStateChangedNotification = @"NBUAssetThumbnailViewSelectionStateChangedNotification";
 

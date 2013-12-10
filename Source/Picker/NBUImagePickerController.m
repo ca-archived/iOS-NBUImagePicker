@@ -21,10 +21,6 @@
 #import "NBUImagePickerController.h"
 #import "NBUImagePickerPrivate.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_CAMERA_ASSETS
-
 @implementation NBUImagePickerController
 {
     BOOL _returnMediaInfoMode;

@@ -38,11 +38,10 @@ static int _imagePickerModulesLogLevel[MAX_MODULES];
     // Register the NBUImagePicker log context
     [NBULog registerContextDescription:[NBULogContextDescription descriptionWithName:@"NBUImagePicker"
                                                                              context:NBUIMAGEPICKER_LOG_CONTEXT
-                                                                     modulesAndNames:@{@(NBUIMAGEPICKER_MODULE_UI)              : @"UI",
-                                                                                       @(NBUIMAGEPICKER_MODULE_CAMERA_ASSETS)   : @"Camera/Assets",
-                                                                                       @(NBUIMAGEPICKER_MODULE_IMAGE)           : @"Image",
-                                                                                       @(NBUIMAGEPICKER_MODULE_HELPERS)         : @"Helpers",
-                                                                                       @(NBUIMAGEPICKER_MODULE_COMPATIBILITY)   : @"Compatibility"}
+                                                                     modulesAndNames:@{@(NBUIMAGEPICKER_MODULE_CAMERA)  : @"Camera",
+                                                                                       @(NBUIMAGEPICKER_MODULE_ASSETS)  : @"Assets",
+                                                                                       @(NBUIMAGEPICKER_MODULE_IMAGE)   : @"Image",
+                                                                                       @(NBUIMAGEPICKER_MODULE_GALLERY) : @"Gallery"}
                                                                    contextLevelBlock:^{ return [NBULog imagePickerLogLevel]; }
                                                                 setContextLevelBlock:^(int level) { [NBULog setImagePickerLogLevel:level]; }
                                                           contextLevelForModuleBlock:^(int module) { return [NBULog imagePickerLogLevelForModule:module]; }
