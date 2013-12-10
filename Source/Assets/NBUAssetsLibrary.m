@@ -283,70 +283,33 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
 {
     NBULogTrace();
     
-    // iOS 5+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+    // Result block
+    ALAssetsLibraryGroupResultBlock block = ^(ALAssetsGroup * ALAssetsGroup)
     {
-        // Result block
-        ALAssetsLibraryGroupResultBlock block = ^(ALAssetsGroup * ALAssetsGroup)
+        if (ALAssetsGroup)
         {
-            if (ALAssetsGroup)
-            {
-                NBUAssetsGroup * group = [NBUAssetsGroup groupForALAssetsGroup:ALAssetsGroup];
-                NBULogVerbose(@"Retrieved group: %@", group);
-                resultBlock(group, nil);
-            }
-            else
-            {
-                NBULogVerbose(@"No group with URL '%@' was found", groupURL);
-                resultBlock(nil, nil);
-            }
-        };
-        
-        // Failure block
-        ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError * error)
+            NBUAssetsGroup * group = [NBUAssetsGroup groupForALAssetsGroup:ALAssetsGroup];
+            NBULogVerbose(@"Retrieved group: %@", group);
+            resultBlock(group, nil);
+        }
+        else
         {
-            NBULogError(@"Failed to retrieve group with URL '%@': %@", groupURL, error);
-            resultBlock(nil, error);
-        };
-        
-        // Retrieve
-        [_ALAssetsLibrary groupForURL:groupURL
-                          resultBlock:block
-                         failureBlock:failureBlock];
-    }
+            NBULogVerbose(@"No group with URL '%@' was found", groupURL);
+            resultBlock(nil, nil);
+        }
+    };
     
-    // iOS 4: We have to look for the group manually
-    else
+    // Failure block
+    ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError * error)
     {
-        NBULogVerbose(@"Looking for group in iOS4");
-        
-        NSString * absoluteString = groupURL.absoluteString;
-        
-        // Look among all the groups
-        [self groupsWithTypes:ALAssetsGroupAll
-                  resultBlock:^(NSArray * groups, NSError * error)
-         {
-             if (error)
-             {
-                 resultBlock(nil, error);
-                 return;
-             }
-             
-             for (NBUAssetsGroup * group in groups)
-             {
-                 // Found?
-                 if ([group.URL.absoluteString isEqualToString:absoluteString])
-                 {
-                     resultBlock(group, nil);
-                     return;
-                 }
-             }
-             
-             // Not found
-             NBULogVerbose(@"Looking for group in iOS4: Group for not found for '%@'", groupURL);
-             resultBlock(nil, nil);
-         }];
-    }
+        NBULogError(@"Failed to retrieve group with URL '%@': %@", groupURL, error);
+        resultBlock(nil, error);
+    };
+    
+    // Retrieve
+    [_ALAssetsLibrary groupForURL:groupURL
+                      resultBlock:block
+                     failureBlock:failureBlock];
 }
 
 - (void)createAlbumGroupWithName:(NSString *)name
@@ -358,15 +321,6 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
         NBULogWarn(@"Couldn't create group named '%@': %@", name, error);
         if (resultBlock) resultBlock(nil, error);
     };
-    
-    // Fail on iOS 4
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
-    {
-        failureBlock([NSError errorWithDomain:NBUAssetsErrorDomain
-                                         code:NBUAssetsFeatureNotAvailableInSystem4
-                                     userInfo:@{NSLocalizedDescriptionKey : @"Can't create albums on iOS 4"}]);
-        return;
-    }
     
     // Result block
     ALAssetsLibraryGroupResultBlock block = ^(ALAssetsGroup * ALAssetsGroup)

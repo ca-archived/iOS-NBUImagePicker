@@ -218,7 +218,7 @@
 {
     if (!_editable)
     {
-        _editable = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0") ? _ALAsset.editable : NO;
+        _editable = _ALAsset.editable;
     }
     return _editable;
 }
@@ -279,7 +279,7 @@
     // "In iOS 5 and later, this method returns a fully cropped, rotated, and adjusted image—exactly as a user would see in Photos or in the image picker."
     UIImage * image = [UIImage imageWithCGImage:self.defaultRepresentation.fullScreenImage
                                           scale:self.defaultRepresentation.scale
-                                    orientation:SYSTEM_VERSION_LESS_THAN(@"5.0") ? (UIImageOrientation)self.defaultRepresentation.orientation : UIImageOrientationUp];
+                                    orientation:UIImageOrientationUp];
     NBULogVerbose(@"fullScreenImage with size: %@ orientation %d",
                NSStringFromCGSize(image.size), image.imageOrientation);
     return image;

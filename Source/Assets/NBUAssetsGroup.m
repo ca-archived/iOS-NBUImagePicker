@@ -165,86 +165,36 @@
     }
     
     // Not valid -> Reload ALAssetsGroup
-    // iOS 5+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        // Retrieve
-        [[NBUAssetsLibrary sharedLibrary].ALAssetsLibrary groupForURL:_URL
-                                                          resultBlock:^(ALAssetsGroup * ALAssetsGroup)
+    // Retrieve
+    [[NBUAssetsLibrary sharedLibrary].ALAssetsLibrary groupForURL:_URL
+                                                      resultBlock:^(ALAssetsGroup * ALAssetsGroup)
+     {
+         if (ALAssetsGroup)
          {
-             if (ALAssetsGroup)
+             NBULogVerbose(@"Assets group %@ had to be reloaded", _name);
+             
+             NSUInteger oldCount = _lastAssetsCount;
+             _ALAssetsGroup = ALAssetsGroup;
+             
+             // Send update notification only if needed!
+             if (oldCount != _lastAssetsCount)
              {
-                 NBULogVerbose(@"Assets group %@ had to be reloaded", _name);
+                 NBULogVerbose(@"Assets group %@ count changed: %d -> %d",
+                               _name, oldCount, self.imageAssetsCount);
                  
-                 NSUInteger oldCount = _lastAssetsCount;
-                 _ALAssetsGroup = ALAssetsGroup;
-                 
-                 // Send update notification only if needed!
-                 if (oldCount != _lastAssetsCount)
-                 {
-                     NBULogVerbose(@"Assets group %@ count changed: %d -> %d",
-                                   _name, oldCount, self.imageAssetsCount);
-                     
-                     [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
-                                                                         object:self];
-                 }
-             }
-             else
-             {
-                 NBULogWarn(@"Assets group %@ couldn't be reloaded. It may no longer exist", _name);
+                 [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
+                                                                     object:self];
              }
          }
-                                                         failureBlock:^(NSError * error)
+         else
          {
-             NBULogError(@"Error while reloading assets group %@: %@", _name, error);
-         }];
-    }
-    // iOS 4: We have to look for the group manually
-    else
-    {
-        // Look among all the groups
-        __block BOOL found = NO;
-        [[NBUAssetsLibrary sharedLibrary].ALAssetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll
-                                                                        usingBlock:^(ALAssetsGroup * ALAssetsGroup,
-                                                                                     BOOL * stop)
-         {
-             // Process next group
-             if (ALAssetsGroup)
-             {
-                 if ([[ALAssetsGroup valueForProperty:ALAssetsGroupPropertyPersistentID] isEqualToString:_persistentID])
-                 {
-                     NBULogVerbose(@"Assets group %@ had to be reloaded", _name);
-                     
-                     NSUInteger oldCount = _lastAssetsCount;
-                     _ALAssetsGroup = ALAssetsGroup;
-                     found = YES;
-                     *stop = YES;
-                     
-                     // Send update notification only if needed!
-                     if (oldCount != _lastAssetsCount)
-                     {
-                         NBULogVerbose(@"Assets group %@ count changed: %d -> %d",
-                                       _name, oldCount, self.imageAssetsCount);
-                         
-                         [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
-                                                                             object:self];
-                     }
-                 }
-             }
-             // Finished
-             else
-             {
-                 if (!found)
-                 {
-                     NBULogWarn(@"Assets group %@ couldn't be reloaded. It may no longer exist", _name);
-                 }
-             }
+             NBULogWarn(@"Assets group %@ couldn't be reloaded. It may no longer exist", _name);
          }
-                                                                      failureBlock:^(NSError * error)
-         {
-             NBULogError(@"Error while reloading assets group %@: %@", _name, error);
-         }];
-    }
+     }
+                                                     failureBlock:^(NSError * error)
+     {
+         NBULogError(@"Error while reloading assets group %@: %@", _name, error);
+     }];
 }
 
 #pragma mark - Properties
@@ -258,21 +208,8 @@
     _persistentID = [_ALAssetsGroup valueForProperty:ALAssetsGroupPropertyPersistentID];
     _lastAssetsCount = self.imageAssetsCount;
     
-    // iOS 5.0+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        _editable = _ALAssetsGroup.editable;
-        _URL = [_ALAssetsGroup valueForProperty:ALAssetsGroupPropertyURL];
-    }
-    // iOS 4: Create a NSURL
-    else
-    {
-        _editable = NO;
-        _URL = [NSURL URLWithString:[NSString stringWithFormat:@"assets-library://group/?id=%@",
-                                          _persistentID]];
-        
-        NBULogVerbose(@"URL had to be created (iOS4 device): %@", _URL);
-    }
+    _editable = _ALAssetsGroup.editable;
+    _URL = [_ALAssetsGroup valueForProperty:ALAssetsGroupPropertyURL];
 }
 
 - (UIImage *)posterImage
@@ -410,23 +347,16 @@
 
 - (BOOL)addAsset:(NBUAsset *)asset
 {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+    if ([_ALAssetsGroup addAsset:asset.ALAsset])
     {
-        if ([_ALAssetsGroup addAsset:asset.ALAsset])
-        {
-            NBULogInfo(@"Added asset: %@ to group: %@", asset, self);
-            return YES;
-        }
-        else
-        {
-            NBULogWarn(@"Failed to add asset: %@ to group: %@", asset, self);
-        }
+        NBULogInfo(@"Added asset: %@ to group: %@", asset, self);
+        return YES;
     }
     else
     {
-        NBULogInfo(@"Can't add assets to groups in iOS 4.x");
+        NBULogWarn(@"Failed to add asset: %@ to group: %@", asset, self);
+        return NO;
     }
-    return NO;
 }
 
 - (void)addAssetWithURL:(NSURL *)assetURL

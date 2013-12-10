@@ -42,9 +42,6 @@
 
 + (NSArray *)availableFilterTypes
 {
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
-        return nil;
-    
     NSArray * iOS5Filters = @[
                               NBUFilterTypeContrast,
                               NBUFilterTypeBrightness,
@@ -72,9 +69,6 @@
                          type:(NSString *)type
                        values:(NSDictionary *)values
 {
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
-        return nil;
-    
     NSDictionary * attributes;
     NBUConfigureFilterBlock block;
     

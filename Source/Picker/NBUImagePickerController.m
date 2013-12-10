@@ -115,19 +115,9 @@
         targetController = ((UIView *)target).viewController;
     }
     
-    // iOS5+
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [targetController presentViewController:self
-                                       animated:YES
-                                     completion:nil];
-    }
-    // iOS4
-    else
-    {
-        [targetController presentModalViewController:self
-                                            animated:YES ];
-    }
+    [targetController presentViewController:self
+                                   animated:YES
+                                 completion:nil];
 }
 
 - (BOOL)shouldAutorotate
@@ -630,15 +620,8 @@
         if (_resultBlock) _resultBlock(nil);
     }
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [self dismissViewControllerAnimated:YES
-                                 completion:NULL];
-    }
-    else
-    {
-        [self dismissModalViewControllerAnimated:YES];
-    }
+    [self dismissViewControllerAnimated:YES
+                             completion:NULL];
 }
 
 @end

@@ -59,10 +59,7 @@ static NSDictionary * _localizedFilterNames;
     [self addProvider:[NBUGPUImageFilterProvider class]];
     
     // Add CoreImage
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        [self addProvider:[NBUCoreImageFilterProvider class]];
-    }
+    [self addProvider:[NBUCoreImageFilterProvider class]];
 }
 
 + (void)addProvider:(Class<NBUFilterProvider>)provider

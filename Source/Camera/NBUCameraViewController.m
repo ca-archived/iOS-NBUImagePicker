@@ -115,9 +115,6 @@
 
 - (void)setTakesPicturesWithVolumeButtons:(BOOL)takesPicturesWithVolumeButtons
 {
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
-        return;
-    
     _takesPicturesWithVolumeButtons = takesPicturesWithVolumeButtons;
 }
 

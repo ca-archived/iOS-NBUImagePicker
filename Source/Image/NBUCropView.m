@@ -182,16 +182,6 @@
 {
     [super layoutSubviews];
     
-    // Ignore layout on iOS4?
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
-    {
-        if (_ignoreLayout)
-        {
-            return;
-        }
-        _ignoreLayout = YES;
-    }
-    
     // Reset scrollView
     _scrollView.delegate = self;
     _scrollView.minimumZoomScale = 1.0;

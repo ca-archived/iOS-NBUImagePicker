@@ -85,44 +85,20 @@
     if (!_filters)
     {
         // Set some default filters
-        
-        // iOS 5+
-        if (NO && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-        {
-            _filters = @[
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeNone
-                                                    values:nil],
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeGamma
-                                                    values:nil],
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeSaturation
-                                                    values:nil],
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeAuto
-                                                    values:nil]
-                         ];
-        }
-        
-        // iOS 4.x
-        else
-        {
-            _filters = @[
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeNone
-                                                    values:nil],
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeGamma
-                                                    values:nil],
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeSaturation
-                                                    values:nil],
-                         [NBUFilterProvider filterWithName:nil
-                                                      type:NBUFilterTypeSharpen
-                                                    values:nil]
-                         ];
-        }
+        _filters = @[
+                     [NBUFilterProvider filterWithName:nil
+                                                  type:NBUFilterTypeNone
+                                                values:nil],
+                     [NBUFilterProvider filterWithName:nil
+                                                  type:NBUFilterTypeGamma
+                                                values:nil],
+                     [NBUFilterProvider filterWithName:nil
+                                                  type:NBUFilterTypeSaturation
+                                                values:nil],
+                     [NBUFilterProvider filterWithName:nil
+                                                  type:NBUFilterTypeAuto
+                                                values:nil]
+                     ];
         
         NBULogInfo(@"Initialized with filters: %@", _filters);
     }

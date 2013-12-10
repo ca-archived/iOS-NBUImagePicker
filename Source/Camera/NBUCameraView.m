@@ -536,40 +536,23 @@
     // Possible resolutions
     NSArray * presets;
     NSDictionary * possibleResolutions;
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
-    {
-        presets = @[AVCaptureSessionPresetLow,
-                    AVCaptureSessionPreset352x288,
-                    AVCaptureSessionPresetMedium,
-                    AVCaptureSessionPreset640x480,
-                    AVCaptureSessionPresetiFrame960x540,
-                    AVCaptureSessionPreset1280x720,
-                    AVCaptureSessionPreset1920x1080,
-                    AVCaptureSessionPresetPhoto];
-        possibleResolutions = @{
-                                AVCaptureSessionPresetLow           : sizeObject(192.0, 144.0),             // iOS4+
-                                AVCaptureSessionPreset352x288       : sizeObject(352.0, 288.0),             // iOS5+
-                                AVCaptureSessionPresetMedium        : sizeObject(480.0, 360.0),             // iOS4+,
-                                AVCaptureSessionPreset640x480       : sizeObject(640.0, 480.0),             // iOS4+
-                                AVCaptureSessionPresetiFrame960x540 : sizeObject(960.0, 540.0),             // iOS5+
-                                AVCaptureSessionPreset1280x720      : sizeObject(1280.0, 720.0),            // iOS4+
-                                AVCaptureSessionPreset1920x1080     : sizeObject(1920.0, 1080.0),           // iOS5+
-                                AVCaptureSessionPresetPhoto         : sizeObject(CGFLOAT_MAX, CGFLOAT_MAX)};// iOS4+, Full resolution
-    }
-    else
-    {
-        presets = @[AVCaptureSessionPresetLow,
-                    AVCaptureSessionPresetMedium,
-                    AVCaptureSessionPreset640x480,
-                    AVCaptureSessionPreset1280x720,
-                    AVCaptureSessionPresetPhoto];
-        possibleResolutions = @{
-                                AVCaptureSessionPresetLow           : sizeObject(192.0, 144.0),             // iOS4+
-                                AVCaptureSessionPresetMedium        : sizeObject(480.0, 360.0),             // iOS4+,
-                                AVCaptureSessionPreset640x480       : sizeObject(640.0, 480.0),             // iOS4+
-                                AVCaptureSessionPreset1280x720      : sizeObject(1280.0, 720.0),            // iOS4+
-                                AVCaptureSessionPresetPhoto         : sizeObject(CGFLOAT_MAX, CGFLOAT_MAX)};// iOS4+, Full resolution
-    }
+    presets = @[AVCaptureSessionPresetLow,
+                AVCaptureSessionPreset352x288,
+                AVCaptureSessionPresetMedium,
+                AVCaptureSessionPreset640x480,
+                AVCaptureSessionPresetiFrame960x540,
+                AVCaptureSessionPreset1280x720,
+                AVCaptureSessionPreset1920x1080,
+                AVCaptureSessionPresetPhoto];
+    possibleResolutions = @{
+                            AVCaptureSessionPresetLow           : sizeObject(192.0, 144.0),             // iOS4+
+                            AVCaptureSessionPreset352x288       : sizeObject(352.0, 288.0),             // iOS5+
+                            AVCaptureSessionPresetMedium        : sizeObject(480.0, 360.0),             // iOS4+,
+                            AVCaptureSessionPreset640x480       : sizeObject(640.0, 480.0),             // iOS4+
+                            AVCaptureSessionPresetiFrame960x540 : sizeObject(960.0, 540.0),             // iOS5+
+                            AVCaptureSessionPreset1280x720      : sizeObject(1280.0, 720.0),            // iOS4+
+                            AVCaptureSessionPreset1920x1080     : sizeObject(1920.0, 1080.0),           // iOS5+
+                            AVCaptureSessionPresetPhoto         : sizeObject(CGFLOAT_MAX, CGFLOAT_MAX)};// iOS4+, Full resolution
     
     // Resolutions available for the current device
     RKOrderedDictionary * availableResolutions = [RKOrderedDictionary dictionary];
