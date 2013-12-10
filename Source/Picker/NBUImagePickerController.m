@@ -28,16 +28,6 @@
     NSMutableDictionary * _previousSelectedAssetPaths;
 }
 
-@synthesize options = _options;
-@synthesize singleImageMode = _singleImageMode;
-@synthesize resultBlock = _resultBlock;
-@synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
-@synthesize cameraController = _cameraController;
-@synthesize libraryController = _libraryController;
-@synthesize assetsGroupController = _assetsGroupController;
-@synthesize editController = _editController;
-@synthesize confirmController = _confirmController;
-
 + (NBUImagePickerController *)pickerWithOptions:(NBUImagePickerOptions)options
                                         nibName:(NSString *)nibName
                                     resultBlock:(NBUImagePickerResultBlock)resultBlock
@@ -87,22 +77,18 @@
                                                                @"Choose an image",
                                                                @"NBUImagePickerController Choose image actionSheet");
     NBUActionSheet * actionSheet = [[NBUActionSheet alloc] initWithTitle:nil
-                                                                delegate:nil
                                                        cancelButtonTitle:cancel
                                                   destructiveButtonTitle:nil
-                                                       otherButtonTitles:takePicture, chooseImage, nil];
-    
-    // Configure selection blocks
-    actionSheet.selectedButtonBlock = ^(NSInteger buttonIndex)
-    {
-        self.rootViewController = buttonIndex == 0 ? _cameraController : _libraryController;
-        [self _startPickerWithTarget:target];
-    };
-    actionSheet.cancelButtonBlock = ^
-    {
-        if (_resultBlock) _resultBlock(nil);
-    };
-    
+                                                       otherButtonTitles:@[takePicture, chooseImage]
+                                                     selectedButtonBlock:^(NSInteger buttonIndex)
+                                    {
+                                        self.rootViewController = (buttonIndex == 0) ? _cameraController : _libraryController;
+                                        [self _startPickerWithTarget:target];
+                                    }
+                                                       cancelButtonBlock:^
+                                    {
+                                        if (_resultBlock) _resultBlock(nil);
+                                    }];
     [actionSheet showFrom:target];
 }
 
