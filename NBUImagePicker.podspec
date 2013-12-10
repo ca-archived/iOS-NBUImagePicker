@@ -18,8 +18,10 @@ Pod::Spec.new do |s|
     s.resource_bundle = { 'NBUImagePicker' => ['Resources/*.{png,lproj}', 'Resources/filters', 'Source/**/*.{xib}'] }
     
     s.dependency 'NBUKit',      '>= 2.0.0'
-    s.dependency 'GPUImage',    '>= 0.1.1'
+    s.dependency 'GPUImage',    '>= 0.1.2'
     s.dependency 'RBVolumeButtons'
+    
+    s.frameworks = 'AVFoundation', 'AssetsLibrary', 'CoreImage'
     
 end
 
