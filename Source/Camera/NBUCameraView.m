@@ -23,7 +23,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "RKOrderedDictionary.h"
-#import "MotionOrientation.h"
+#import <MotionOrientation@PTEz/MotionOrientation.h>
 
 // Define module
 #undef  NBUIMAGEPICKER_MODULE

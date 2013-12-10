@@ -20,7 +20,7 @@
 
 #import "NBUCameraViewController.h"
 #import "NBUImagePickerPrivate.h"
-#import "RBVolumeButtons.h"
+#import <RBVolumeButtons/RBVolumeButtons.h>
 
 // Define module
 #undef  NBUIMAGEPICKER_MODULE

@@ -18,10 +18,7 @@
 //  limitations under the License.
 //
 
-/// NBUCore
-#import <NBUCore/NBUCore.h>
-
-/// NBULog
+/// NBULog Category
 #ifdef COCOAPODS_POD_AVAILABLE_NBULog
     #import "NBULog+NBUImagePicker.h"
 #endif
