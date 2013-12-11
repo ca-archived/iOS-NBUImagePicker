@@ -29,11 +29,12 @@
 #undef  NBUIMAGEPICKER_MODULE
 #define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_CAMERA
 
-// Private categories and classes
-@interface NBUCameraView (Private) <AVCaptureFileOutputRecordingDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+// Class extension
+@interface NBUCameraView () <AVCaptureFileOutputRecordingDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @end
 
+// Private class
 @interface PointOfInterestView : UIView
 
 @end
@@ -59,39 +60,6 @@
     UIImage * _mockImage;
 #endif
 }
-
-@synthesize targetResolution = _targetResolution;
-@synthesize captureResultBlock = _captureResultBlock;
-@synthesize captureMovieResultBlock = _captureMovieResultBlock;
-@synthesize saveResultBlock = _saveResultBlock;
-@synthesize savePicturesToLibrary = _savePicturesToLibrary;
-@synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
-@synthesize capturingSequence = _capturingSequence;
-@synthesize sequenceCaptureInterval = _sequenceCaptureInterval;
-@synthesize targetMovieFolder = _targetMovieFolder;
-@synthesize shouldAutoRotateView = _shouldAutoRotateView;
-@synthesize keepFrontCameraPicturesMirrored = _keepFrontCameraPicturesMirrored;
-@synthesize availableCaptureDevices = _availableCaptureDevices;
-@synthesize availableResolutions = _availableResolutions;
-@synthesize availableFlashModes = _availableFlashModes;
-@synthesize availableFocusModes = _availableFocusModes;
-@synthesize availableExposureModes = _availableExposureModes;
-@synthesize availableWhiteBalanceModes = _availableWhiteBalanceModes;
-@synthesize showDisabledControls = _showDisabledControls;
-@synthesize shootButtonConfigurationBlock = _shootButtonConfigurationBlock;
-@synthesize toggleCameraButtonConfigurationBlock = _toggleCameraButtonConfigurationBlock;
-@synthesize flashButtonConfigurationBlock = _flashButtonConfigurationBlock;
-@synthesize focusButtonConfigurationBlock = _focusButtonConfigurationBlock;
-@synthesize exposureButtonConfigurationBlock = _exposureButtonConfigurationBlock;
-@synthesize whiteBalanceButtonConfigurationBlock = _whiteBalanceButtonConfigurationBlock;
-@synthesize shootButton = _shootButton;
-@synthesize toggleCameraButton = _toggleCameraButton;
-@synthesize flashButton = _flashButton;
-@synthesize focusButton = _focusButton;
-@synthesize exposureButton = _exposureButton;
-@synthesize whiteBalanceButton = _whiteBalanceButton;
-@synthesize lastPictureImageView = _lastPictureImageView;
-@synthesize animateLastPictureImageView = _animateLastPictureImageView;
 
 - (void)commonInit
 {

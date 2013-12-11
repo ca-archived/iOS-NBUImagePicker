@@ -40,9 +40,6 @@
 }
 
 @dynamic viewController;
-@synthesize imageView = _imageView;
-@synthesize activityView = _activityView;
-@synthesize loading = _loading;
 
 #pragma mark - Initialization
 

@@ -25,8 +25,8 @@
 #undef  NBUIMAGEPICKER_MODULE
 #define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_GALLERY
 
-// Private category
-@interface NBUGalleryViewController (Private) <UIScrollViewDelegate>
+// Class extension
+@interface NBUGalleryViewController () <UIScrollViewDelegate>
 
 @end
 
@@ -49,30 +49,6 @@
 	NSMutableArray * _thumbnailViews;
 	NSMutableArray * _views;
 }
-
-@synthesize objectArray = _objectArray;
-@synthesize nibNameForViews = _nibNameForViews;
-@synthesize nibNameForThumbnails = _nibNameForThumbnails;
-@synthesize imageLoader = _imageLoader;
-@synthesize imagePreloadCount = _imagePreloadCount;
-@synthesize currentIndex = _currentIndex;
-@synthesize fullscreen = _fullscreen;
-@synthesize thumbnailSize = _thumbnailSize;
-@synthesize thumbnailMargin = _thumbnailMargin;
-@synthesize spaceBetweenViews = _spaceBetweenViews;
-@synthesize updatesTitle = _updatesTitle;
-@synthesize updatesBars = _updatesBars;
-@synthesize thumbnailsGridView = _thumbnailsGridView;
-@synthesize previousButton = _previousButton;
-@synthesize nextButton = _nextButton;
-@synthesize pageControl = _pageControl;
-@synthesize toggleThumbnailsViewButton = _toggleThumbnailsViewButton;
-@synthesize captionLabel = _captionLabel;
-@synthesize showThumbnailsView = _showThumbnailsView;
-@synthesize navigationBarStyle = _navigationBarStyle;
-@synthesize navigationBarTranslucent = _navigationBarTranslucent;
-@synthesize statusBarStyle = _statusBarStyle;
-@synthesize viewsToHide = _viewsToHide;
 
 - (void)commonInit
 {

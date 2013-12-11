@@ -26,11 +26,12 @@
 #undef  NBUIMAGEPICKER_MODULE
 #define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
 
-// Private categories and classes
-@interface NBUCropView (Private) <UIScrollViewDelegate>
+// Class extension
+@interface NBUCropView () <UIScrollViewDelegate>
 
 @end
 
+// Private class
 @interface CropGuideView : UIView
 
 @end
@@ -43,13 +44,6 @@
     CGFloat _aspectFitFactor;
     BOOL _ignoreLayout; // Needed for iOS4
 }
-@synthesize image = _image;
-@synthesize cropGuideSize = _cropGuideSize;
-@synthesize maximumScaleFactor = _maximumScaleFactor;
-@synthesize allowAspectFit = _allowAspectFit;
-@synthesize scrollView = _scrollView;
-@synthesize viewToCrop = _viewToCrop;
-@synthesize cropGuideView = _cropGuideView;
 
 - (void)commonInit
 {
@@ -57,6 +51,8 @@
     
     _maximumScaleFactor = 1.5;
 }
+
+@synthesize image = _image;
 
 - (void)setImage:(UIImage *)image
 {

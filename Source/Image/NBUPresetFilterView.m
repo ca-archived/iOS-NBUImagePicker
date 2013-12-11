@@ -34,13 +34,6 @@
 }
 
 @synthesize image = _image;
-@synthesize workingSize = _workingSize;
-@synthesize filters = _filters;
-@synthesize currentFilter = _currentFilter;
-@synthesize editingImageView = _editingImageView;
-@synthesize filterSlideView = _filterSlideView;
-@synthesize activityView = _activityView;
-@synthesize resetButton = _resetButton;
 
 - (void)commonInit
 {

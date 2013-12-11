@@ -28,11 +28,6 @@
 @implementation NBUEditMultiImageViewController
 
 @synthesize mediaInfos = _mediaInfos;
-@synthesize currentIndex = _currentIndex;
-@synthesize updatesTitle = _updatesTitle;
-@synthesize titleLabel = _titleLabel;
-@synthesize previousButton = _previousButton;
-@synthesize nextButton = _nextButton;
 
 - (void)commonInit
 {

@@ -31,15 +31,6 @@
     RBVolumeButtons * _buttonStealer;
 }
 
-@synthesize cameraView = _cameraView;
-@synthesize targetResolution = _targetResolution;
-@synthesize captureResultBlock = _captureResultBlock;
-@synthesize savePicturesToLibrary = _savePicturesToLibrary;
-@synthesize targetLibraryAlbumName = _targetLibraryAlbumName;
-@synthesize singlePictureMode = _singlePictureMode;
-@synthesize takesPicturesWithVolumeButtons = _takesPicturesWithVolumeButtons;
-@synthesize flashLabel = _flashLabel;
-
 + (BOOL)isCameraAvailable
 {
 #ifdef __i386__

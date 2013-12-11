@@ -36,8 +36,6 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
     NSMutableDictionary * _directories;
 }
 
-@synthesize ALAssetsLibrary = _ALAssetsLibrary;
-
 #pragma mark - Initialization
 
 + (NBUAssetsLibrary *)sharedLibrary

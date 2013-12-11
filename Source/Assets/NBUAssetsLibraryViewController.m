@@ -28,12 +28,6 @@
 
 @implementation NBUAssetsLibraryViewController
 
-@synthesize loading = _loading;
-@synthesize assetsGroups = _assetsGroups;
-@synthesize objectTableView = _objectTableView;
-@synthesize groupSelectedBlock = _groupSelectedBlock;
-@synthesize assetsGroupController = _assetsGroupController;
-
 // TODO: Remove
 - (void)setScrollOffset
 {

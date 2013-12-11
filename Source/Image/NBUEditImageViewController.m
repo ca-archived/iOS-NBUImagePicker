@@ -29,14 +29,7 @@
 
 @dynamic image;
 @synthesize mediaInfo = _mediaInfo;
-@synthesize resultBlock = _resultBlock;
-@synthesize cropTargetSize = _cropTargetSize;
-@synthesize cropGuideSize = _cropGuideSize;
-@synthesize maximumScaleFactor = _maximumScaleFactor;
 @synthesize filters = _filters;
-@synthesize workingSize = _workingSize;
-@synthesize filterView = _filterView;
-@synthesize cropView = _cropView;
 
 - (void)commonInit
 {

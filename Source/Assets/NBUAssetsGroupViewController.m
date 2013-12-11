@@ -26,8 +26,8 @@
 #undef  NBUIMAGEPICKER_MODULE
 #define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_ASSETS
 
-// Private category
-@interface NBUAssetsGroupViewController (Private) <ObjectArrayViewDelegate>
+// Class extension
+@interface NBUAssetsGroupViewController () <ObjectArrayViewDelegate>
 
 @end
 
@@ -38,18 +38,7 @@
 }
 
 @dynamic assetsGroup;
-@synthesize reverseOrder = _reverseOrder;
-@synthesize loadSize = _loadSize;
-@synthesize loading = _loading;
-@synthesize selectionCountLimit = _selectionCountLimit;
-@synthesize clearsSelectionOnViewWillAppear = _clearsSelectionOnViewWillAppear;
-@synthesize selectionChangedBlock = _selectionChangedBlock;
-@synthesize assets = _assets;
 @synthesize selectedAssetsURLs = _selectedAssetsURLs;
-@synthesize gridView = _gridView;
-@synthesize continueButton = _continueButton;
-@synthesize groupNameLabel = _groupNameLabel;
-@synthesize assetsCountLabel = _assetsCountLabel;
 
 // TODO: Remove
 - (void)setScrollOffset

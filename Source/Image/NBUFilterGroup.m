@@ -27,8 +27,6 @@
 
 @implementation NBUFilterGroup
 
-@synthesize filters = _filters;
-
 + (id)filterGroupWithName:(NSString *)name
                      type:(NSString *)type
                   filters:(NSArray *)filters

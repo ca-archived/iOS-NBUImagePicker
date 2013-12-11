@@ -31,9 +31,6 @@ static BOOL _changesAlphaOnSelection;
 
 @implementation NBUAssetThumbnailView
 
-@synthesize selected = _selected;
-@synthesize selectionView = _selectionView;
-
 + (void)initialize
 {
     _changesAlphaOnSelection = YES;

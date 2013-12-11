@@ -28,7 +28,6 @@
 @implementation NBUGalleryThumbnailView
 
 @dynamic viewController;
-@synthesize imageView = _imageView;
 
 - (void)commonInit
 {

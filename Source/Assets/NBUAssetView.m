@@ -29,9 +29,6 @@
 @implementation NBUAssetView
 
 @dynamic asset;
-@synthesize targetImageSize = _targetImageSize;
-@synthesize currentImageSize = _currentImageSize;
-@synthesize imageView = _imageView;
 
 - (void)setObject:(NBUAsset *)asset
 {

@@ -31,12 +31,8 @@ static NBUSelectionType _selectionType = NBUSelectionTypeDefault;
 {
     UIImage * _originalImage;
 }
+
 @dynamic filter;
-@synthesize selected = _selected;
-@synthesize disableTapToDeselect = _disableTapToDeselect;
-@synthesize nameLabel = _nameLabel;
-@synthesize imageView = _imageView;
-@synthesize selectionView = _selectionView;
 
 + (NBUSelectionType)selectionType
 {

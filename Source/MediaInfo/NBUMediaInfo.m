@@ -34,8 +34,6 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
 
 @implementation NBUMediaInfo
 
-@synthesize attributes = _attributes;
-
 + (NBUMediaInfo *)mediaInfoWithAttributes:(NSDictionary *)attributes
 {
     NBUMediaInfo * mediaInfo = [self new];

@@ -30,10 +30,6 @@ static UIImage * _noContentsImage;
 @implementation NBUAssetsGroupView
 
 @dynamic assetsGroup;
-@synthesize nameLabel = _nameLabel;
-@synthesize countLabel = _countLabel;
-@synthesize posterImageView = _posterImageView;
-@synthesize editableView = _editableView;
 
 - (void)commonInit
 {

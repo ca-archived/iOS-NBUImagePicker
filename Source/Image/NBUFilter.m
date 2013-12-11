@@ -46,12 +46,6 @@ NSString * const NBUFilterValueTypeUnknown      = @"unknown";
 }
 
 @dynamic configurationDictionary;
-@synthesize name = _name;
-@synthesize type = _type;
-@synthesize enabled = _enabled;
-@synthesize values = _values;
-@synthesize attributes = _attributes;
-@synthesize provider = _provider;
 @synthesize concreteFilter = _concreteFilter;
 
 + (id)filterWithName:(NSString *)name
