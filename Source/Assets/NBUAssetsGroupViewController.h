@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#import "NBUObjectViewController.h"
+#import <NBUKit/NBUObjectViewController.h>
 
 @class ObjectGridView, NBUAssetsGroup;
 @protocol UIButton;

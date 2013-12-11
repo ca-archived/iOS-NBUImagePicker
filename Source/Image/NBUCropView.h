@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#import "NBUView.h"
+#import <NBUKit/NBUView.h>
 
 @protocol UIImageView;
 

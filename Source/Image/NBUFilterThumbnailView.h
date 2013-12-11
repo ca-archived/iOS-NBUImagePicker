@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-#import "NBUObjectView.h"
+#import <NBUKit/NBUObjectView.h>
 
 @class NBUFilter;
 

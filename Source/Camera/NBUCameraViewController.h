@@ -18,10 +18,8 @@
 //  limitations under the License.
 //
 
-#import "NBUViewController.h"
+#import <NBUKit/NBUViewController.h>
 #import "NBUCameraView.h"
-
-@class NBUCameraView;
 
 /**
  An extensible UIViewController for a NBUCameraView.
