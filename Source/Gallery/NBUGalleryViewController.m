@@ -470,10 +470,7 @@
         return;
     
     self.navigationItem.title = [NSString stringWithFormat:
-                                 NSLocalizedStringWithDefaultValue(@"NBUGalleryViewController title image X of XX",
-                                                                   nil, nil,
-                                                                   @"%i of %i",
-                                                                   @"NBUGalleryViewController title image X of XX"),
+                                 NBULocalizedString(@"NBUGalleryViewController title image X of XX", @"%i of %i"),
                                  _currentIndex + 1,
                                  _objectArray.count];
 }
@@ -659,14 +656,8 @@
 - (void)updateToggleThumbnailsViewButton
 {
     _toggleThumbnailsViewButton.title = (_showThumbnailsView ?
-                                         NSLocalizedStringWithDefaultValue(@"NBUGalleryViewController show thumbnails button",
-                                                                           nil, nil,
-                                                                           @"Close",
-                                                                           @"NBUGalleryViewController show thumbnails button") :
-                                         NSLocalizedStringWithDefaultValue(@"NBUGalleryViewController hide thumbnails button",
-                                                                           nil, nil,
-                                                                           @"Show all",
-                                                                           @"NBUGalleryViewController hide thumbnails button"));
+                                         NBULocalizedString(@"NBUGalleryViewController show thumbnails button", @"Close") :
+                                         NBULocalizedString(@"NBUGalleryViewController hide thumbnails button", @"Show all"));
 }
 
 - (void)scrollThumbnailsViewToIndex:(NSUInteger)index

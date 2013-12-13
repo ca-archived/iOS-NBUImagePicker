@@ -51,10 +51,7 @@
     [super awakeFromNib];
     
     // Localization
-    [_filterSlideView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUPresetFilterView NoFiltersAvailable",
-                                                                              nil, nil,
-                                                                              @"No filters available",
-                                                                              @"NBUPresetFilterView NoFiltersAvailable")];
+    [_filterSlideView setNoContentsViewText:NBULocalizedString(@"NBUPresetFilterView NoFiltersAvailable", @"No filters available")];
 }
 
 - (void)dealloc

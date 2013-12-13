@@ -45,10 +45,7 @@ static UIImage * _noContentsImage;
     // Localization
     if ([_editableView isKindOfClass:[UILabel class]])
     {
-        ((UILabel *)_editableView).text  = NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Editable label",
-                                                                             nil, nil,
-                                                                             @"editable",
-                                                                             @"NBUAssetsGroupView Editable label");
+        ((UILabel *)_editableView).text = NBULocalizedString(@"NBUAssetsGroupView Editable label", @"editable");
     }
     
     static dispatch_once_t onceToken;
@@ -66,18 +63,12 @@ static UIImage * _noContentsImage;
     NSUInteger count = self.assetsGroup.imageAssetsCount;
     if (count == 1)
     {
-        _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
-                                                                                        nil, nil,
-                                                                                        @"1 image",
-                                                                                        @"NBUAssetsGroupView Only one image"),
+        _countLabel.text = [NSString stringWithFormat:NBULocalizedString(@"NBUAssetsGroupView Only one image", @"1 image"),
                             count];
     }
     else
     {
-        _countLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
-                                                                                        nil, nil,
-                                                                                        @"%d images",
-                                                                                        @"NBUAssetsGroupView Number of images"),
+        _countLabel.text = [NSString stringWithFormat:NBULocalizedString(@"NBUAssetsGroupView Number of images", @"%d images"),
                             count];
     }
     if (count == 0)

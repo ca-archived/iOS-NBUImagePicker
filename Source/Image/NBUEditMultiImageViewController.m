@@ -102,10 +102,7 @@
         return;
     
     NSString * title = [NSString stringWithFormat:
-                        NSLocalizedStringWithDefaultValue(@"NBUEditMultiImageViewController title image X of XX",
-                                                          nil, nil,
-                                                          @"%i of %i",
-                                                          @"NBUEditMultiImageViewController title image X of XX"),
+                        NBULocalizedString(@"NBUEditMultiImageViewController title image X of XX", @"%i of %i"),
                         _currentIndex + 1,
                         _mediaInfos.count];
     

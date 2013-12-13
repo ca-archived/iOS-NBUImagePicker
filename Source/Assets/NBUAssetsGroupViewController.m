@@ -97,28 +97,19 @@
         {
             case 0:
             {
-                _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController NoImagesLabel",
-                                                                                                      nil, nil,
-                                                                                                      @"No images",
-                                                                                                      @"NBUAssetsGroupViewController NoImagesLabel"),
+                _assetsCountLabel.text = [NSString stringWithFormat:NBULocalizedString(@"NBUAssetsGroupViewController NoImagesLabel", @"No images"),
                                           totalCount];
                 break;
             }
             case 1:
             {
-                _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Only one image",
-                                                                                                      nil, nil,
-                                                                                                      @"1 image",
-                                                                                                      @"NBUAssetsGroupView Only one image"),
+                _assetsCountLabel.text = [NSString stringWithFormat:NBULocalizedString(@"NBUAssetsGroupView Only one image", @"1 image"),
                                           totalCount];
                 break;
             }
             default:
             {
-                _assetsCountLabel.text = [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupView Number of images",
-                                                                                                      nil, nil,
-                                                                                                      @"%d images",
-                                                                                                      @"NBUAssetsGroupView Number of images"),
+                _assetsCountLabel.text = [NSString stringWithFormat:NBULocalizedString(@"NBUAssetsGroupView Number of images", @"%d images"),
                                           totalCount];
                 break;
             }
@@ -200,17 +191,11 @@
     // Update label
 	if (_loading)
 	{
-        [_gridView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController LoadingLabel",
-																		   nil, nil,
-																		   @"Loading images...",
-																		   @"NBUAssetsGroupViewController LoadingLabel")];
+        [_gridView setNoContentsViewText:NBULocalizedString(@"NBUAssetsGroupViewController LoadingLabel", @"Loading images...")];
 	}
 	else
 	{
-		[_gridView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsGroupViewController NoImagesLabel",
-																		   nil, nil,
-																		   @"No images",
-																		   @"NBUAssetsGroupViewController NoImagesLabel")];
+		[_gridView setNoContentsViewText:NBULocalizedString(@"NBUAssetsGroupViewController NoImagesLabel", @"No images")];
 	}
 }
 

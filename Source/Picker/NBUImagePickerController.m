@@ -64,18 +64,9 @@
     }
     
     // Otherwise use a prompt
-    NSString * cancel = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController Cancel prompt actionSheet",
-                                                          nil, nil,
-                                                          @"Cancel",
-                                                          @"NBUImagePickerController Cancel prompt actionSheet");
-    NSString * takePicture = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController Take picture actionSheet",
-                                                               nil, nil,
-                                                               @"Take a picture",
-                                                               @"NBUImagePickerController Take picture actionSheet");
-    NSString * chooseImage = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController Choose image actionSheet",
-                                                               nil, nil,
-                                                               @"Choose an image",
-                                                               @"NBUImagePickerController Choose image actionSheet");
+    NSString * cancel = NBULocalizedString(@"NBUImagePickerController Cancel prompt actionSheet", @"Cancel");
+    NSString * takePicture = NBULocalizedString(@"NBUImagePickerController Take picture actionSheet", @"Take a picture");
+    NSString * chooseImage = NBULocalizedString(@"NBUImagePickerController Choose image actionSheet", @"Choose an image");
     NBUActionSheet * actionSheet = [[NBUActionSheet alloc] initWithTitle:nil
                                                        cancelButtonTitle:cancel
                                                   destructiveButtonTitle:nil
@@ -251,10 +242,7 @@
     // Configure controller
     if (_cameraController.navigationItem.title.length == 0)
     {
-        _cameraController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController CameraTitle",
-                                                                                   nil, nil,
-                                                                                   @"Camera",
-                                                                                   @"NBUImagePickerController CameraTitle");
+        _cameraController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController CameraTitle", @"Camera");
     }
     _cameraController.supportedInterfaceOrientations = UIInterfaceOrientationMaskPortrait;
     _cameraController.singlePictureMode = _singleImageMode;
@@ -299,14 +287,8 @@
     }
     
     // Customize
-    _libraryController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController LibraryLoadingTitle",
-                                                                                nil, nil,
-                                                                                @"Loading...",
-                                                                                @"NBUImagePickerController LibraryLoadingTitle");
-    _libraryController.customBackButtonTitle = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController libraryController.customBackButtonTitle",
-                                                                                 nil, nil,
-                                                                                 @"Albums",
-                                                                                 @"NBUImagePickerController libraryController.customBackButtonTitle");
+    _libraryController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController LibraryLoadingTitle", @"Loading...");
+    _libraryController.customBackButtonTitle = NBULocalizedString(@"NBUImagePickerController libraryController.customBackButtonTitle", @"Albums");
     _libraryController.assetsGroupController = _assetsGroupController;
     
     [self configureAssetsGroupController:options];
@@ -317,10 +299,7 @@
     // Customize assets group controller
     _assetsGroupController.reverseOrder = YES;
     _assetsGroupController.navigationItem.leftBarButtonItem = nil; // Allow back button
-    _assetsGroupController.customBackButtonTitle = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.customBackButtonTitle",
-                                                                                     nil, nil,
-                                                                                     @"Library",
-                                                                                     @"NBUImagePickerController assetsGroupController.customBackButtonTitle");
+    _assetsGroupController.customBackButtonTitle = NBULocalizedString(@"NBUImagePickerController assetsGroupController.customBackButtonTitle", @"Library");
     
     // Single image mode
     if (_singleImageMode)
@@ -346,10 +325,7 @@
         if (!_assetsGroupController.navigationItem.rightBarButtonItem ||
             _assetsGroupController.navigationItem.rightBarButtonItem.tag < 0)
         {
-            UIBarButtonItem * continueButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringWithDefaultValue(@"NBUImagePickerController assetsGroupController.continueButton",
-                                                                                                                        nil, nil,
-                                                                                                                        @"Continue",
-                                                                                                                        @"NBUImagePickerController assetsGroupController.continueButton")
+            UIBarButtonItem * continueButton = [[UIBarButtonItem alloc] initWithTitle:NBULocalizedString(@"NBUImagePickerController assetsGroupController.continueButton", @"Continue")
                                                                                 style:UIBarButtonItemStyleDone
                                                                                target:self
                                                                                action:@selector(finishAssetsSelection)];
@@ -438,22 +414,13 @@
                                              450.0 * scale);
     
     // UI customization
-    _editController.navigationItem.rightBarButtonItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController editController rightBarButtonItem.title",
-                                                                                                nil, nil,
-                                                                                                @"Next",
-                                                                                                @"NBUImagePickerController editController rightBarButtonItem.title");
-    _editController.customBackButtonTitle = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController editController.customBackButtonTitle",
-                                                                              nil, nil,
-                                                                              @"Edit",
-                                                                              @"NBUImagePickerController editController.customBackButtonTitle");
+    _editController.navigationItem.rightBarButtonItem.title = NBULocalizedString(@"NBUImagePickerController editController rightBarButtonItem.title", @"Next");
+    _editController.customBackButtonTitle = NBULocalizedString(@"NBUImagePickerController editController.customBackButtonTitle", @"Edit");
     if (_singleImageMode)
     {
         _editController.navigationItem.titleView = nil;
         _editController.updatesTitle = NO;
-        _editController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController editController title",
-                                                                                 nil, nil,
-                                                                                 @"Edit",
-                                                                                 @"NBUImagePickerController editController title");
+        _editController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController editController title", @"Edit");
     }
 }
 
@@ -513,10 +480,7 @@
     }
     
     // Configure controller
-    _confirmController.navigationItem.title = NSLocalizedStringWithDefaultValue(@"NBUImagePickerController confirmController title",
-                                                                                nil, nil,
-                                                                                @"Confirm",
-                                                                                @"NBUImagePickerController confirmController title");
+    _confirmController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController confirmController title", @"Confirm");
     _confirmController.updatesTitle = NO;
     _confirmController.updatesBars = NO;
 }

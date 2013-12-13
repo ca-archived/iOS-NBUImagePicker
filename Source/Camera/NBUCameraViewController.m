@@ -72,25 +72,16 @@
         switch (mode)
         {
             case AVCaptureFlashModeOn:
-                weakSelf.flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel On",
-                                                                             nil, nil,
-                                                                             @"On",
-                                                                             @"NBUCameraViewController FlashLabel On");
+                weakSelf.flashLabel.text = NBULocalizedString(@"NBUCameraViewController FlashLabel On", @"On");
                 break;
                 
             case AVCaptureFlashModeOff:
-                weakSelf.flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Off",
-                                                                             nil, nil,
-                                                                             @"Off",
-                                                                             @"NBUCameraViewController FlashLabel Off");
+                weakSelf.flashLabel.text = NBULocalizedString(@"NBUCameraViewController FlashLabel Off", @"Off");
                 break;
                 
             case AVCaptureFlashModeAuto:
             default:
-                weakSelf.flashLabel.text = NSLocalizedStringWithDefaultValue(@"NBUCameraViewController FlashLabel Auto",
-                                                                             nil, nil,
-                                                                             @"Auto",
-                                                                             @"NBUCameraViewController FlashLabel Auto");;
+                weakSelf.flashLabel.text = NBULocalizedString(@"NBUCameraViewController FlashLabel Auto", @"Auto");;
                 break;
         }
     };

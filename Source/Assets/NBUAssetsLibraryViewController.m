@@ -63,14 +63,9 @@
              
              // Update UI
              self.navigationItem.title = (groups.count == 1 ?
-                                          NSLocalizedStringWithDefaultValue(@"NBUAssetsLibraryViewController Only one album",
-                                                                            nil, nil,
-                                                                            @"1 album",
-                                                                            @"NBUAssetsLibraryViewController Only one album") :
+                                          NBULocalizedString(@"NBUAssetsLibraryViewController Only one album", @"1 album") :
                                           [NSString stringWithFormat:
-                                           NSLocalizedStringWithDefaultValue(@"NBUAssetsLibraryViewController Zero or more albums",
-                                                                             nil, nil,
-                                                                             @"%d albums", @"NBUAssetsLibraryViewController Zero or more albums"),
+                                           NBULocalizedString(@"NBUAssetsLibraryViewController Zero or more albums", @"%d albums"),
                                            groups.count]);
              _objectTableView.objectArray = groups;
              
@@ -95,17 +90,11 @@
 	
 	if (_loading)
 	{
-		[_objectTableView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsLibraryViewController LoadingLabel",
-																				  nil, nil,
-																				  @"Loading albums...",
-																				  @"NBUAssetsLibraryViewController LoadingLabel")];
+		[_objectTableView setNoContentsViewText:NBULocalizedString(@"NBUAssetsLibraryViewController LoadingLabel", @"Loading albums...")];
 	}
 	else
 	{
-		[_objectTableView setNoContentsViewText:NSLocalizedStringWithDefaultValue(@"NBUAssetsLibraryViewController NoAlbumsLabel",
-																				  nil, nil,
-																				  @"No albums",
-																				  @"NBUAssetsLibraryViewController NoAlbumsLabel")];
+		[_objectTableView setNoContentsViewText:NBULocalizedString(@"NBUAssetsLibraryViewController NoAlbumsLabel", @"No albums")];
 	}
 }
 

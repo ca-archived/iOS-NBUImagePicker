@@ -22,12 +22,8 @@
 #import <NBUKit/NBUKit.h>
 
 // Localization
-#undef  NSLocalizedString
-#define NSLocalizedString(key, comment) \
-[NSBundle localizedStringForKey:key value:nil table:@"NBUImagePicker" backupBundle:NBUImagePicker.bundle]
-#undef NSLocalizedStringWithDefaultValue
-#define NSLocalizedStringWithDefaultValue(key, tableName, defaultBundle, defaultValue, comment) \
-[NSBundle localizedStringForKey:key value:defaultValue table:@"NBUImagePicker" backupBundle:NBUImagePicker.bundle]
+#define NBULocalizedString(keyComment, defaultValue) \
+[NSBundle localizedStringForKey:keyComment value:defaultValue table:nil backupBundle:NBUImagePicker.bundle]
 
 
 // a) Use NBULog for logging when available
