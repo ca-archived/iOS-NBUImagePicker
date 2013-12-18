@@ -54,7 +54,9 @@ Block-based image picker that combines all modules mentioned above.
 
 The main goal of NBUImagePicker is to be fully [customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) and easy to extend.
 
-For now add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
+## Installation
+
+Add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
 
 ```ruby
 platform :ios, '5.0'
@@ -68,6 +70,16 @@ pod 'NBULog'
 
 # Optional for on-device log console
 pod 'LumberjackConsole'
+```
+
+Or manually chose the only components you need:
+
+```ruby
+pod 'NBUImagePicker/Camera'  # AVFoundation-based camera
+pod 'NBUImagePicker/Assets'  # AssetsLibrary and custom path asset selection
+pod 'NBUImagePicker/Filters' # CoreImage and GPUImage filters' wrapping
+pod 'NBUImagePicker/Gallery' # Image preview
+pod 'NBUImagePicker/Picker'  # Combinations of the modules above
 ```
 
 ##License

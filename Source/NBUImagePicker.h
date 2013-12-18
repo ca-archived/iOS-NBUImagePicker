@@ -18,53 +18,47 @@
 //  limitations under the License.
 //
 
-/// NBULog Category
+/// NBULog
 #ifdef COCOAPODS_POD_AVAILABLE_NBULog
     #import "NBULog+NBUImagePicker.h"
 #endif
 
-/// Assets
-#import "NBUAsset.h"
-#import "NBUAssetsGroup.h"
-#import "NBUAssetsGroupView.h"
-#import "NBUAssetsGroupViewController.h"
-#import "NBUAssetsLibrary.h"
-#import "NBUAssetsLibraryViewController.h"
-#import "NBUAssetThumbnailView.h"
-#import "NBUAssetView.h"
-
 /// Camera
-#import "NBUCameraView.h"
-#import "NBUCameraView.h"
-#import "NBUCameraViewController.h"
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Camera
+    #import "NBUCamera.h"
+#endif
 
-/// Image Editing
-#import "NBUCropView.h"
-#import "NBUCoreImageFilterProvider.h"
-#import "NBUCoreImageFilterProvider.h"
-#import "NBUEditImageViewController.h"
-#import "NBUEditMultiImageViewController.h"
-#import "NBUFilter.h"
-#import "NBUFilter.h"
-#import "NBUFilterGroup.h"
-#import "NBUFilterProvider.h"
-#import "NBUFilterProvider.h"
-#import "NBUFilterThumbnailView.h"
-#import "NBUGPUImageFilterProvider.h"
-#import "NBUPresetFilterView.h"
+/// Assets
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Assets
+    #import "NBUAssets.h"
+#endif
+
+/// Filters
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+    #import "NBUFilters.h"
+#endif
 
 /// Gallery
-#import "NBUGalleryThumbnailView.h"
-#import "NBUGalleryView.h"
-#import "NBUGalleryViewController.h"
-#import "NBUImageLoader.h"
-#import "NBUImageLoader.h"
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Gallery
+    #import "NBUGallery.h"
+#endif
+
+/// Image Editing
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Image
+    #import "NBUCropView.h"
+    #import "NBUEditImageViewController.h"
+    #import "NBUEditMultiImageViewController.h"
+#endif
 
 /// Media Info
-#import "NBUMediaInfo.h"
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_MediaInfo
+    #import "NBUMediaInfo.h"
+#endif
 
 /// Image Picker
-#import "NBUImagePickerController.h"
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Picker
+    #import "NBUImagePickerController.h"
+#endif
 
 /**
  NBUImagePicker static library.
