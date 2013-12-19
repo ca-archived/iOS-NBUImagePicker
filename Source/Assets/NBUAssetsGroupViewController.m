@@ -58,6 +58,9 @@
 {
     [super viewDidLoad];
     
+    // Customization
+    self.scrollView.alwaysBounceVertical = YES;
+    
     // Configure grid view
     _gridView.margin = CGSizeMake(4.0, 4.0);
     _gridView.nibNameForViews = @"NBUAssetThumbnailView";

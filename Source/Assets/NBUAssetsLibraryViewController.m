@@ -38,6 +38,9 @@
 {
     [super viewDidLoad];
     
+    // Customization
+    self.scrollView.alwaysBounceVertical = YES;
+    
     // Configure object table view
     _objectTableView.nibNameForViews = @"NBUAssetsGroupView";
     
