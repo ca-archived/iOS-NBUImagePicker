@@ -4,7 +4,8 @@ Pod::Spec.new do |s|
     
     s.name          = "NBUImagePicker"
     s.version       = "1.0.0"
-    s.summary       = "Localizable image picker with fully customizable AVFondation camera, assets, cropping and filters."
+    s.summary       = "Modular image picker with AVFondation, simulator-compatible camera, assets browser, filters and more."
+    s.description   = "Modular and fully customizable UIImagePickerController replacement with AVFondation, simulator-compatible camera, AssertsLibrary and custom directory assets' browser, cropping, filters and gallery."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUImagePicker/"
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
