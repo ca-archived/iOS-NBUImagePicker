@@ -18,6 +18,8 @@
 //  limitations under the License.
 //
 
+#import <NBUKit/ObjectArrayView.h>
+
 /// NBUMediaInfo attributes' keys.
 extern NSString * const NBUMediaInfoOriginalMediaKey;
 extern NSString * const NBUMediaInfoOriginalMediaURLKey;
@@ -52,7 +54,7 @@ typedef NSInteger NBUMediaInfoSource;
  - Convenience methods to access and modify the attributes dictionary.
  - Add custom metadata to its attributes dictionary.
  */
-@interface NBUMediaInfo : NSObject
+@interface NBUMediaInfo : NSObject <ObjectArrayViewDelegate>
 
 /// @name Creating New Media Infos
 

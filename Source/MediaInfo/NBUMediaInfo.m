@@ -243,5 +243,16 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
     return [NSString stringWithFormat:@"<%@ %p: %@>", NSStringFromClass([self class]), self, _attributes.description];
 }
 
+#pragma mark - ObjectArrayViewDelegate
+
+- (UIView *)objectArrayView:(ObjectArrayView *)arrayView
+              viewForObject:(id)object
+{
+    UIImageView * view = [[UIImageView alloc] initWithImage:((NBUMediaInfo *)object).editedImage];
+    view.contentMode = UIViewContentModeScaleAspectFill;
+    view.clipsToBounds = YES;
+    return view;
+}
+
 @end
 
