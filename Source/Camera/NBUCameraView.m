@@ -79,7 +79,11 @@
     
 #ifdef __i386__
     // Mock image for simulator
-    _mockImage = [UIImage imageNamed:@"Default"];
+    _mockImage = [UIImage imageNamed:@"LaunchImage-700"] ?: [UIImage imageNamed:@"Default"]; // Try to use the App's launch image
+    if (!_mockImage)
+    {
+        NBULogWarn(@"Couldn't load a mock image.");
+    }
     UIImageView * mockView = [[UIImageView alloc] initWithImage:_mockImage];
     mockView.contentMode = UIViewContentModeScaleAspectFill;
     mockView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
