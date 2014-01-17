@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
     
     s.subspec 'Filters' do |sub|
         sub.source_files    = 'Source/Filters/*.{h,m}'
+        sub.frameworks      = 'CoreImage'
         sub.dependency      'GPUImage', '>= 0.1.2'
     end
     
