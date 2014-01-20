@@ -20,6 +20,7 @@
 
 #import "NBUAssetsGroupView.h"
 #import "NBUImagePickerPrivate.h"
+#import "NBUAssetsLibraryViewController.h"
 
 // Define module
 #undef  NBUIMAGEPICKER_MODULE
@@ -82,6 +83,19 @@ static UIImage * _noContentsImage;
         _posterImageView.image = self.object.posterImage;
     }
     _editableView.hidden = !self.object.editable;
+}
+
+- (void)tapped:(id)sender
+{
+    [super tapped:sender];
+    
+    // Directly notify controller
+    id controller = self.viewController;
+    if ([controller respondsToSelector:@selector(assetsGroupViewTapped:)])
+    {
+        [controller performSelector:@selector(assetsGroupViewTapped:)
+                         withObject:self];
+    }
 }
 
 @end

@@ -51,5 +51,11 @@
 /// The assets group controller to be pushed by default.
 @property (strong, nonatomic) IBOutlet              NBUAssetsGroupViewController * assetsGroupController;
 
+/// @name Actions
+
+/// Notify controller when a NBUAssetsGroupView has been tapped.
+/// @param sender The tapped view.
+- (IBAction)assetsGroupViewTapped:(id)sender;
+
 @end
 

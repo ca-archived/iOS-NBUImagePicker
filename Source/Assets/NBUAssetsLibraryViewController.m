@@ -28,12 +28,6 @@
 
 @implementation NBUAssetsLibraryViewController
 
-// TODO: Remove
-- (void)setScrollOffset
-{
-    // *** Do nothing, just to avoit ScrollViewController from resetting the contentOffset ***
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -103,32 +97,11 @@
 
 #pragma mark - Show assets group
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)assetsGroupViewTapped:(NBUAssetsGroupView *)sender
 {
-    [super viewWillAppear:animated];
+    NBULogVerbose(@"%@ %@", THIS_METHOD, sender);
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(assetsGroupViewTapped:)
-                                                 name:ActiveViewTappedNotification
-                                               object:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:ActiveViewTappedNotification
-                                                  object:nil];
-}
-
-- (void)assetsGroupViewTapped:(NSNotification *)notification
-{
-    NBUAssetsGroupView * groupView = notification.object;
-    if (![groupView isKindOfClass:[NBUAssetsGroupView class]])
-        return;
-    
-    NBUAssetsGroup * group = groupView.assetsGroup;
+    NBUAssetsGroup * group = sender.assetsGroup;
     if (![group isKindOfClass:[NBUAssetsGroup class]])
         return;
     
