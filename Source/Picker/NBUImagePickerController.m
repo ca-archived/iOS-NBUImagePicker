@@ -26,6 +26,7 @@
     BOOL _returnMediaInfoMode;
     NSMutableArray * _mediaInfos;
     NSMutableDictionary * _previousSelectedAssetPaths;
+    NSArray * _controllersToToggleBack;
 }
 
 + (NBUImagePickerController *)pickerWithOptions:(NBUImagePickerOptions)options
@@ -286,6 +287,8 @@
         return;
     }
     
+    _controllersToToggleBack = @[_libraryController];
+    
     // Customize
     _libraryController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController LibraryLoadingTitle", @"Loading...");
     _libraryController.customBackButtonTitle = NBULocalizedString(@"NBUImagePickerController libraryController.customBackButtonTitle", @"Albums");
@@ -497,15 +500,33 @@
 
 - (IBAction)toggleSource:(id)sender
 {
+    NSMutableArray * controllers = [NSMutableArray arrayWithArray:self.viewControllers];
     if (self.topViewController == _cameraController)
     {
-        self.topViewController = _libraryController;
+        // Replace camera
+        [controllers removeLastObject];
+        self.viewControllers = [controllers arrayByAddingObjectsFromArray:_controllersToToggleBack];
     }
     else
     {
-        self.topViewController = _cameraController;
+        // Remove one or two assets controllers?
+        if (![self.viewControllers containsObject:_assetsGroupController])
+        {
+            // One
+            [controllers removeLastObject];
+            _controllersToToggleBack = @[_libraryController];
+        }
+        else
+        {
+            // Two
+            [controllers removeLastObject];
+            [controllers removeLastObject];
+            _controllersToToggleBack = @[_libraryController, _assetsGroupController];
+        }
+        self.viewControllers = [controllers arrayByAddingObject:_cameraController];
     }
     
+    // Force refresh orientation
     [self refreshOrientation];
 }
 
