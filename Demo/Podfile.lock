@@ -1,0 +1,131 @@
+PODS:
+  - CocoaLumberjack (1.7.0):
+    - CocoaLumberjack/Core
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.7.0)
+  - CocoaLumberjack/Extensions (1.7.0):
+    - CocoaLumberjack/Core
+  - GPUImage (HEAD based on 0.1.2)
+  - Lockbox (1.4.6)
+  - LumberjackConsole (1.0.2):
+    - CocoaLumberjack (>= 1.6.4)
+    - LumberjackConsole/AdjustLevels
+    - LumberjackConsole/Base
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - LumberjackConsole/AdjustLevels (1.0.2):
+    - CocoaLumberjack (>= 1.6.4)
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - LumberjackConsole/Base (1.0.2):
+    - CocoaLumberjack (>= 1.6.4)
+    - LumberjackConsole/Base
+    - NBUCore (>= 2.0.0)
+  - MotionOrientation@PTEz (1.0.0)
+  - NBUCore (2.0.0)
+  - NBUImagePicker (1.0.0):
+    - NBUImagePicker/Assets
+    - NBUImagePicker/Base
+    - NBUImagePicker/Camera
+    - NBUImagePicker/Filters
+    - NBUImagePicker/Gallery
+    - NBUImagePicker/Image
+    - NBUImagePicker/MediaInfo
+    - NBUImagePicker/Picker
+    - NBUImagePicker/Resources
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/Assets (1.0.0):
+    - NBUImagePicker/Base
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/Base (1.0.0):
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/Camera (1.0.0):
+    - NBUImagePicker/Assets
+    - NBUKit (>= 2.0.1)
+    - RBVolumeButtons
+  - NBUImagePicker/Filters (1.0.0):
+    - GPUImage (>= 0.1.2)
+    - NBUImagePicker/Base
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/Gallery (1.0.0):
+    - NBUImagePicker/Assets
+    - NBUImagePicker/MediaInfo
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/Image (1.0.0):
+    - NBUImagePicker/Filters
+    - NBUImagePicker/MediaInfo
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/MediaInfo (1.0.0):
+    - NBUImagePicker/Assets
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/Picker (1.0.0):
+    - NBUImagePicker/Camera
+    - NBUImagePicker/Gallery
+    - NBUImagePicker/Image
+    - NBUKit (>= 2.0.1)
+  - NBUImagePicker/Resources (1.0.0):
+    - NBUKit (>= 2.0.1)
+  - NBUKit (2.0.1):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Additions
+    - NBUKit/Base
+    - NBUKit/Library
+    - NBUKit/UI
+  - NBUKit/Additions (2.0.1):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Base
+  - NBUKit/Base (2.0.1):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+  - NBUKit/Library (2.0.1):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Base
+    - NBUKit/Library/NBUCompatibility
+    - NBUKit/Library/RestKit Support
+  - NBUKit/Library/NBUCompatibility (2.0.1):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Base
+    - NBUKit/UI
+  - NBUKit/Library/RestKit Support (2.0.1):
+    - Lockbox (>= 1.4.6)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Base
+  - NBUKit/UI (2.0.1):
+    - Lockbox (>= 1.4.6)
+    - MotionOrientation@PTEz (>= 1.0.0)
+    - NBUCore (>= 2.0.0)
+    - NBUKit/Additions
+    - NBUKit/Library/NBUCompatibility
+    - NBUKit/Library/RestKit Support
+  - NBULog (1.0.4):
+    - CocoaLumberjack (>= 1.6.5)
+    - NBUCore (>= 2.0.0)
+  - RBVolumeButtons (0.0.1)
+
+DEPENDENCIES:
+  - GPUImage (HEAD)
+  - LumberjackConsole
+  - NBUImagePicker (from `../`)
+  - NBULog
+
+EXTERNAL SOURCES:
+  NBUImagePicker:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: be87113f649942f020a37c061c58009b6ee5ff68
+  GPUImage: 007145faa0e27f1ddbcab93e07f026c9776e2fa2
+  Lockbox: 56ac5c11e51d46baa4408960a5a35b355a32840e
+  LumberjackConsole: 5685b2b30548da75c94f5b412ab2f934e9d543eb
+  MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
+  NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
+  NBUImagePicker: 17a79d9fcf91a468db833df57615743b01a3742f
+  NBUKit: 79753017e76910f5b100910307aa06132ee38130
+  NBULog: 98bcc4805a07def3044970829e3f5c720a6017af
+  RBVolumeButtons: 8fc67cc874d6dfa1808f61c91e9931ccabe52ae0
+
+COCOAPODS: 0.29.0
