@@ -2,57 +2,66 @@
 NBUImagePicker
 ==============
 
-Modular and fully customizable UIImagePickerController replacement with AVFondation, simulator-compatible camera, AssertsLibrary and custom directory assets' browser, cropping, filters and gallery.
+[![Pod Platform](https://cocoapod-badges.herokuapp.com/p/NBUImagePicker/badge.svg)](http://cocoadocs.org/docsets/NBUImagePicker/)
+[![Version 2.0.1](https://cocoapod-badges.herokuapp.com/v/NBUImagePicker/badge.png)](http://cocoadocs.org/docsets/NBUImagePicker/)
+[![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUImagePicker.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUImagePicker)
 
-_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit), supports [NBULog](https://github.com/CyberAgent/iOS-NBULog)._
+Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery.
+
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit). Supports [NBULog](https://github.com/CyberAgent/iOS-NBULog)._
 
 ## Features
 
-### NBUCameraView
+### Image Picker
 
-Customizable AVFoundation-based camera view.
+Block-based UIImagePickerController replacement with as many/few features as you [need](#installation).
 
-Can be embeded in any superview, custom UIViewController or used along NBUCameraViewController and even takes
-mock pictures on the iOS simulator!
+![Screenshot 1](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot1.png)
 
-![NBUCamera](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera1.png)
-![NBUCamera](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Camera2.png)
+Enable/disable modules or use them [stand-alone](#stand-alone-modules).
 
-### NBUAssets
+### Camera
 
-Multiple classes of all three MVC categories to ease access to AssetsLibrary listening to
-change notifications to stay always in valid.
+Customizable AVFoundation-based camera UIView.
 
-Also support for _local assets_: Images in folders that are handled just like regular library assets.
+Can be embeded into any superview, custom UIViewController or used along NBUCameraViewController.
+It even takes mock pictures in the iOS Simulator!
 
-![NBUAssets](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets1.png)
-![NBUAssets](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Assets2.png)
+![Screenshot 2](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot2.png)　![Screenshot 3](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot3.png)
 
-### Cropping/Filters
+### Assets
 
-Customizable views and controllers to modify images (filters and cropping).
+Multiple classes of all three MVC categories to simplify access to AssetsLibrary while observing its
+change notifications to stay always in a valid state.
 
-Filters from CoreImage and [GPUImage](https://github.com/BradLarson/GPUImage) but could be extended to
+Also support for _local assets_: Images in custom directories that are displayed like regular Assets Library albums.
+
+![Screenshot 4](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot4.png)　![Screenshot 5](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot5.png)
+
+### Image Editing
+
+Customizable views and controllers to modify filter and crop images.
+
+![Screenshot 6](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot6.png)
+
+Uses filters from CoreImage and [GPUImage](https://github.com/BradLarson/GPUImage) and can be extended to
 other libraries as well.
 
-![NBUEdit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit2.png)
-![NBUEdit](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Edit3.png)
-
-### NBUGallery
+### Image Gallery
 
 Image slideshow in development inspired by [FGallery](https://github.com/gdavis/FGallery-iPhone).
 
-![NBUGallery](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Gallery1.png)
-
-### NBUImagePickerController
-
-Block-based image picker that combines all modules mentioned above.
-
-![NBUPicker](https://raw.github.com/wiki/CyberAgent/iOS-NBUKit/Picker1.png)
+![Screenshot 7](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot7.png)
 
 ## Customization
 
 The main goal of NBUImagePicker is to be fully [customizable](https://github.com/CyberAgent/iOS-NBUKit/wiki/NBUKit-Customization) and easy to extend.
+
+Change element's sizes, position, customize picker workflow, add/remove/rename filters, localize for other languages, use cropping features from [other](https://github.com/kishikawakatsumi/PEPhotoCropEditor) libraries, etc.
+
+![Screenshot 9](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot9.png)　![Screenshot 10](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot10.png)
+
+![Screenshot 8](http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot8.png)
 
 ## Installation
 
@@ -61,9 +70,10 @@ Add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://do
 ```ruby
 platform :ios, '5.0'
 
-# Pre-release versions
-pod 'NBUImagePicker', :git => 'https://github.com/CyberAgent/iOS-NBUImagePicker.git', :commit => 'xxx'
-pod 'NBUKit', :git => 'https://github.com/CyberAgent/iOS-NBUKit.git', :commit => 'xxx'
+# Recommended to keep GPUImage up-to-date
+pod 'GPUImage', :head
+
+#pod 'NBUImagePicker'
 
 # Optional for dynamic logging
 pod 'NBULog'
@@ -72,7 +82,9 @@ pod 'NBULog'
 pod 'LumberjackConsole'
 ```
 
-Or manually chose the only components you need:
+### Stand-Alone Modules
+
+Manually specify only the components you need:
 
 ```ruby
 pod 'NBUImagePicker/Camera'  # AVFoundation-based camera
