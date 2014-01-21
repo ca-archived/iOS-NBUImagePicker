@@ -747,6 +747,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     if (!self.recording)
     {
+#ifndef __i386__
         if (!_captureMovieOutput)
         {
             _captureMovieOutput = [AVCaptureMovieFileOutput new];
@@ -771,6 +772,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         
         [_captureMovieOutput startRecordingToOutputFileURL:movieOutputURL
                                          recordingDelegate:self];
+#else
+        NBULogInfo(@"No mock video recording on Simulator");
+#endif
     }
     else
     {
