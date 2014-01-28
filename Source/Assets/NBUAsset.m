@@ -30,13 +30,13 @@
 // Private classes
 @interface NBUALAsset : NBUAsset
 
-- (id)initWithALAsset:(ALAsset *)ALAsset;
+- (instancetype)initWithALAsset:(ALAsset *)ALAsset;
 
 @end
 
 @interface NBUFileAsset : NBUAsset
 
-- (id)initWithFileURL:(NSURL *)fileURL;
+- (instancetype)initWithFileURL:(NSURL *)fileURL;
 
 @end
 
@@ -91,7 +91,7 @@
 @synthesize type = _type;
 @synthesize ALAsset = _ALAsset;
 
-- (id)initWithALAsset:(ALAsset *)ALAsset
+- (instancetype)initWithALAsset:(ALAsset *)ALAsset
 {
     self = [super init];
     if (self)
@@ -312,7 +312,7 @@ static CGSize _thumbnailSize;
     _thumbnailSize = CGSizeMake(100.0, 100.0);
 }
 
-- (id)initWithFileURL:(NSURL *)fileURL
+- (instancetype)initWithFileURL:(NSURL *)fileURL
 {
     self = [super init];
     if (self)

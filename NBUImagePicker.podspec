@@ -10,7 +10,11 @@ Pod::Spec.new do |s|
     s.license       = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
     s.author        = { "CyberAgent Inc." => "", "Ernesto Rivera" => "rivera_ernesto@cyberagent.co.jp" }
     s.source        = { :git => "https://github.com/CyberAgent/iOS-NBUImagePicker.git", :tag => "#{s.version}" }
-    s.screenshots   = [ "" ]
+    s.screenshots   = [ "http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot3.png",
+                        "http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot4.png",
+                        "http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot5.png",
+                        "http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot6.png",
+                        "http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot1.png"]
     
     s.platform      = :ios, '5.0'
     s.requires_arc  = true

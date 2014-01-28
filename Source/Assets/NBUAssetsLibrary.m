@@ -52,7 +52,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
     _sharedLibrary = library;
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)

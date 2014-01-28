@@ -27,9 +27,9 @@
 
 @implementation NBUFilterGroup
 
-+ (id)filterGroupWithName:(NSString *)name
-                     type:(NSString *)type
-                  filters:(NSArray *)filters
++ (instancetype)filterGroupWithName:(NSString *)name
+                               type:(NSString *)type
+                            filters:(NSArray *)filters
 {
     NBUFilterGroup * filterGroup = [NBUFilterGroup filterWithName:name
                                                              type:type ? type : NBUFilterTypeGroup

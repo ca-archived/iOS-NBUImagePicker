@@ -29,9 +29,9 @@
 /// @param name An optional filter group name.
 /// @param type An optional filter group type.
 /// @param filters The optional initial filters.
-+ (id)filterGroupWithName:(NSString *)name
-                     type:(NSString *)type
-                  filters:(NSArray *)filters;
++ (instancetype)filterGroupWithName:(NSString *)name
+                               type:(NSString *)type
+                            filters:(NSArray *)filters;
 
 /// The group's filters.
 @property (strong, nonatomic) NSArray * filters;

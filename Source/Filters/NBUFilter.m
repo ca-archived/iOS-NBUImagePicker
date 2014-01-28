@@ -48,12 +48,12 @@ NSString * const NBUFilterValueTypeUnknown      = @"unknown";
 @dynamic configurationDictionary;
 @synthesize concreteFilter = _concreteFilter;
 
-+ (id)filterWithName:(NSString *)name
-                type:(NSString *)type
-              values:(NSDictionary *)values
-          attributes:(NSDictionary *)attributes
-            provider:(Class<NBUFilterProvider>)provider
-configureFilterBlock:(NBUConfigureFilterBlock)block
++ (instancetype)filterWithName:(NSString *)name
+                          type:(NSString *)type
+                        values:(NSDictionary *)values
+                    attributes:(NSDictionary *)attributes
+                      provider:(Class<NBUFilterProvider>)provider
+          configureFilterBlock:(NBUConfigureFilterBlock)block
 {
     return [[self alloc] initWithName:name
                                  type:type
@@ -65,12 +65,12 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
 
 
 
-- (id)initWithName:(NSString *)name
-              type:(NSString *)type
-            values:(NSDictionary *)values
-        attributes:(NSDictionary *)attributes
-          provider:(Class<NBUFilterProvider>)provider
-configureFilterBlock:(NBUConfigureFilterBlock)block
+- (instancetype)initWithName:(NSString *)name
+                        type:(NSString *)type
+                      values:(NSDictionary *)values
+                  attributes:(NSDictionary *)attributes
+                    provider:(Class<NBUFilterProvider>)provider
+        configureFilterBlock:(NBUConfigureFilterBlock)block
 {
     self = [super init];
     if (self)
@@ -103,13 +103,13 @@ configureFilterBlock:(NBUConfigureFilterBlock)block
 //        }
 //        return _values;
 //    }
-//    
+//
 //    // No values at all?
 //    if (_values.count == 0)
 //    {
 //        return _defaultValues;
 //    }
-//    
+//
 //    // A mix of values
 //    NSRange defaultValuesRange = NSMakeRange(_values.count,
 //                                             _defaultValues.count - _values.count);

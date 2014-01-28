@@ -57,12 +57,12 @@ typedef id (^NBUConfigureFilterBlock)(NBUFilter * filter, id concreteFilter);
 /// @param provider The associated NBUFilterProvider capable of handling the filter.
 /// @param block The block to be called to retrieve a configured concreteFilter.
 /// @note Prefer NBUFilterProvider methods.
-+ (id)filterWithName:(NSString *)name
-                type:(NSString *)type
-              values:(NSDictionary *)values
-          attributes:(NSDictionary *)attributes
-            provider:(Class<NBUFilterProvider>)provider
-configureFilterBlock:(NBUConfigureFilterBlock)block;
++ (instancetype)filterWithName:(NSString *)name
+                          type:(NSString *)type
+                        values:(NSDictionary *)values
+                    attributes:(NSDictionary *)attributes
+                      provider:(Class<NBUFilterProvider>)provider
+          configureFilterBlock:(NBUConfigureFilterBlock)block;
 
 /// @name Configuring the Filter
 

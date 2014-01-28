@@ -1116,7 +1116,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 
 @implementation PointOfInterestView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:CGRectMake(10.0, 10.0, 75.0, 75.0)];
     if (self)

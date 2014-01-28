@@ -29,14 +29,14 @@
 // Private classes
 @interface NBUALAssetsGroup : NBUAssetsGroup
 
-- (id)initWithALAssetsGroup:(ALAssetsGroup *)ALAssetsGroup;
+- (instancetype)initWithALAssetsGroup:(ALAssetsGroup *)ALAssetsGroup;
 
 @end
 
 @interface NBUDirectoryAssetsGroup : NBUAssetsGroup
 
-- (id)initWithDirectoryURL:(NSURL *)directoryURL
-                      name:(NSString *)name;
+- (instancetype)initWithDirectoryURL:(NSURL *)directoryURL
+                                name:(NSString *)name;
 
 @end
 
@@ -104,7 +104,7 @@
 @synthesize type = _type;
 @synthesize ALAssetsGroup = _ALAssetsGroup;
 
-- (id)initWithALAssetsGroup:(ALAssetsGroup *)ALAssetsGroup
+- (instancetype)initWithALAssetsGroup:(ALAssetsGroup *)ALAssetsGroup
 {
     self = [super init];
     if (self)
@@ -399,7 +399,7 @@ static CGSize _thumbnailSize;
 @synthesize type = _type;
 @synthesize posterImage = _posterImage;
 
-- (id)initWithDirectoryURL:(NSURL *)directoryURL
+- (instancetype)initWithDirectoryURL:(NSURL *)directoryURL
                       name:(NSString *)name
 {
     self = [super init];

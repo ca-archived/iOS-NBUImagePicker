@@ -48,7 +48,7 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
     return mediaInfo;
 }
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)
