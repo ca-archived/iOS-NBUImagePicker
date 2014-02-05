@@ -35,6 +35,8 @@ typedef void (^NBUCaptureMovieResultBlock)(NSURL * movieURL,
 typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
                                             NSInteger mode);
 
+typedef void (^NBUCaptureSessionWillStart)();
+typedef void (^NBUCaptureSessionDidStart)();
 /**
  Fully customizable camera view based on AVFoundation.
  
@@ -174,6 +176,9 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 
 /// The block to be used to configure the whiteBalanceButton.
 @property (nonatomic, copy)             NBUButtonConfigurationBlock whiteBalanceButtonConfigurationBlock;
+
+@property (nonatomic, copy)             NBUCaptureSessionWillStart captureSessionWillStartBlock;
+@property (nonatomic, copy)             NBUCaptureSessionDidStart captureSessionDidStartBlock;
 
 /// @name Actions
 

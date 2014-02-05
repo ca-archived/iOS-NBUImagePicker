@@ -132,15 +132,6 @@
     }
     
     
-    // Create the preview layer
-    if (!_previewLayer)
-    {
-        _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
-        _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        _previewLayer.frame = self.layer.bounds;
-        [self.layer insertSublayer:_previewLayer
-                           atIndex:0];
-    }
     
     // Configure output if needed
     if (!_captureImageOutput)
@@ -169,7 +160,32 @@
     }
     
     // Start session
-    [_captureSession startRunning];
+    // -startRunning will only return when the session started (-> the camera is then ready)
+    dispatch_queue_t layerQ = dispatch_queue_create("layerQ", NULL);
+    dispatch_async(layerQ, ^{
+        
+        if (_captureSessionWillStartBlock) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _captureSessionWillStartBlock();
+            });
+        }
+        [_captureSession startRunning];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_captureSessionDidStartBlock) {
+                _captureSessionDidStartBlock();
+            }
+            // Create the preview layer
+            _previewLayer.opacity = 1;
+            if (!_previewLayer)
+            {
+                _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
+                _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+                _previewLayer.frame = self.layer.bounds;
+                [self.layer insertSublayer:_previewLayer
+                                   atIndex:0];
+            }
+        });
+    });
     _shootButton.enabled = YES;
     NBULogVerbose(@"Capture session: {\n%@} started running", _captureSession);
 }
@@ -177,8 +193,8 @@
 - (void)viewWillDisappear
 {
     [super viewWillDisappear];
-    
     // Stop session
+    _previewLayer.opacity = 0;
     _shootButton.enabled = NO;
     [_captureSession stopRunning];
     NBULogVerbose(@"Capture session: {\n%@} stopped running", _captureSession);
