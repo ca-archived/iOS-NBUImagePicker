@@ -161,8 +161,7 @@
     
     // Start session
     // -startRunning will only return when the session started (-> the camera is then ready)
-    dispatch_queue_t layerQ = dispatch_queue_create("layerQ", NULL);
-    dispatch_async(layerQ, ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if (_captureSessionWillStartBlock) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -194,9 +193,11 @@
 {
     [super viewWillDisappear];
     // Stop session
-    _previewLayer.opacity = 0;
-    _shootButton.enabled = NO;
-    [_captureSession stopRunning];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _previewLayer.opacity = 0;
+        _shootButton.enabled = NO;
+        [_captureSession stopRunning];
+    });
     NBULogVerbose(@"Capture session: {\n%@} stopped running", _captureSession);
 }
 
@@ -207,7 +208,7 @@
     super.frame = frame;
     
     // Resize the preview layer as well
-//    _previewLayer.frame = self.layer.bounds;
+    //    _previewLayer.frame = self.layer.bounds;
 }
 
 - (void)deviceOrientationChanged:(NSNotification *)notification
@@ -597,7 +598,7 @@
              UIImage * image = _mockImage;
              NBULogInfo(@"Captured mock image: %@ of size: %@",
                         image, NSStringFromCGSize(_mockImage.size));
-#endif     
+#endif
              // Update last picture view
              if (_lastPictureImageView)
              {

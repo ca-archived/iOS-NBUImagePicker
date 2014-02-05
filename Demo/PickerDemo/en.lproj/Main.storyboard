@@ -749,12 +749,7 @@
         <image name="NBUImagePicker.bundle/next.png" width="30" height="30"/>
         <image name="NBUImagePicker.bundle/previous.png" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
         <image name="frame.png" width="391" height="293"/>
-        <image name="second" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
