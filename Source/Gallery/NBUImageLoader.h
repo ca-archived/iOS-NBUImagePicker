@@ -23,14 +23,13 @@ typedef void (^NBUImageLoaderResultBlock)(UIImage * image,
                                           NSError * error);
 
 /// Possible NBUImageSize values.
-enum
+typedef NS_ENUM(NSUInteger, NBUImageSize)
 {
     NBUImageSizeAny             = 0,
     NBUImageSizeThumbnail       = 1,
     NBUImageSizeFullScreen      = 2,
     NBUImageSizeFullResolution  = 3
 };
-typedef NSUInteger NBUImageSize;
 
 /// Error constants.
 extern NSString * const NBUImageLoaderErrorDomain;

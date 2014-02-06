@@ -23,13 +23,12 @@
 @class ALAsset, CLLocation;
 
 /// NBUAsset orientations.
-enum
+typedef NS_ENUM(NSUInteger, NBUAssetOrientation)
 {
     NBUAssetOrientationUnknown      = 0,
     NBUAssetOrientationPortrait     = 1,
     NBUAssetOrientationLandscape    = 2,
 };
-typedef NSUInteger NBUAssetOrientation;
 
 /**
  Wrapper to ease acces to an ALAsset image asset.

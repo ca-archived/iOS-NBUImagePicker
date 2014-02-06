@@ -23,7 +23,7 @@
 @class NBUFilter;
 
 /// Possible refresh statuses.
-enum
+typedef NS_ENUM(NSUInteger, NBUSelectionType)
 {
     NBUSelectionTypeNone                = 0 << 0,
     NBUSelectionTypeAlphaImageView      = 1 << 0,
@@ -33,7 +33,6 @@ enum
                                            NBUSelectionTypeAlphaLabel |
                                            NBUSelectionTypeShowSelectionView),
 };
-typedef NSUInteger NBUSelectionType;
 
 /**
  A simple ObjectView to display a filtered thumbnail image and trigger updates

@@ -23,14 +23,13 @@
 @class NBUAsset;
 
 /// NBUAsset image sizes.
-enum
+typedef NS_ENUM(NSUInteger, NBUAssetImageSize)
 {
     NBUAssetImageSizeAuto           = 0,
     NBUAssetImageSizeThumbnail      = 1,
     NBUAssetImageSizeFullScreen     = 2,
     NBUAssetImageSizeFullResolution = 3,
 };
-typedef NSUInteger NBUAssetImageSize;
 
 /**
  Customizable ObjectView used to present a NBUAsset object.

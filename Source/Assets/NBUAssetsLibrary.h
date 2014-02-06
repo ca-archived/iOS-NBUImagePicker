@@ -31,7 +31,7 @@ typedef void (^NBUAssetResultBlock)(NBUAsset * imageAsset, NSError * error);
 typedef void (^NBUAssetURLResultBlock)(NSURL * assetURL, NSError * error);
 
 /// NBUAsset types.
-enum
+typedef NS_ENUM(NSInteger, NBUAssetType)
 {
     NBUAssetTypeUnknown     = 0,
     NBUAssetTypeImage       = 1 << 0,
@@ -39,10 +39,9 @@ enum
     NBUAssetTypeAny         = (NBUAssetTypeImage |
                                NBUAssetTypeVideo)
 };
-typedef NSInteger NBUAssetType;
 
 /// NBUAssetsGroup types.
-enum
+typedef NS_ENUM(NSInteger, NBUAssetsGroupType)
 {
     NBUAssetsGroupTypeUnknown       = 0,
     
@@ -60,7 +59,6 @@ enum
     
     NBUAssetsGroupTypeAll           = 0xFFFFFFFF    // All groups
 };
-typedef NSInteger NBUAssetsGroupType;
 
 /// Error constants.
 extern NSString * const NBUAssetsErrorDomain;

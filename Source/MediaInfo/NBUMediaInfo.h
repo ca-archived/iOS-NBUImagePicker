@@ -35,13 +35,12 @@ extern NSString * const NBUMediaInfoFiltersKey;
 
 
 /// NBUMediaInfo source types.
-enum
+typedef NS_ENUM(NSInteger, NBUMediaInfoSource)
 {
     NBUMediaInfoSourceUnknown   = 0,
     NBUMediaInfoSourceCamera    = 1 << 0,
     NBUMediaInfoSourceLibrary   = 1 << 1,
 };
-typedef NSInteger NBUMediaInfoSource;
 
 
 /**

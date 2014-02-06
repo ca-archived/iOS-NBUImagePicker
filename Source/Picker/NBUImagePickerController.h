@@ -24,7 +24,7 @@
 typedef void (^NBUImagePickerResultBlock)(NSArray * imagesOrMediaInfos);
 
 /// Picker configuration options.
-enum
+typedef NS_ENUM(NSUInteger, NBUImagePickerOptions)
 {
     // Single or multiple images
     NBUImagePickerOptionSingleImage             = 0 << 0,
@@ -62,7 +62,6 @@ enum
                                                    NBUImagePickerOptionStartWithPrompt |
                                                    NBUImagePickerOptionDoNotSaveImages)
 };
-typedef NSUInteger NBUImagePickerOptions;
 
 /**
  An AVFondation and AssetsLibrary-based image picker.
