@@ -38,6 +38,7 @@
 }
 
 @dynamic assetsGroup;
+@synthesize selectedAssetsURLs = _selectedAssetsURLs;
 
 // TODO: Remove
 - (void)setScrollOffset

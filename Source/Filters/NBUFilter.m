@@ -46,6 +46,7 @@ NSString * const NBUFilterValueTypeUnknown      = @"unknown";
 }
 
 @dynamic configurationDictionary;
+@synthesize concreteFilter = _concreteFilter;
 
 + (instancetype)filterWithName:(NSString *)name
                           type:(NSString *)type

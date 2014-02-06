@@ -27,6 +27,8 @@
 
 @implementation NBUEditMultiImageViewController
 
+@synthesize mediaInfos = _mediaInfos;
+
 - (void)commonInit
 {
     [super commonInit];

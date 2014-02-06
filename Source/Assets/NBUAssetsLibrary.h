@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, NBUAssetsGroupType)
     // Groups from file directories
     NBUAssetsGroupTypeDirectory     = 1 << 16,
     
-    NBUAssetsGroupTypeAll           = 0xFFFFFFFF    // All groups
+    NBUAssetsGroupTypeAll           = 0xFFFFFFF    // All groups
 };
 
 /// Error constants.

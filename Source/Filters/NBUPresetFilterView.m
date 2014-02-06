@@ -33,6 +33,8 @@
     NSMutableArray * _cachedFilteredImages;
 }
 
+@synthesize image = _image;
+
 - (void)commonInit
 {
     [super commonInit];

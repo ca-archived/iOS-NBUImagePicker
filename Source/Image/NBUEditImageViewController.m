@@ -28,6 +28,8 @@
 @implementation NBUEditImageViewController
 
 @dynamic image;
+@synthesize mediaInfo = _mediaInfo;
+@synthesize filters = _filters;
 
 - (void)commonInit
 {
