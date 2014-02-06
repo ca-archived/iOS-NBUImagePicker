@@ -1,0 +1,1 @@
+PODS_RBVOLUMEBUTTONS_OTHER_LDFLAGS = -framework AudioToolbox -framework MediaPlayer
