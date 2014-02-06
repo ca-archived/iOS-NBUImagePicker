@@ -22,9 +22,6 @@
 
 @implementation CameraViewController
 
-@synthesize shootButton = _shootButton;
-@synthesize slideView = _slideView;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

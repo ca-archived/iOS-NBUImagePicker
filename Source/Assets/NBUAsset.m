@@ -83,14 +83,6 @@
     ALAssetRepresentation * _defaultRepresentation;
 }
 
-@synthesize URL = _URL;
-@synthesize orientation = _orientation;
-@synthesize editable = _editable;
-@synthesize location = _location;
-@synthesize date = _date;
-@synthesize type = _type;
-@synthesize ALAsset = _ALAsset;
-
 - (instancetype)initWithALAsset:(ALAsset *)ALAsset
 {
     self = [super init];
@@ -303,9 +295,6 @@ static CGSize _thumbnailSize;
 
 @implementation NBUFileAsset
 
-@synthesize URL = _URL;
-@synthesize type = _type;
-@synthesize thumbnailImage = _thumbnailImage;
 
 + (void)initialize
 {

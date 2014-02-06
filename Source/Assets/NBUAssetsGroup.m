@@ -98,12 +98,6 @@
     NSUInteger _lastAssetsCount;
 }
 
-@synthesize name = _name;
-@synthesize editable = _editable;
-@synthesize URL = _URL;
-@synthesize type = _type;
-@synthesize ALAssetsGroup = _ALAssetsGroup;
-
 - (instancetype)initWithALAssetsGroup:(ALAssetsGroup *)ALAssetsGroup
 {
     self = [super init];
@@ -393,11 +387,6 @@ static CGSize _thumbnailSize;
 {
     _thumbnailSize = CGSizeMake(100.0, 100.0);
 }
-
-@synthesize name = _name;
-@synthesize URL = _URL;
-@synthesize type = _type;
-@synthesize posterImage = _posterImage;
 
 - (instancetype)initWithDirectoryURL:(NSURL *)directoryURL
                       name:(NSString *)name

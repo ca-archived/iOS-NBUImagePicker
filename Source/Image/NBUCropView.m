@@ -52,8 +52,6 @@
     _maximumScaleFactor = 1.5;
 }
 
-@synthesize image = _image;
-
 - (void)setImage:(UIImage *)image
 {
     _image = image;

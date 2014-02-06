@@ -29,8 +29,6 @@
 }
 
 @synthesize image = _originalImage;
-@synthesize imageView = _imageView;
-@synthesize tableView = _tableView;
 
 + (void)initialize
 {
@@ -369,8 +367,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 @implementation AdjustFilterCell
 
 @dynamic viewController;
-@synthesize filter = _filter;
-@synthesize label = _label;
 
 + (AdjustFilterTitleCell *)titleCellForForFilter:(NBUFilter *)filter
 {
@@ -462,13 +458,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @implementation AdjustFilterTitleCell
 
-@synthesize providerLabel = _providerLabel;
-@synthesize enableSwitch = _enableSwitch;
-@synthesize moveUpButton = _moveUpButton;
-@synthesize moveDownButton = _moveDownButton;
-@synthesize resetButton = _resetButton;
-@synthesize removeButton = _removeButton;
-
 - (void)setFilter:(NBUFilter *)filter
 {
     super.filter = filter;
@@ -532,9 +521,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @implementation AdjustFilterValueCell
 
-@synthesize valueKey = _valueKey;
-@synthesize enabled = _enabled;
-
 - (void)setFilter:(NBUFilter *)filter
               key:(NSString *)valueKey
 {
@@ -567,11 +553,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 @implementation AdjustFilterSliderCell
-
-@synthesize slider = _slider;
-@synthesize currentValueLabel = _currentValueLabel;
-@synthesize minValueLabel = _minValueLabel;
-@synthesize maxValueLabel = _maxValueLabel;
 
 - (void)setFilter:(NBUFilter *)filter
               key:(NSString *)valueKey
@@ -627,8 +608,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 @implementation AdjustFilterSwitchCell
 
-@synthesize onOffSwitch = _onOffSwitch;
-
 - (void)setFilter:(NBUFilter *)filter
               key:(NSString *)valueKey
 {
@@ -679,8 +658,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSString * _fileExtension;
     NSURL * _currentFileURL;
 }
-
-@synthesize button = _button;
 
 - (void)setFilter:(NBUFilter *)filter
               key:(NSString *)valueKey

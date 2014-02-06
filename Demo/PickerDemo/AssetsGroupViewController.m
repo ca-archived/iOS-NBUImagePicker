@@ -22,8 +22,6 @@
 
 @implementation AssetsGroupViewController
 
-@synthesize nextButton = _nextButton;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
