@@ -74,5 +74,8 @@
 /// The NBUImagePickerResources NSBundle.
 + (NSBundle *)bundle;
 
+/// The NBUImagePicker Storyboard.
++ (UIStoryboard *)mainStoryboard;
+
 @end
 

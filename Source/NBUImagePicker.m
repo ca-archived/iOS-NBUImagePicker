@@ -24,7 +24,7 @@
 
 + (NSString *)version
 {
-    return @"1.0.0";
+    return @"1.1.0";
 }
 
 + (NSBundle *)bundle
@@ -33,12 +33,26 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
-    {
-        NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUImagePicker.bundle"];
-        _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
-    });
+                  {
+                      NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUImagePicker.bundle"];
+                      _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
+                  });
     
     return _resourcesBundle;
+}
+
++ (UIStoryboard *)mainStoryboard
+{
+    static UIStoryboard * _mainStoryboard;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      _mainStoryboard = [UIStoryboard storyboardWithName:@"NBUImagePicker"
+                                                                  bundle:self.bundle];
+                  });
+    
+    return _mainStoryboard;
 }
 
 @end
