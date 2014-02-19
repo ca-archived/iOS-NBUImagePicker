@@ -83,21 +83,28 @@ typedef NS_ENUM(NSUInteger, NBUImagePickerOptions)
 /// Create, configure and start an image picker.
 /// @param target A controller or view to be used to present the picker.
 /// @param options The picker configuration options.
-/// @param nibName An optional Nib file to be used to instantiate the picker.
-/// The picker should be the first object in the Nib.
+/// @param customStoryboard An optional Storyboard to be used to instantiate controllers.
 /// @param resultBlock The block to be called when the picker finishes. When cancelled images is `nil`.
+/// @discussion If you provide a storyboard, the Storyboard ID's should match the corresponding
+/// property names. In case some controllers are not found they will be instantiated from
+/// the default NBUImagePicker storyboard.
+/// You can also manually load/customize your controllers by overriding the corresponding getters.
 + (void)startPickerWithTarget:(id)target
                       options:(NBUImagePickerOptions)options
-                      nibName:(NSString *)nibName
+             customStoryboard:(UIStoryboard *)customStoryboard
                   resultBlock:(NBUImagePickerResultBlock)resultBlock;
 
 /// Create an image picker specifying a custom Nib file.
 /// @param options The picker configuration options.
-/// @param nibName The name of the Nib file to be loaded.
+/// @param customStoryboard An optional Storyboard to be used to instantiate controllers.
 /// @return A ready to use image picker that can be used multiple times.
 /// @param resultBlock The block to be called when the picker finishes. When cancelled images is `nil`.
+/// @discussion If you provide a storyboard, the Storyboard ID's should match the corresponding
+/// property names. In case some controllers are not found they will be instantiated from
+/// the default NBUImagePicker storyboard.
+/// You can also manually load/customize your controllers by overriding the corresponding getters.
 + (NBUImagePickerController *)pickerWithOptions:(NBUImagePickerOptions)options
-                                        nibName:(NSString *)nibName
+                               customStoryboard:(UIStoryboard *)customStoryboard
                                     resultBlock:(NBUImagePickerResultBlock)resultBlock;
 
 /// Start the image picker.
@@ -113,17 +120,11 @@ typedef NS_ENUM(NSUInteger, NBUImagePickerOptions)
 @property (nonatomic, readonly)         BOOL singleImageMode;
 
 /// The result block to be called upon picker completion.
-@property (nonatomic, copy, readonly)   NBUImagePickerResultBlock resultBlock;
+@property (nonatomic, copy)             NBUImagePickerResultBlock resultBlock;
 
 /// The library album to be used to save resulting images.
 /// @discussion To enable saving adding a save images option has to be set in options.
 @property (strong, nonatomic)           NSString * targetLibraryAlbumName;
-
-/// @name Methods to Override As Needed
-
-/// Override to configure custom controllers.
-/// @param options The picker configuration options.
-- (void)finishConfiguringControllers:(NBUImagePickerOptions)options;
 
 /// @name Handling the Current Media Infos
 
@@ -153,7 +154,11 @@ typedef NS_ENUM(NSUInteger, NBUImagePickerOptions)
 /// @param sender The sender object.
 - (IBAction)toggleSource:(id)sender;
 
-/// @name Methods to Override if Needed
+/// @name Methods to Override if Desired
+
+/// Override point to further customize controllers.
+/// @param options The picker configuration options.
+- (void)finishConfiguringControllersWithOptions:(NBUImagePickerOptions)options;
 
 /// Action to be called to go to the next step of the picker.
 /// @discussion Override to modify the picker flow.
