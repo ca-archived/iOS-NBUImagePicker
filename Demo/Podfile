@@ -14,5 +14,7 @@ pod 'NBULog'
 pod 'LumberjackConsole'
 
 # For development
+pod 'NBUKit', :head
+#pod 'NBUKit', :path => '../../NBUKit'
 pod 'NBUImagePicker', :path => '../'
 
