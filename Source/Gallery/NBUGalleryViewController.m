@@ -86,13 +86,6 @@
     _imageLoader = [NBUImageLoader sharedLoader];
 }
 
-- (void)loadView
-{
-    [NSBundle loadNibNamed:self.nibName ? self.nibName : @"NBUGalleryViewController"
-                     owner:self
-                   options:nil];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
