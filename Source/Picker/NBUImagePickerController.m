@@ -578,29 +578,29 @@
         [controllers removeLastObject];
         if (!_controllersToToggleBack)
         {
-            _controllersToToggleBack = @[self.libraryController];
+            _controllersToToggleBack = [NSArray arrayWithObject:self.libraryController];
         }
         [controllers insertObjects:_controllersToToggleBack
                          atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(controllers.count,
                                                                                       _controllersToToggleBack.count)]];
     }
-    else
+    else if (!self.cameraController)
     {
         // Remove one or two assets controllers?
         if (![self.viewControllers containsObject:self.assetsGroupController])
         {
             // One
             [controllers removeLastObject];
-            _controllersToToggleBack = @[self.libraryController];
+            _controllersToToggleBack = [NSArray arrayWithObject:self.libraryController];
         }
         else
         {
             // Two
             [controllers removeLastObject];
             [controllers removeLastObject];
-            _controllersToToggleBack = @[self.libraryController, self.assetsGroupController];
+            _controllersToToggleBack = [NSArray arrayWithObjects:self.libraryController, self.assetsGroupController, nil];
         }
-        [controllers addObject:self.cameraController];
+        [controllers addObjectsFromArray:[NSArray arrayWithObjects:self.cameraController, nil]];
     }
     
     NBULogDebug(@"%@ %@ -> %@", THIS_METHOD, self.viewControllers.shortDescription, controllers.shortDescription);
