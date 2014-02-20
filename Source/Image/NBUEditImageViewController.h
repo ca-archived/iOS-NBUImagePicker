@@ -77,8 +77,10 @@ typedef void (^NBUEditImageResultBlock)(UIImage * image);
 
 /// @name Outlets
 
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
 /// The optional NBUPresetFilterView.
 @property (weak, nonatomic) IBOutlet                NBUPresetFilterView * filterView;
+#endif
 
 /// The optional NBUCropView.
 @property (weak, nonatomic) IBOutlet                NBUCropView * cropView;

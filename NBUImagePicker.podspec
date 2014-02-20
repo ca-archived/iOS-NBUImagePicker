@@ -48,7 +48,6 @@ Pod::Spec.new do |s|
     
     s.subspec 'Image' do |sub|
         sub.source_files    = 'Source/Image/*.{h,m}'
-        sub.dependency      'NBUImagePicker/Filters'
         sub.dependency      'NBUImagePicker/MediaInfo'
     end
     
@@ -68,6 +67,7 @@ Pod::Spec.new do |s|
         sub.dependency      'NBUImagePicker/Camera'
         sub.dependency      'NBUImagePicker/Image'
         sub.dependency      'NBUImagePicker/Gallery'
+        sub.dependency      'NBUImagePicker/Resources'
     end
     
     s.subspec 'Resources' do |sub|

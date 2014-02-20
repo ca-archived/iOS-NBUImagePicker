@@ -90,8 +90,9 @@ Manually specify only the components you need:
 pod 'NBUImagePicker/Camera'  # AVFoundation-based camera
 pod 'NBUImagePicker/Assets'  # AssetsLibrary and custom path asset selection
 pod 'NBUImagePicker/Filters' # CoreImage and GPUImage filters' wrapping
+pod 'NBUImagePicker/Image'   # Croping
 pod 'NBUImagePicker/Gallery' # Image preview
-pod 'NBUImagePicker/Picker'  # Combinations of the modules above
+pod 'NBUImagePicker/Picker'  # Combinations of the modules above except for filters
 ```
 
 ##License

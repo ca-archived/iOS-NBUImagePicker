@@ -43,6 +43,7 @@
 {
     [super viewDidLoad];
     
+    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
     // Configure filterView
     if (!_filterView)
     {
@@ -53,6 +54,7 @@
         _filterView.filters = self.filters;
         _filterView.workingSize = _workingSize;
     }
+    #endif
     
     // Configure cropView
     if (!_cropView)
@@ -66,6 +68,7 @@
     }
 }
 
+#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
 - (void)setFilters:(NSArray *)filters
 {
     _filters = filters;
@@ -97,6 +100,7 @@
     }
     return _filters;
 }
+#endif
 
 - (void)objectUpdated:(NSDictionary *)userInfo
 {
@@ -108,11 +112,13 @@
         _cropView.image = self.image;
     }
     
+    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
     // Or just filterView
     else
     {
         _filterView.image = self.image;
     }
+    #endif
 }
 
 - (UIImage *)editedImage
@@ -126,11 +132,13 @@
         image = _cropView.image;
     }
     
+    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
     // Or from filterView
     else
     {
         image = _filterView.image;
     }
+    #endif
     
     // Set to target size?
     if (!CGSizeEqualToSize(_cropTargetSize, CGSizeZero))
@@ -151,12 +159,14 @@
     
     self.object = mediaInfo.originalImage;
     
+    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
     // Restore state
     NBUFilter * filter = mediaInfo.attributes[NBUMediaInfoFiltersKey];
     if (filter)
     {
         _filterView.currentFilter = filter;
     }
+    #endif
 }
 
 - (NBUMediaInfo *)mediaInfo
@@ -166,12 +176,14 @@
     {
         _mediaInfo.attributes[NBUMediaInfoCropRectKey] = [NSValue valueWithCGRect:_cropView.currentCropRect];
     }
+    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
     if (_filterView)
     {
         NBUFilter * currentFilter = _filterView.currentFilter;
         if (currentFilter)
             _mediaInfo.attributes[NBUMediaInfoFiltersKey] = currentFilter;
     }
+    #endif
     
     return _mediaInfo;
 }
@@ -197,13 +209,17 @@
 {
     if (_resultBlock)
     {
+        #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
         _filterView.activityView.hidden = NO;
+        #endif
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
         {
             UIImage * processedImage = self.editedImage;
             dispatch_async(dispatch_get_main_queue(), ^
             {
+                #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
                 _filterView.activityView.hidden = YES;
+                #endif
                 _resultBlock(processedImage);
             });
         });

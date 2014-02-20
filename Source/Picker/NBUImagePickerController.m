@@ -174,6 +174,12 @@
         options |= NBUImagePickerOptionDisableCamera;
     }
     
+    // Filters not available?
+    #ifndef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+    NBULogDebug(@"Options: Filters not available.");
+    options |= NBUImagePickerOptionDisableFilters;
+    #endif
+    
     NBULogInfo(@"Picker options: %x", options);
     _options = options;
     
@@ -511,8 +517,7 @@
                                                  450.0 * scale);
         
         // Manually call viewDidLoad
-        // [_editController viewDidLoad];
-#warning
+        // [_editController viewDidLoad]; <- No longer needed it seems
     }
     
     return _editController;
