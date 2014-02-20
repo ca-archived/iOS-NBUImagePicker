@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     s.requires_arc  = true
     s.preserve_paths = "README.md", "NOTICE"
     
-    s.dependency 'NBUKit',      '>= 2.0.1'
+    s.dependency 'NBUKit',      '>= 2.1.0'
     
     s.subspec 'Base' do |sub|
         sub.source_files  = 'Source/*.{h,m}'
