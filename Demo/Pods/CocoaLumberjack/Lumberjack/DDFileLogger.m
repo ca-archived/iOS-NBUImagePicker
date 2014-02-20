@@ -306,7 +306,18 @@ BOOL doesAppRunInBackground(void);
     {
         // Filter out any files that aren't log files. (Just for extra safety)
         
+    #if TARGET_IPHONE_SIMULATOR
+        // In case of iPhone simulator there can be 'archived' extension. isLogFile:
+        // method knows nothing about it. Thus removing it for this method.
+        //
+        // See full explanation in the header file.
+        NSString *theFileName = [fileName stringByReplacingOccurrencesOfString:@".archived"
+                                                                    withString:@""];
+
+        if ([self isLogFile:theFileName])
+    #else
         if ([self isLogFile:fileName])
+    #endif
         {
             NSString *filePath = [logsDirectory stringByAppendingPathComponent:fileName];
             
@@ -1237,17 +1248,24 @@ static int exception_count = 0;
         NSString *newFilePath = [fileDir stringByAppendingPathComponent:newFileName];
         
         NSLogVerbose(@"DDLogFileInfo: Renaming file: '%@' -> '%@'", self.fileName, newFileName);
-        
+
         NSError *error = nil;
+        if (![[NSFileManager defaultManager] fileExistsAtPath:newFilePath]){
+            if([[NSFileManager defaultManager] removeItemAtPath:newFilePath error:&error]){
+                NSLogError(@"DDLogFileInfo: Error deleting archive (%@): %@", self.fileName, error);
+            }
+        }
+
         if (![[NSFileManager defaultManager] moveItemAtPath:filePath toPath:newFilePath error:&error])
         {
             NSLogError(@"DDLogFileInfo: Error renaming file (%@): %@", self.fileName, error);
         }
-        
+
         filePath = newFilePath;
         [self reset];
     }
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Attribute Management
@@ -1264,35 +1282,29 @@ static int exception_count = 0;
     // This method is only used on the iPhone simulator, where normal extended attributes are broken.
     // See full explanation in the header file.
     
-    // Split the file name into components.
-    // 
-    // log-ABC123.archived.uploaded.txt
-    // 
-    // 0. log-ABC123
-    // 1. archived
-    // 2. uploaded
-    // 3. txt
-    // 
-    // So we want to search for the attrName in the components (ignoring the first and last array indexes).
+    // Split the file name into components. File name may have various format, but generally
+    // structure is same:
+    //
+    // <name part>.<extension part> and <name part>.archived.<extension part>
+    // or
+    // <name part> and <name part>.archived
+    //
+    // So we want to search for the attrName in the components (ignoring the first array index).
     
     NSArray *components = [[self fileName] componentsSeparatedByString:@"."];
     
     // Watch out for file names without an extension
-    
-    NSUInteger count = [components count];
-    NSUInteger max = (count >= 2) ? count-1 : count;
-    
-    NSUInteger i;
-    for (i = 1; i < max; i++)
+
+    for (NSUInteger i = 1; i < components.count; i++)
     {
         NSString *attr = [components objectAtIndex:i];
-        
+
         if ([attrName isEqualToString:attr])
         {
             return YES;
         }
     }
-    
+
     return NO;
 }
 
@@ -1305,9 +1317,10 @@ static int exception_count = 0;
     
     // Example:
     // attrName = "archived"
-    // 
-    // "log-ABC123.txt" -> "log-ABC123.archived.txt"
-    
+    //
+    // "mylog.txt" -> "mylog.archived.txt"
+    // "mylog"     -> "mylog.archived"
+
     NSArray *components = [[self fileName] componentsSeparatedByString:@"."];
     
     NSUInteger count = [components count];
@@ -1365,7 +1378,8 @@ static int exception_count = 0;
     // Example:
     // attrName = "archived"
     // 
-    // "log-ABC123.archived.txt" -> "log-ABC123.txt"
+    // "mylog.archived.txt" -> "mylog.txt"
+    // "mylog.archived"     -> "mylog"
     
     NSArray *components = [[self fileName] componentsSeparatedByString:@"."];
     
@@ -1423,7 +1437,10 @@ static int exception_count = 0;
     
     if (result < 0)
     {
-        NSLogError(@"DDLogFileInfo: setxattr(%@, %@): error = %i", attrName, self.fileName, result);
+        NSLogError(@"DDLogFileInfo: setxattr(%@, %@): error = %s",
+                   attrName,
+                   self.fileName,
+                   strerror(errno));
     }
 }
 
@@ -1436,7 +1453,10 @@ static int exception_count = 0;
     
     if (result < 0 && errno != ENOATTR)
     {
-        NSLogError(@"DDLogFileInfo: removexattr(%@, %@): error = %i", attrName, self.fileName, result);
+        NSLogError(@"DDLogFileInfo: removexattr(%@, %@): error = %s",
+                   attrName,
+                   self.fileName,
+                   strerror(errno));
     }
 }
 

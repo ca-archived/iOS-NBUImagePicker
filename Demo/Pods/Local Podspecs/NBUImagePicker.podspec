@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "NBUImagePicker"
-    s.version       = "1.0.0"
+    s.version       = "1.1.0"
     s.summary       = "Modular image picker with Simulator-compatible AVFondation camera, assets library, filters and more."
     s.description   = "Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery. Change element's sizes, position, customize picker workflow, add/remove/rename filters, localize for other languages, use cropping features from other libraries, etc."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUImagePicker/"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     s.requires_arc  = true
     s.preserve_paths = "README.md", "NOTICE"
     
-    s.dependency 'NBUKit',      '>= 2.0.1'
+    s.dependency 'NBUKit',      '>= 2.1.0'
     
     s.subspec 'Base' do |sub|
         sub.source_files  = 'Source/*.{h,m}'
@@ -48,7 +48,6 @@ Pod::Spec.new do |s|
     
     s.subspec 'Image' do |sub|
         sub.source_files    = 'Source/Image/*.{h,m}'
-        sub.dependency      'NBUImagePicker/Filters'
         sub.dependency      'NBUImagePicker/MediaInfo'
     end
     
@@ -68,10 +67,11 @@ Pod::Spec.new do |s|
         sub.dependency      'NBUImagePicker/Camera'
         sub.dependency      'NBUImagePicker/Image'
         sub.dependency      'NBUImagePicker/Gallery'
+        sub.dependency      'NBUImagePicker/Resources'
     end
     
     s.subspec 'Resources' do |sub|
-        sub.resource_bundle = { 'NBUImagePicker' => ['Resources/*.{png,lproj}', 'Resources/filters', 'Source/**/*.{xib}'] }
+        sub.resource_bundle = { 'NBUImagePicker' => ['Resources/*.{png,lproj}', 'Resources/filters', 'Source/**/*.{storyboard,xib}'] }
     end
     
 end

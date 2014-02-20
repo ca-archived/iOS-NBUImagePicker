@@ -25,7 +25,15 @@
 
 @dynamic navigationItem;
 
-- (void)refreshOrientation
+- (IBAction)dismiss:(id)sender
+{
+    NBULogTrace();
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:NULL];
+}
+
+- (void)forceOrientationRefresh
 {
     // Force orientation refresh
     [self presentModalViewController:[UIViewController new]

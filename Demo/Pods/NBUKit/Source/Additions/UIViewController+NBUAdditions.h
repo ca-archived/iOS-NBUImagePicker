@@ -28,11 +28,15 @@
 
 /// @name Outlets
 
-/// Navigation item as an IB outlet.
+/// Navigation item as an IBOutlet.
 @property(nonatomic, readonly, strong) IBOutlet UINavigationItem * navigationItem;
 
+/// Dismiss the controller if it is being presented modally.
+/// @param sender The sender object.
+- (IBAction)dismiss:(id)sender;
+
 /// Force an orientation refresh.
-- (void)refreshOrientation;
+- (void)forceOrientationRefresh;
 
 @end
 
