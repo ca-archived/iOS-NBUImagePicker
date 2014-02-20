@@ -103,9 +103,9 @@ typedef NS_ENUM(NSUInteger, NBUImagePickerOptions)
 /// property names. In case some controllers are not found they will be instantiated from
 /// the default NBUImagePicker storyboard.
 /// You can also manually load/customize your controllers by overriding the corresponding getters.
-+ (NBUImagePickerController *)pickerWithOptions:(NBUImagePickerOptions)options
-                               customStoryboard:(UIStoryboard *)customStoryboard
-                                    resultBlock:(NBUImagePickerResultBlock)resultBlock;
++ (instancetype)pickerWithOptions:(NBUImagePickerOptions)options
+                 customStoryboard:(UIStoryboard *)customStoryboard
+                      resultBlock:(NBUImagePickerResultBlock)resultBlock;
 
 /// Start the image picker.
 /// @param target A controller or view to be used to present the picker.

@@ -58,9 +58,9 @@
     return controller;
 }
 
-+ (NBUImagePickerController *)pickerWithOptions:(NBUImagePickerOptions)options
-                               customStoryboard:(UIStoryboard *)customStoryboard
-                                    resultBlock:(NBUImagePickerResultBlock)resultBlock
++ (instancetype)pickerWithOptions:(NBUImagePickerOptions)options
+                 customStoryboard:(UIStoryboard *)customStoryboard
+                      resultBlock:(NBUImagePickerResultBlock)resultBlock
 {
     NBUImagePickerController * controller = [self instantiateViewControllerWithIdentifier:@"imagePicker"
                                                                          customStoryboard:customStoryboard];
