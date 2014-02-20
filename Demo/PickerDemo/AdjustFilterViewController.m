@@ -77,7 +77,7 @@
                                                      NBUImagePickerOptionDisableCrop |
                                                      NBUImagePickerOptionDisableConfirmation |
                                                      NBUImagePickerOptionStartWithLibrary)
-                                            nibName:nil
+                                   customStoryboard:nil
                                         resultBlock:^(NSArray * images)
      {
          if (images.count == 1)
@@ -697,7 +697,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                          NBUImagePickerOptionDisableEdition |
                                                          NBUImagePickerOptionDisableConfirmation |
                                                          NBUImagePickerOptionStartWithLibrary)
-                                                nibName:nil
+                                       customStoryboard:nil
                                             resultBlock:^(NSArray * images)
          {
              if (images.count == 1)

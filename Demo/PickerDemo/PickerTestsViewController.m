@@ -30,7 +30,7 @@
     // *** If we were using fixed options we could retain the picker ***
     [NBUImagePickerController startPickerWithTarget:self
                                             options:(_options | NBUImagePickerOptionReturnMediaInfo)
-                                            nibName:nil
+                                   customStoryboard:nil
                                         resultBlock:^(NSArray * mediaInfos)
     {
         NBULogInfo(@"Picker finished with media info: %@", mediaInfos);
