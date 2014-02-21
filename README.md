@@ -3,7 +3,7 @@ NBUImagePicker
 ==============
 
 [![Pod Platform](https://cocoapod-badges.herokuapp.com/p/NBUImagePicker/badge.svg)](http://cocoadocs.org/docsets/NBUImagePicker/)
-[![Version 1.1.0](https://cocoapod-badges.herokuapp.com/v/NBUImagePicker/badge.png)](http://cocoadocs.org/docsets/NBUImagePicker/)
+[![Version 1.1.1](https://cocoapod-badges.herokuapp.com/v/NBUImagePicker/badge.png)](http://cocoadocs.org/docsets/NBUImagePicker/)
 [![Build Status](https://travis-ci.org/CyberAgent/iOS-NBUImagePicker.png?branch=master)](https://travis-ci.org/CyberAgent/iOS-NBUImagePicker)
 
 Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery.
