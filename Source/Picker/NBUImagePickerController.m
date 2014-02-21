@@ -589,7 +589,7 @@
                          atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(controllers.count,
                                                                                       _controllersToToggleBack.count)]];
     }
-    else if (!self.cameraController)
+    else
     {
         // Remove one or two assets controllers?
         if (![self.viewControllers containsObject:self.assetsGroupController])
