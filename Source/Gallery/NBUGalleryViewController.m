@@ -799,7 +799,7 @@
     
 	if((NSInteger)index != _currentIndex)
     {
-		self.currentIndex = index;;
+		self.currentIndex = index;
     }
 }
 

@@ -81,7 +81,7 @@
                 
             case AVCaptureFlashModeAuto:
             default:
-                weakSelf.flashLabel.text = NBULocalizedString(@"NBUCameraViewController FlashLabel Auto", @"Auto");;
+                weakSelf.flashLabel.text = NBULocalizedString(@"NBUCameraViewController FlashLabel Auto", @"Auto");
                 break;
         }
     };
