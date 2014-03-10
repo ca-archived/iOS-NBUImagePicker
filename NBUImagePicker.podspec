@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'Camera' do |sub|
         sub.source_files    = 'Source/Camera/*.{h,m}'
-        sub.frameworks      = 'AVFoundation'
+        sub.frameworks      = 'AVFoundation', 'CoreVideo'
         sub.dependency      'NBUImagePicker/Assets'
         sub.dependency      'RBVolumeButtons'
     end
