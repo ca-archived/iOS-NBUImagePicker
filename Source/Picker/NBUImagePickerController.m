@@ -49,8 +49,8 @@
         }
     }
     
-    // Else load from default storyboard
-    if (!controller)
+    // Else load from default storyboard (except for the picker)
+    if (!controller && ![identifier isEqualToString:@"imagePicker"])
     {
         controller = [NBUImagePicker.mainStoryboard instantiateViewControllerWithIdentifier:identifier];
     }
@@ -64,6 +64,12 @@
 {
     NBUImagePickerController * controller = [self instantiateViewControllerWithIdentifier:@"imagePicker"
                                                                          customStoryboard:customStoryboard];
+    
+    // Load programatically?
+    if (!controller)
+    {
+        controller = [self new];
+    }
     
     // Configure
     controller->_customStoryboard = customStoryboard;
@@ -131,6 +137,21 @@
     [targetController presentViewController:self
                                    animated:YES
                                  completion:nil];
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        // Programatical initialization, override in subclasses or create picker in custom Storyboard
+        self.navigationBar.barStyle = UIBarStyleBlack;
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        {
+            self.navigationBar.tintColor = UIColor.lightGrayColor;
+        }
+    }
+    return self;
 }
 
 #pragma mark - Orientation handling
