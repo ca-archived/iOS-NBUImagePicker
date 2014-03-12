@@ -80,15 +80,16 @@
     return controller;
 }
 
-+ (void)startPickerWithTarget:(id)target
-                      options:(NBUImagePickerOptions)options
-             customStoryboard:(UIStoryboard *)customStoryboard
-                  resultBlock:(NBUImagePickerResultBlock)resultBlock
++ (instancetype)startPickerWithTarget:(id)target
+                              options:(NBUImagePickerOptions)options
+                     customStoryboard:(UIStoryboard *)customStoryboard
+                          resultBlock:(NBUImagePickerResultBlock)resultBlock
 {
     NBUImagePickerController * controller = [self pickerWithOptions:options
                                                    customStoryboard:customStoryboard
                                                         resultBlock:resultBlock];
     [controller startPickerWithTarget:target];
+    return controller;
 }
 
 - (void)startPickerWithTarget:(id)target

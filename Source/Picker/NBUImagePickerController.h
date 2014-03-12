@@ -85,20 +85,21 @@ typedef NS_ENUM(NSUInteger, NBUImagePickerOptions)
 /// @param options The picker configuration options.
 /// @param customStoryboard An optional Storyboard to be used to instantiate controllers.
 /// @param resultBlock The block to be called when the picker finishes. When cancelled images is `nil`.
+/// @return The presented image picker that can be reused multiple times.
 /// @discussion If you provide a storyboard, the Storyboard ID's should match the corresponding
 /// property names. In case some controllers are not found they will be instantiated from
 /// the default NBUImagePicker storyboard.
 /// You can also manually load/customize your controllers by overriding the corresponding getters.
-+ (void)startPickerWithTarget:(id)target
-                      options:(NBUImagePickerOptions)options
-             customStoryboard:(UIStoryboard *)customStoryboard
-                  resultBlock:(NBUImagePickerResultBlock)resultBlock;
++ (instancetype)startPickerWithTarget:(id)target
+                              options:(NBUImagePickerOptions)options
+                     customStoryboard:(UIStoryboard *)customStoryboard
+                          resultBlock:(NBUImagePickerResultBlock)resultBlock;
 
 /// Create an image picker specifying a custom Nib file.
 /// @param options The picker configuration options.
 /// @param customStoryboard An optional Storyboard to be used to instantiate controllers.
-/// @return A ready to use image picker that can be used multiple times.
 /// @param resultBlock The block to be called when the picker finishes. When cancelled images is `nil`.
+/// @return A ready to use image picker that can be reused multiple times.
 /// @discussion If you provide a storyboard, the Storyboard ID's should match the corresponding
 /// property names. In case some controllers are not found they will be instantiated from
 /// the default NBUImagePicker storyboard.
