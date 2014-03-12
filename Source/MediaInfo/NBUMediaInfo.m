@@ -173,8 +173,8 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
 - (UIImage *)originalThumbnailWithSize:(CGSize)size
 {
     // Try cache
-    NSString * key = [NSString stringWithFormat:@"%@%dx%d",
-                      NBUMediaInfoOriginalThumbnailKey, (NSUInteger)size.width, (NSUInteger)size.height];
+    NSString * key = [NSString stringWithFormat:@"%@%ldx%ld",
+                      NBUMediaInfoOriginalThumbnailKey, (long)size.width, (long)size.height];
     UIImage * thumbnail = _attributes[key];
     
     // Not cached?
@@ -205,8 +205,8 @@ NSString * const NBUMediaInfoFiltersKey             = @"NBUMediaInfoFilters";
     }
     
     // Try cache
-    NSString * key = [NSString stringWithFormat:@"%@%dx%d",
-                      NBUMediaInfoEditedThumbnailKey, (NSUInteger)size.width, (NSUInteger)size.height];
+    NSString * key = [NSString stringWithFormat:@"%@%ldx%ld",
+                      NBUMediaInfoEditedThumbnailKey, (long)size.width, (long)size.height];
     UIImage * thumbnail = _attributes[key];
     
     // Not cached?

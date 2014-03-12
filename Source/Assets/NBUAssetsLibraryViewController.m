@@ -56,7 +56,7 @@
          {
              _assetsGroups = groups;
 
-             NBULogInfo(@"%d available asset groups", groups.count);
+             NBULogInfo(@"%@ available asset groups", @(groups.count));
              
              // Update UI
              self.navigationItem.title = (groups.count == 1 ?

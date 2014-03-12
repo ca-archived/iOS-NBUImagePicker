@@ -94,13 +94,13 @@
 {
     _image = image;
     
-    NBULogInfo(@"Input image size: %@ orientation: %d",
-              NSStringFromCGSize(image.size), image.imageOrientation);
+    NBULogInfo(@"Input image size: %@ orientation: %@",
+               NSStringFromCGSize(image.size), @(image.imageOrientation));
     
     // Get a working-size image
     _workingImage = [image imageDonwsizedToFit:self.workingSize];
-    NBULogInfo(@"Working image size: %@: orientation: %d",
-              NSStringFromCGSize(_workingImage.size), _workingImage.imageOrientation);
+    NBULogInfo(@"Working image size: %@: orientation: %@",
+               NSStringFromCGSize(_workingImage.size), @(_workingImage.imageOrientation));
     _editingImageView.image = _workingImage;
     
     // Check if filters are set!
@@ -114,8 +114,8 @@
     NSArray * thumbnailViews = _filterSlideView.currentViews;
     CGSize thumbnailSize = ((NBUFilterThumbnailView *)thumbnailViews[0]).imageView.size;
     _thumbnailImage = [image thumbnailWithSize:thumbnailSize];
-    NBULogInfo(@"Thumbnail image size: %@ orientation: %d",
-              NSStringFromCGSize(_thumbnailImage.size), _thumbnailImage.imageOrientation);
+    NBULogInfo(@"Thumbnail image size: %@ orientation: %@",
+               NSStringFromCGSize(_thumbnailImage.size), @(_thumbnailImage.imageOrientation));
     for (NBUFilterThumbnailView * view in thumbnailViews)
     {
         view.thumbnailImage = _thumbnailImage;

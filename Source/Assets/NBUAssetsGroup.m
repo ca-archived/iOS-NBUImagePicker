@@ -155,7 +155,7 @@
         NSUInteger newCount = self.imageAssetsCount;
         if (newCount != _lastAssetsCount)
         {
-            NBULogVerbose(@"Assets group %@ count changed: %d -> %d", _name, _lastAssetsCount, newCount);
+            NBULogVerbose(@"Assets group %@ count changed: %@ -> %@", _name, @(_lastAssetsCount), @(newCount));
             
             _lastAssetsCount = newCount;
             [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
@@ -179,8 +179,8 @@
              // Send update notification only if needed!
              if (oldCount != _lastAssetsCount)
              {
-                 NBULogVerbose(@"Assets group %@ count changed: %d -> %d",
-                               _name, oldCount, self.imageAssetsCount);
+                 NBULogVerbose(@"Assets group %@ count changed: %@ -> %@",
+                               _name, @(oldCount), @(self.imageAssetsCount));
                  
                  [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
                                                                      object:self];
@@ -290,7 +290,7 @@
             if ((assets.count % loadSize) == 0 &&
                 assets.count != countToReach)
             {
-                NBULogVerbose(@"%@ Incrementally loaded: %d assets", _name, assets.count);
+                NBULogVerbose(@"%@ Incrementally loaded: %@ assets", _name, @(assets.count));
                 
                 resultBlock(assets, nil);
             }
@@ -305,7 +305,7 @@
             }
             else
             {
-                NBULogVerbose(@"Loading %@ finished: %d assets with filter %@", _name, assets.count, filter);
+                NBULogVerbose(@"Loading %@ finished: %@ assets with filter %@", _name, @(assets.count), filter);
                 
                 resultBlock(assets, nil);
             }

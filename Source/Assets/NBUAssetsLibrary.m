@@ -257,7 +257,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
         // Finished
         else
         {
-            NBULogInfo(@"Retrieved %d groups of type %d", groups.count, types);
+            NBULogInfo(@"Retrieved %@ groups of type %@", @(groups.count), @(types));
             NBULogVerbose(@"Groups: %@", groups);
             resultBlock(groups, nil);
         }
@@ -266,7 +266,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
     // Failure block
     ALAssetsLibraryAccessFailureBlock failureBlock = ^(NSError * error)
     {
-        NBULogError(@"Failed to retrieve type %d groups: %@", types, error);
+        NBULogError(@"Failed to retrieve type %@ groups: %@", @(types), error);
         resultBlock(nil, error);
     };
     
@@ -395,7 +395,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
 - (void)allAssetsWithTypes:(NBUAssetType)types
                resultBlock:(NBUAssetsResultBlock)resultBlock;
 {
-    NBULogVerbose(@"All assets with type %d...", types);
+    NBULogVerbose(@"All assets with type %@...", @(types));
     
     NSMutableArray * assets = [NSMutableArray array];
     
@@ -419,7 +419,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                                   resultBlock:^(NSArray * cameraRollAssets,
                                                 NSError * error2)
               {
-                  NBULogVerbose(@"All assets: adding %d from camera roll...", cameraRollAssets.count);
+                  NBULogVerbose(@"All assets: adding %@ from camera roll...", @(cameraRollAssets.count));
                   [assets addObjectsFromArray:cameraRollAssets];
                   
                   // Add photo library assets
@@ -435,11 +435,11 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                                                   resultBlock:^(NSArray * photoLibraryAssets,
                                                                 NSError * error4)
                             {
-                                NBULogVerbose(@"All assets: adding %d from photo library...", photoLibraryAssets.count);
+                                NBULogVerbose(@"All assets: adding %@ from photo library...", @(photoLibraryAssets.count));
                                 [assets addObjectsFromArray:photoLibraryAssets];
                                 
                                 // Finally return the assets
-                                NBULogVerbose(@"All assets: Returning %d assets", assets.count);
+                                NBULogVerbose(@"All assets: Returning %@ assets", @(assets.count));
                                 resultBlock(assets, nil);
                             }];
                        }
@@ -527,8 +527,8 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                     resultError = [NSError errorWithDomain:NBUAssetsErrorDomain
                                                       code:NBUAssetsCouldntRetrieveSomeAssets
                                                   userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:
-                                                                                          @"%d error(s) during assets retrieval",
-                                                                                          errors.count],
+                                                                                          @"%@ error(s) during assets retrieval",
+                                                                                          @(errors.count)],
                                                              NSUnderlyingErrorKey      : errors}];
                 }
                 

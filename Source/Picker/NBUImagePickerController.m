@@ -201,7 +201,7 @@
     options |= NBUImagePickerOptionDisableFilters;
     #endif
     
-    NBULogInfo(@"Picker options: %x", options);
+    NBULogInfo(@"Picker options: %lx", (long)options);
     _options = options;
     
     // Initilization

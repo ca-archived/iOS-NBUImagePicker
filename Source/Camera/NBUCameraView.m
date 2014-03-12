@@ -574,7 +574,7 @@
              UIImage * image = [UIImage imageWithData:
                                 [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer]];
              
-             NBULogInfo(@"Captured jpeg image: %@ of size: %@ orientation: %d",
+             NBULogInfo(@"Captured jpeg image: %@ of size: %@ orientation: %ld",
                         image, NSStringFromCGSize(image.size), image.imageOrientation);
 #else
              // Mock simulator
@@ -728,8 +728,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     _lastSequenceCaptureDate = [NSDate date];
     
     UIImage * image = [self imageFromSampleBuffer:sampleBuffer];
-    NBULogInfo(@"Captured image: %@ of size: %@ orientation: %d",
-               image, NSStringFromCGSize(image.size), image.imageOrientation);
+    NBULogInfo(@"Captured image: %@ of size: %@ orientation: %@",
+               image, NSStringFromCGSize(image.size), @(image.imageOrientation));
     
     // Execute capture block
     dispatch_async(dispatch_get_main_queue(), ^
@@ -829,7 +829,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 
 - (void)setCurrentFlashMode:(AVCaptureFlashMode)currentFlashMode
 {
-    NBULogInfo(@"%@: %d", THIS_METHOD, currentFlashMode);
+    NBULogInfo(@"%@: %@", THIS_METHOD, @(currentFlashMode));
     
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.flashMode = currentFlashMode;
@@ -849,7 +849,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 
 - (void)setCurrentFocusMode:(AVCaptureFocusMode)currentFocusMode
 {
-    NBULogInfo(@"%@: %d", THIS_METHOD, currentFocusMode);
+    NBULogInfo(@"%@: %@", THIS_METHOD, @(currentFocusMode));
     
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.focusMode = currentFocusMode;
@@ -869,7 +869,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 
 - (void)setCurrentExposureMode:(AVCaptureExposureMode)currentExposureMode
 {
-    NBULogInfo(@"%@: %d", THIS_METHOD, currentExposureMode);
+    NBULogInfo(@"%@: %@", THIS_METHOD, @(currentExposureMode));
     
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.exposureMode = currentExposureMode;
@@ -889,7 +889,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 
 - (void)setCurrentWhiteBalanceMode:(AVCaptureWhiteBalanceMode)currentWhiteBalanceMode
 {
-    NBULogInfo(@"%@: %d", THIS_METHOD, currentWhiteBalanceMode);
+    NBULogInfo(@"%@: %@", THIS_METHOD, @(currentWhiteBalanceMode));
     
     [self updateDeviceConfigurationWithBlock:^{
         _currentDevice.whiteBalanceMode = currentWhiteBalanceMode;

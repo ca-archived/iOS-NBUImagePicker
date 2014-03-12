@@ -280,8 +280,8 @@
     UIImage * image = [UIImage imageWithCGImage:self.defaultRepresentation.fullScreenImage
                                           scale:self.defaultRepresentation.scale
                                     orientation:UIImageOrientationUp];
-    NBULogVerbose(@"fullScreenImage with size: %@ orientation %d",
-               NSStringFromCGSize(image.size), image.imageOrientation);
+    NBULogVerbose(@"fullScreenImage with size: %@ orientation %@",
+                  NSStringFromCGSize(image.size), @(image.imageOrientation));
     return image;
 }
 
@@ -291,8 +291,8 @@
     UIImage * image = [UIImage imageWithCGImage:self.defaultRepresentation.fullResolutionImage
                                           scale:self.defaultRepresentation.scale
                                     orientation:(UIImageOrientation)self.defaultRepresentation.orientation];
-    NBULogVerbose(@"fullResolutionImage with size: %@ orientation %d",
-               NSStringFromCGSize(image.size), image.imageOrientation);
+    NBULogVerbose(@"fullResolutionImage with size: %@ orientation %@",
+                  NSStringFromCGSize(image.size), @(image.imageOrientation));
     return image;
 }
 

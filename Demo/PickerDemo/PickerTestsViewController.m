@@ -49,7 +49,7 @@
     _options |= NBUImagePickerOptionMultipleImages;
     if (!sender.on)
         _options ^= NBUImagePickerOptionMultipleImages;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)segmentControlChanged:(UISegmentedControl *)sender
@@ -69,7 +69,7 @@
             _options = _options | NBUImagePickerOptionStartWithLibrary;
             break;
     };
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)toggleCamera:(UIButton *)sender
@@ -78,7 +78,7 @@
     _options |= NBUImagePickerOptionDisableCamera;
     if (!sender.selected)
         _options ^= NBUImagePickerOptionDisableCamera;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)toggleLibrary:(UIButton *)sender
@@ -87,7 +87,7 @@
     _options |= NBUImagePickerOptionDisableLibrary;
     if (!sender.selected)
         _options ^= NBUImagePickerOptionDisableLibrary;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)toggleCrop:(UIButton *)sender
@@ -96,7 +96,7 @@
     _options |= NBUImagePickerOptionDisableCrop;
     if (!sender.selected)
         _options ^= NBUImagePickerOptionDisableCrop;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)toggleFilters:(UIButton *)sender
@@ -105,7 +105,7 @@
     _options |= NBUImagePickerOptionDisableFilters;
     if (!sender.selected)
         _options ^= NBUImagePickerOptionDisableFilters;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)toggleConfirmation:(UIButton *)sender
@@ -114,7 +114,7 @@
     _options |= NBUImagePickerOptionDisableConfirmation;
     if (!sender.selected)
         _options ^= NBUImagePickerOptionDisableConfirmation;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)toggleSaveTakenImages:(UISwitch *)sender
@@ -122,7 +122,7 @@
     _options |= NBUImagePickerOptionSaveTakenImages;
     if (!sender.on)
         _options ^= NBUImagePickerOptionSaveTakenImages;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 - (IBAction)toggleSaveEditedImages:(UISwitch *)sender
@@ -130,7 +130,7 @@
     _options |= NBUImagePickerOptionSaveEditedImages;
     if (!sender.on)
         _options ^= NBUImagePickerOptionSaveEditedImages;
-    NBULogVerbose(@"Options: %x", _options);
+    NBULogVerbose(@"Options: %lx", (long)_options);
 }
 
 @end

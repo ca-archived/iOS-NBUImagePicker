@@ -726,7 +726,7 @@
 
 - (void)preloadImageAtIndex:(NSUInteger)index
 {
-    NBULogVerbose(@"%@ %d", THIS_METHOD, index);
+    NBULogVerbose(@"%@ %@", THIS_METHOD, @(index));
     
     [_imageLoader imageForObject:_objectArray[index]
                             size:NBUImageSizeFullResolution
@@ -741,7 +741,7 @@
 
 - (void)unloadFullsizeImageWithIndex:(NSUInteger)index
 {
-    NBULogVerbose(@"%@ %d", THIS_METHOD, index);
+    NBULogVerbose(@"%@ %@", THIS_METHOD, @(index));
     
     if ([_imageLoader respondsToSelector:@selector(unloadImageForObject:)])
     {
@@ -759,7 +759,7 @@
 
 - (void)loadThumbnailImageWithIndex:(NSUInteger)index
 {
-    NBULogVerbose(@"%@ %d", THIS_METHOD, index);
+    NBULogVerbose(@"%@ %@", THIS_METHOD, @(index));
     
     [_imageLoader imageForObject:_objectArray[index]
                             size:NBUImageSizeThumbnail

@@ -116,13 +116,13 @@
     NSUInteger i = 1;
     while ([[NSFileManager defaultManager] fileExistsAtPath:
             [url.path stringByAppendingPathComponent:
-             [NSString stringWithFormat:@"CustomFilter %d.plist", i]]])
+             [NSString stringWithFormat:@"CustomFilter %ld.plist", (long)i]]])
     {
         i++;
     }
-    filterGroup.name = [NSString stringWithFormat:@"CustomFilter %d", i];
-    NSURL * plistURL = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"CustomFilter %d.plist", i]];
-    NSURL * jsonURL = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"CustomFilter %d.json", i]];
+    filterGroup.name = [NSString stringWithFormat:@"CustomFilter %ld", (long)i];
+    NSURL * plistURL = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"CustomFilter %ld.plist", (long)i]];
+    NSURL * jsonURL = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"CustomFilter %ld.json", (long)i]];
     
     NBULogInfo(@"%@ %@ to: %@ and %@", THIS_METHOD, filterGroup, plistURL, jsonURL);
     
