@@ -26,16 +26,11 @@
 #define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
 
 @implementation NBUEditMultiImageViewController
+{
+    BOOL _shouldUpdateNavigationItemTitle;
+}
 
 @synthesize mediaInfos = _mediaInfos;
-
-- (void)commonInit
-{
-    [super commonInit];
-    
-    // Default values
-    _updatesTitle = YES;
-}
 
 - (void)viewDidLoad
 {
@@ -46,6 +41,10 @@
     {
         self.currentIndex = _currentIndex;
     }
+    
+    // Should update title?
+    _shouldUpdateNavigationItemTitle = (_titleLabel ||
+                                        (!self.navigationItem.titleView && [self.navigationItem.title hasPrefix:@"@@"]));
 }
 
 - (void)setMediaInfos:(NSMutableArray *)mediaInfos
@@ -98,7 +97,7 @@
 
 - (void)updateTitle
 {
-    if (!_updatesTitle)
+    if (!_shouldUpdateNavigationItemTitle)
         return;
     
     NSString * title = [NSString stringWithFormat:

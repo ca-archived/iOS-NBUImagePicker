@@ -222,7 +222,7 @@
         <scene sceneID="zoa-x2-7E2">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Wv8-XP-atV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Assets" image="first" id="m6E-IP-mj7"/>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="Assets" image="first" id="m6E-IP-mj7"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bDa-HO-FbA">
                         <autoresizingMask key="autoresizingMask"/>
@@ -238,7 +238,7 @@
         <!--Library View Controller - Loading...-->
         <scene sceneID="uFT-Vf-67c">
             <objects>
-                <viewController nibName="NBUAssetsLibraryViewController" id="dR2-aV-htT" customClass="LibraryViewController" sceneMemberID="viewController">
+                <viewController id="dR2-aV-htT" customClass="LibraryViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Loading..." id="4LY-BP-9ab">
                         <barButtonItem key="rightBarButtonItem" id="O7t-AH-Hcp">

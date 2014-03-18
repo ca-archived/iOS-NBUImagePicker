@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Camera View Controller-->
+        <!--Camera View Controller - @@CameraTitle-->
         <scene sceneID="v82-Lg-zNU">
             <objects>
                 <viewController storyboardIdentifier="cameraController" automaticallyAdjustsScrollViewInsets="NO" id="t2c-CE-JOu" customClass="NBUCameraViewController" sceneMemberID="viewController">
@@ -126,7 +126,7 @@
                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="rux-U1-0yC">
+                    <navigationItem key="navigationItem" title="@@CameraTitle" id="rux-U1-0yC">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Yv5-1M-apL">
                             <connections>
                                 <action selector="dismiss:" destination="WXN-Yf-8zq" id="jGp-Hg-xJG"/>
@@ -138,7 +138,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="cameraView" destination="eTh-aP-fAb" id="W8x-tZ-n4Y"/>
                         <outlet property="flashLabel" destination="554-92-uWM" id="wRY-5P-fxR"/>
@@ -148,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="-299" y="-443"/>
         </scene>
-        <!--Assets Library View Controller - LibraryLoadingTitle-->
+        <!--Assets Library View Controller - @@LibraryLoadingTitle-->
         <scene sceneID="2Ll-hk-3pp">
             <objects>
                 <viewController storyboardIdentifier="libraryController" id="y7l-XI-RTA" customClass="NBUAssetsLibraryViewController" sceneMemberID="viewController">
@@ -182,7 +182,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </scrollView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="LibraryLoadingTitle" id="E0t-Oy-FVU">
+                    <navigationItem key="navigationItem" title="@@LibraryLoadingTitle" id="E0t-Oy-FVU">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EJs-CH-ZMj">
                             <connections>
                                 <action selector="dismiss:" destination="uih-Kl-MoU" id="bAE-sK-jcC"/>
@@ -194,7 +194,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="objectTableView" destination="fHA-VF-QHB" id="uU1-AB-vvi"/>
                     </connections>
@@ -203,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="-456" y="125"/>
         </scene>
-        <!--Assets Group View Controller - AssetsGroupName-->
+        <!--Assets Group View Controller - @@AssetsGroupName-->
         <scene sceneID="wUc-Ol-PJ8">
             <objects>
                 <viewController storyboardIdentifier="assetsGroupController" id="Qqm-Wy-WtE" customClass="NBUAssetsGroupViewController" sceneMemberID="viewController">
@@ -246,7 +246,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </scrollView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="AssetsGroupName" id="ni7-lL-kzF">
+                    <navigationItem key="navigationItem" title="@@AssetsGroupName" id="ni7-lL-kzF">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8t0-sW-9HO">
                             <connections>
                                 <action selector="dismiss:" destination="hEX-IS-IZx" id="K38-eX-1w8"/>
@@ -258,7 +258,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="gridView" destination="Gaj-A5-2yt" id="QBw-Ue-2aP"/>
                     </connections>
@@ -372,9 +372,10 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="X of XX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vgC-mM-NUb">
-                                    <rect key="frame" x="33" y="0.0" width="74" height="33"/>
+                                    <rect key="frame" x="20" y="0.0" width="100" height="33"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -386,7 +387,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="filterView" destination="bbB-lU-hHc" id="xDH-tj-iTr"/>
                         <outlet property="nextButton" destination="alQ-fk-aZm" id="sbx-nQ-FS7"/>
@@ -398,16 +399,16 @@
             </objects>
             <point key="canvasLocation" x="263" y="-162"/>
         </scene>
-        <!--Gallery View Controller - ConfirmTitle-->
+        <!--Gallery View Controller - @@ConfirmTitle-->
         <scene sceneID="C63-Rb-dF9">
             <objects>
                 <viewController storyboardIdentifier="confirmController" automaticallyAdjustsScrollViewInsets="NO" id="v5Y-Bh-wjK" customClass="NBUGalleryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mo3-qt-4ov">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" id="PJH-PI-gNI">
-                                <rect key="frame" x="-1" y="444" width="320" height="36"/>
+                                <rect key="frame" x="-1" y="380" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <action selector="pageControlWasTapped:" destination="v5Y-Bh-wjK" eventType="valueChanged" id="1np-Vk-3yj"/>
@@ -416,14 +417,14 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ConfirmTitle" id="8h7-Mk-Vgv">
+                    <navigationItem key="navigationItem" title="@@ConfirmTitle" id="8h7-Mk-Vgv">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="aRq-g7-D93">
                             <connections>
                                 <action selector="goToNextStep:" destination="ClC-qA-ck5" id="N5a-4R-b71"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="pageControl" destination="PJH-PI-gNI" id="7oO-MM-Evz"/>
                         <outletCollection property="viewsToHide" destination="PJH-PI-gNI" id="lpz-5D-vOn"/>
@@ -550,9 +551,10 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="X of XX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cdP-Ug-ghM">
-                                    <rect key="frame" x="33" y="0.0" width="74" height="33"/>
+                                    <rect key="frame" x="20" y="0.0" width="100" height="33"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -564,7 +566,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="cropView" destination="1XO-uH-x9M" id="8R3-MH-52R"/>
                         <outlet property="filterView" destination="Ndt-y3-X3R" id="HgM-AN-ALm"/>
@@ -642,9 +644,10 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="X of XX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vMs-Kd-9vs">
-                                    <rect key="frame" x="33" y="0.0" width="74" height="33"/>
+                                    <rect key="frame" x="20" y="0.0" width="100" height="33"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -656,7 +659,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="cropView" destination="ONv-C0-iRZ" id="2i7-2V-FTk"/>
                         <outlet property="nextButton" destination="CVd-x0-I58" id="5Km-bj-OM7"/>

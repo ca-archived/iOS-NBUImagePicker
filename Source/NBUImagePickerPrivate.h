@@ -23,7 +23,7 @@
 
 // Localization
 #define NBULocalizedString(keyComment, defaultValue) \
-[NSBundle localizedStringForKey:keyComment value:defaultValue table:nil backupBundle:NBUImagePicker.bundle]
+        [NSBundle localizedStringForKey:keyComment value:defaultValue table:nil backupBundle:NBUImagePicker.bundle]
 
 
 // a) Use NBULog for logging when available

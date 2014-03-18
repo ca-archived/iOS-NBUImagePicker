@@ -35,9 +35,6 @@
 
 /// @name Customizing Appearance
 
-/// Whether the title should be automatically updated to reflect the currentIndex.
-@property (nonatomic)                                   BOOL updatesTitle;
-
 /// An optional title label.
 @property (strong, nonatomic) IBOutlet                  UILabel * titleLabel;
 

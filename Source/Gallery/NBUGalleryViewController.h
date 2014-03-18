@@ -120,10 +120,6 @@
 
 /// @name Customizing the Appearance
 
-/// Whether the controller's navigationItem title should be updated to
-/// reflect the currentIndex. Default `YES`.
-@property (nonatomic)                       BOOL updatesTitle;
-
 /// Whether the status and navigation bars should be modified when the
 /// controller appears/disappears. Default `YES`.
 /// @see navigationBarStyle and statusBarStyle.

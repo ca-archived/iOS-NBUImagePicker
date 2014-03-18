@@ -293,10 +293,6 @@
                                                                              customStoryboard:_customStoryboard];
         
         // Configure controller
-        if (_cameraController.navigationItem.title.length == 0)
-        {
-            _cameraController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController CameraTitle", @"Camera");
-        }
         if (self.options & NBUImagePickerOptionDisableLibrary)
         {
             _cameraController.navigationItem.rightBarButtonItem = nil;
@@ -350,7 +346,6 @@
                                                                               customStoryboard:_customStoryboard];
         
         // Configure controller
-        _libraryController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController LibraryLoadingTitle", @"Loading...");
         _libraryController.customBackButtonTitle = NBULocalizedString(@"NBUImagePickerController libraryController.customBackButtonTitle", @"Albums");
         if (self.options & NBUImagePickerOptionDisableCamera)
         {
@@ -529,7 +524,6 @@
         if (_singleImageMode)
         {
             _editController.navigationItem.titleView = nil;
-            _editController.updatesTitle = NO;
             _editController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController editController title", @"Edit");
         }
         
@@ -576,7 +570,6 @@
         
         // Configure controller
         _confirmController.navigationItem.title = NBULocalizedString(@"NBUImagePickerController confirmController title", @"Confirm");
-        _confirmController.updatesTitle = NO;
         _confirmController.updatesBars = NO;
     }
     

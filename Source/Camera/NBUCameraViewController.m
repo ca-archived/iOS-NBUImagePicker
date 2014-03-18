@@ -85,6 +85,12 @@
                 break;
         }
     };
+    
+    // Configure title
+    if (!self.navigationItem.titleView && [self.navigationItem.title hasPrefix:@"@@"])
+    {
+        self.navigationItem.title = NBULocalizedString(@"NBUImagePickerController CameraTitle", @"Camera");
+    }
 }
 
 - (void)viewDidUnload

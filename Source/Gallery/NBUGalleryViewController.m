@@ -48,6 +48,8 @@
 	
 	NSMutableArray * _thumbnailViews;
 	NSMutableArray * _views;
+    
+    BOOL _shouldUpdateNavigationItemTitle;
 }
 
 - (void)commonInit
@@ -59,7 +61,6 @@
     _nibNameForThumbnails = @"NBUGalleryThumbnailView";
     _updatesBars = YES;
     self.hidesBottomBarWhenPushed = YES;
-    _updatesTitle = YES;
     _imagePreloadCount = 1;
     _spaceBetweenViews = 10.0;
     _thumbnailSize = CGSizeMake(75.0, 75.0);
@@ -154,6 +155,9 @@
     {
         [self reloadGallery];
     }
+    
+    // Should update title?
+    _shouldUpdateNavigationItemTitle = !self.navigationItem.titleView && [self.navigationItem.title hasPrefix:@"@@"];
 }
 
 - (void)viewDidUnload
@@ -459,13 +463,13 @@
 
 - (void)updateTitle
 {
-    if (!_updatesTitle)
-        return;
-    
-    self.navigationItem.title = [NSString stringWithFormat:
-                                 NBULocalizedString(@"NBUGalleryViewController title image X of XX", @"%i of %i"),
-                                 _currentIndex + 1,
-                                 _objectArray.count];
+    if (_shouldUpdateNavigationItemTitle)
+    {
+        self.navigationItem.title = [NSString stringWithFormat:
+                                     NBULocalizedString(@"NBUGalleryViewController title image X of XX", @"%i of %i"),
+                                     _currentIndex + 1,
+                                     _objectArray.count];
+    }
 }
 
 - (void)updateButtons

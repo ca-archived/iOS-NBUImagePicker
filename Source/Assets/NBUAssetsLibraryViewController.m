@@ -27,6 +27,9 @@
 #define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_ASSETS
 
 @implementation NBUAssetsLibraryViewController
+{
+    BOOL _shouldUpdateNavigationItemTitle;
+}
 
 - (void)viewDidLoad
 {
@@ -40,6 +43,13 @@
     
     // Try to load groups asynchronously
     [self loadGroups];
+    
+    // Should update title?
+    _shouldUpdateNavigationItemTitle = !self.navigationItem.titleView && [self.navigationItem.title hasPrefix:@"@@"];
+    if (_shouldUpdateNavigationItemTitle)
+    {
+        self.navigationItem.title = NBULocalizedString(@"NBUImagePickerController LibraryLoadingTitle", @"Loading...");
+    }
 }
 
 - (void)loadGroups
@@ -59,11 +69,14 @@
              NBULogInfo(@"%@ available asset groups", @(groups.count));
              
              // Update UI
-             self.navigationItem.title = (groups.count == 1 ?
-                                          NBULocalizedString(@"NBUAssetsLibraryViewController Only one album", @"1 album") :
-                                          [NSString stringWithFormat:
-                                           NBULocalizedString(@"NBUAssetsLibraryViewController Zero or more albums", @"%d albums"),
-                                           groups.count]);
+             if (_shouldUpdateNavigationItemTitle)
+             {
+                 self.navigationItem.title = (groups.count == 1 ?
+                                              NBULocalizedString(@"NBUAssetsLibraryViewController Only one album", @"1 album") :
+                                              [NSString stringWithFormat:
+                                               NBULocalizedString(@"NBUAssetsLibraryViewController Zero or more albums", @"%d albums"),
+                                               groups.count]);
+             }
              _objectTableView.objectArray = groups;
              
              // Force ScrollView's sizeToFitContentView
@@ -74,7 +87,10 @@
              NBULogWarn(@"The user has denied access!");
              
              // Update UI
-             self.navigationItem.title = error.localizedDescription;
+             if (_shouldUpdateNavigationItemTitle)
+             {
+                 self.navigationItem.title = error.localizedDescription;
+             }
          }
          
          self.loading = NO;
