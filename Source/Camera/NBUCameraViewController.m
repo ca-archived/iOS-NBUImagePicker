@@ -58,11 +58,6 @@
     self.captureResultBlock = _captureResultBlock;
     self.savePicturesToLibrary = _savePicturesToLibrary;
     self.targetLibraryAlbumName = _targetLibraryAlbumName;
-    if (_singlePictureMode)
-    {
-        [_cameraView.lastPictureImageView removeFromSuperview];
-        _cameraView.lastPictureImageView = nil;
-    }
     
     __unsafe_unretained NBUCameraViewController * weakSelf = self;
     _cameraView.flashButtonConfigurationBlock = ^(id<UIButton> button, AVCaptureFlashMode mode)
