@@ -157,24 +157,21 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 /// Whether to hide disabled controls. Default `NO`.
 @property (nonatomic)                   BOOL showDisabledControls;
 
-/// The block to be used to configure the shootButton.
-@property (nonatomic, copy)             NBUButtonConfigurationBlock shootButtonConfigurationBlock;
-
 /// The block to be used to configure the toggleCameraButton.
-@property (nonatomic, copy)             NBUButtonConfigurationBlock toggleCameraButtonConfigurationBlock;
-
+@property (nonatomic, copy)             void(^toggleCameraButtonConfigurationBlock)(id<UIButton> button,
+                                                                                    AVCaptureDevicePosition position);
 /// The block to be used to configure the flashButton.
-@property (nonatomic, copy)             NBUButtonConfigurationBlock flashButtonConfigurationBlock;
-
+@property (nonatomic, copy)             void(^flashButtonConfigurationBlock)(id<UIButton> button,
+                                                                             AVCaptureFlashMode mode);
 /// The block to be used to configure the focusButton.
-@property (nonatomic, copy)             NBUButtonConfigurationBlock focusButtonConfigurationBlock;
-
+@property (nonatomic, copy)             void(^focusButtonConfigurationBlock)(id<UIButton> button,
+                                                                             AVCaptureFocusMode mode);
 /// The block to be used to configure the exposureButton.
-@property (nonatomic, copy)             NBUButtonConfigurationBlock exposureButtonConfigurationBlock;
-
+@property (nonatomic, copy)             void(^exposureButtonConfigurationBlock)(id<UIButton> button,
+                                                                                AVCaptureExposureMode mode);
 /// The block to be used to configure the whiteBalanceButton.
-@property (nonatomic, copy)             NBUButtonConfigurationBlock whiteBalanceButtonConfigurationBlock;
-
+@property (nonatomic, copy)             void(^whiteBalanceButtonConfigurationBlock)(id<UIButton> button,
+                                                                                    AVCaptureWhiteBalanceMode mode);
 /// @name Actions
 
 /// Take a picture and execure the resultBlock.

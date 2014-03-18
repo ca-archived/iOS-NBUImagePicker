@@ -376,8 +376,6 @@
     }
     
     // Apply configuration blocks
-    if(_shootButtonConfigurationBlock)
-        _shootButtonConfigurationBlock(_shootButton, 0); // TODO:
     if(_toggleCameraButtonConfigurationBlock)
         _toggleCameraButtonConfigurationBlock(_toggleCameraButton, _currentDevice.position);
     if(_flashButtonConfigurationBlock)
