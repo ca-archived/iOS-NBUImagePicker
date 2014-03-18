@@ -572,7 +572,8 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     [input processImage];
     
     // Process output
-    UIImage * outputImage = [output imageFromCurrentlyProcessedOutputWithOrientation:image.imageOrientation];
+    [output useNextFrameForImageCapture];
+    UIImage * outputImage = [output imageFromCurrentFramebufferWithOrientation:image.imageOrientation];
     
     // Clean input
     [input removeAllTargets];
@@ -618,17 +619,6 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
     
     // Register new image picture
     _otherImagePictures[index] = imagePicture;
-}
-
-- (void)prepareForImageCapture
-{
-    // Process images
-    for (GPUImagePicture * imagePicture in _otherImagePictures)
-    {
-        [imagePicture processImage];
-    }
-    
-    [super prepareForImageCapture];
 }
 
 @end
