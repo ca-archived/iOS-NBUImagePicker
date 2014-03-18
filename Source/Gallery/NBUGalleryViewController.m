@@ -275,21 +275,6 @@
 	}
 }
 
-//- (void)removeImageAtIndex:(NSUInteger)index
-//{
-//	UIView * view = _views[index];
-// 	UIView * thumbnail = _thumbnailViews[index];
-//    [_views removeObjectAtIndex:index];
-//	[_thumbnailViews removeObjectAtIndex:index];
-//    
-//	[view removeFromSuperview];
-//	[thumbnail removeFromSuperview];
-//	
-//	[self layoutViews];
-//	[self updateButtons];
-//    [self updateTitle];
-//}
-
 - (void)goToPrevious:(id)sender
 {
     [self setCurrentIndex:_currentIndex - 1

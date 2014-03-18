@@ -26,10 +26,6 @@
 +(void)initialize
 {
     // Register our custom directory albums
-//    [[NBUAssetsLibrary sharedLibrary] registerDirectoryGroupforURL:[NBUKit resourcesBundle].bundleURL
-//                                                              name:nil];
-//    [[NBUAssetsLibrary sharedLibrary] registerDirectoryGroupforURL:[NSBundle mainBundle].bundleURL
-//                                                              name:nil];
     [[NBUAssetsLibrary sharedLibrary] registerDirectoryGroupforURL:[UIApplication sharedApplication].documentsDirectory
                                                               name:@"App's Documents directory"];
 }
