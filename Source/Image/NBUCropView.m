@@ -126,6 +126,7 @@
                                         UIViewAutoresizingFlexibleWidth);
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.clipsToBounds = NO;
         _scrollView.frame = self.bounds;
         [self insertSubview:_scrollView
                     atIndex:0];
