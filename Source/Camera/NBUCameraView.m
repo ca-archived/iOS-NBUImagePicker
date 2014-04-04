@@ -55,7 +55,7 @@
     NSDate * _lastSequenceCaptureDate;
     UIImageOrientation _sequenceCaptureOrientation;
     
-#ifdef __i386__
+#if TARGET_IPHONE_SIMULATOR
     // Mock image for simulator
     UIImage * _mockImage;
 #endif
@@ -77,7 +77,7 @@
     _poiView = [PointOfInterestView new];
     [self addSubview:_poiView];
     
-#ifdef __i386__
+#if TARGET_IPHONE_SIMULATOR
     // Mock image for simulator
     _mockImage = [UIImage imageNamed:@"LaunchImage-700"] ?: [UIImage imageNamed:@"Default"]; // Try to use the App's launch image
     if (!_mockImage)
@@ -159,7 +159,7 @@
     // Get a capture device if needed
     if (!_currentDevice && !_availableCaptureDevices)
     {
-#ifndef __i386__
+#if !TARGET_IPHONE_SIMULATOR
         // Real devices
         self.currentAVCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 #else
@@ -294,7 +294,7 @@
     
     // Other available devices
     NSMutableArray * tmp = [NSMutableArray array];
-#ifndef __i386__
+#if !TARGET_IPHONE_SIMULATOR
     for (AVCaptureDevice * other in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo])
         [tmp addObject:other.uniqueID];
 #endif
@@ -348,7 +348,7 @@
     // Update UI
     [self updateUI];
     
-#ifndef __i386__
+#if !TARGET_IPHONE_SIMULATOR
     // Update capture session
     [self updateCaptureSessionInput];
 #endif
@@ -549,7 +549,7 @@
     self.window.userInteractionEnabled = NO;
     [self flashHighlightMask];
     
-#ifndef __i386__
+#if !TARGET_IPHONE_SIMULATOR
     // Get the image
     [_captureImageOutput captureStillImageAsynchronouslyFromConnection:_videoConnection
                                                      completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
@@ -644,7 +644,7 @@
              
              // Retrieve the metadata
              NSDictionary * metadata;
-#ifndef __i386__
+#if !TARGET_IPHONE_SIMULATOR
              metadata = (__bridge_transfer NSDictionary *)CMCopyDictionaryOfAttachments(kCFAllocatorDefault,
                                                                                         imageDataSampleBuffer,
                                                                                         kCMAttachmentMode_ShouldPropagate);
@@ -671,7 +671,7 @@
                                      });
                                  }];
                             });
-#ifndef __i386__
+#if !TARGET_IPHONE_SIMULATOR
          }
      }];
 #endif
@@ -745,7 +745,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     if (!self.recording)
     {
-#ifndef __i386__
+#if !TARGET_IPHONE_SIMULATOR
         if (!_captureMovieOutput)
         {
             _captureMovieOutput = [AVCaptureMovieFileOutput new];

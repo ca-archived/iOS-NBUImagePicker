@@ -33,7 +33,7 @@
 
 + (BOOL)isCameraAvailable
 {
-#ifdef __i386__
+#if TARGET_IPHONE_SIMULATOR
     // Simulator has a mock camera
     return YES;
 #endif
