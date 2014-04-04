@@ -3,7 +3,7 @@
 //  NBUCompatibility
 //
 //  Created by Ernesto Rivera on 2012/02/29.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -99,7 +99,7 @@
 // Save a mutable copy of the array
 - (void)setObject:(NSArray *)objectArray
 {
-    NBULogVerbose(@"%@ setObjectArray: %d elements", self, objectArray.count);
+    NBULogVerbose(@"%@ setObjectArray: %@ elements", self, @(objectArray.count));
     
     [super setObject:[NSMutableArray arrayWithArray:objectArray]];
 }
@@ -135,8 +135,8 @@
 {
     if (index > self.objectArray.count)
     {
-        NBULogError(@"insertObject ignored for index %d as objectArray has count %d",
-                   index, self.objectArray.count);
+        NBULogError(@"insertObject ignored for index %@ as objectArray has count %@",
+                   @(index), @(self.objectArray.count));
         return;
     }
     
@@ -150,8 +150,8 @@
 {
     if (index >= self.objectArray.count)
     {
-        NBULogError(@"removeObjectAtIndex ignored for index %d as objectArray has count %d",
-                   index, self.objectArray.count);
+        NBULogError(@"removeObjectAtIndex ignored for index %@ as objectArray has count %@",
+                   @(index), @(self.objectArray.count));
         return;
     }
     
@@ -165,8 +165,8 @@
 {
     if (index >= self.objectArray.count)
     {
-        NBULogError(@"replaceObjectAtIndex ignored for index %d as objectArray has count %d",
-                   index, self.objectArray.count);
+        NBULogError(@"replaceObjectAtIndex ignored for index %@ as objectArray has count %@",
+                   @(index), @(self.objectArray.count));
         return;
     }
     
@@ -208,8 +208,8 @@
 {
     if (index >= self.objectArray.count)
     {
-        NBULogError(@"setObjectAtIndex hidden ignored for index %d as objectArray has count %d",
-                   index, self.objectArray.count);
+        NBULogError(@"setObjectAtIndex hidden ignored for index %@ as objectArray has count %@",
+                    @(index), @(self.objectArray.count));
         return;
     }
     

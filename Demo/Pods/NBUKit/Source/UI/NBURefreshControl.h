@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/09/11.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -25,18 +25,33 @@
 typedef NS_ENUM(NSInteger, NBURefreshStatus)
 {
     NBURefreshStatusIdle                = 0,
-    NBURefreshStatusLoading             = 1,
-    NBURefreshStatusUpdated             = 2,
+    NBURefreshStatusReleaseToRefresh    = 1,
+    NBURefreshStatusLoading             = 2,
+    NBURefreshStatusUpdated             = 3,
     NBURefreshStatusError               = -1,
 };
 
 
 /**
- A fully configurable pull to refresh UIControl.
+ A fully configurable pull-to-refresh UIControl.
  
- To configure it, simply set its target from a Nib or programatically.
+ It gets added below the target scrollView to avoid appearing behind iOS 7's
+ translucent navigation bars.
+ To configure it, simply set its target scroll view.
  */
 @interface NBURefreshControl : UIControl
+
+/// @name Creating the Control
+
+/// Load a new control and configure its target and action for the `UIControlEventValueChanged` event.
+/// @param scrollView The view to which the control will be associated.
+/// @param nibName An optional Nib or `nil` to load the default Nib.
+/// @param target The target object.
+/// @param action A selector identifying an action message.
++ (instancetype)controlForScrollView:(UIScrollView *)scrollView
+                             fromNib:(NSString *)nibName
+                          withTarget:(id)target
+                              action:(SEL)action;
 
 /// @name Properties
 
@@ -47,7 +62,8 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
 /// @note Modifying the status modifies the view's UI.
 @property (nonatomic)                   NBURefreshStatus status;
 
-/// Whether or not the control should be visible in the UIScrollView;
+/// Whether or not the control should be visible in the UIScrollView.
+/// @note Doesn't trigger any status change.
 @property (nonatomic, getter=isVisible) BOOL visible;
 
 /// The last updated NSDate.
@@ -64,16 +80,16 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
 @property (weak, nonatomic) IBOutlet    UIScrollView * scrollView;
 
 /// A configurable UILabel.
-@property (strong, nonatomic) IBOutlet  UILabel * statusLabel;
+@property (weak, nonatomic) IBOutlet    UILabel * statusLabel;
 
 /// A label to show the lastUpdateDate.
-@property (strong, nonatomic) IBOutlet  UILabel * lastUpdateLabel;
+@property (weak, nonatomic) IBOutlet    UILabel * lastUpdateLabel;
 
 /// A view shown/hidden on status changes to/from NBURefreshStatusIdle.
-@property (strong, nonatomic) IBOutlet  UIView * idleView;
+@property (weak, nonatomic) IBOutlet    UIView * idleView;
 
 /// A view shown/hidden on status changes to/from NBURefreshStatusLoading.
-@property (strong, nonatomic) IBOutlet  UIView * loadingView;
+@property (weak, nonatomic) IBOutlet    UIView * loadingView;
 
 /// @name Methods
 
@@ -85,21 +101,13 @@ typedef NS_ENUM(NSInteger, NBURefreshStatus)
 
 /// @name Actions
 
-/// Make the control visible, scroll to it and trigger a refresh.
+/// Make the control visible animated without changing it's status.
 /// @param sender The sender object.
 - (IBAction)show:(id)sender;
 
-/// Hide the control.
+/// Hide the control animated without changing it's status.
 /// @param sender The sender object.
 - (IBAction)hide:(id)sender;
-
-/// Set the control status as NBURefreshStatusUpdated.
-/// @param sender The sender object.
-- (IBAction)updated:(id)sender;
-
-/// Set the control status as NBURefreshStatusError.
-/// @param sender The sender object.
-- (IBAction)failedToUpdate:(id)sender;
 
 @end
 

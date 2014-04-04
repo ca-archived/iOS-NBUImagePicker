@@ -4,7 +4,7 @@ PODS:
   - CocoaLumberjack/Core (1.8.1)
   - CocoaLumberjack/Extensions (1.8.1):
     - CocoaLumberjack/Core
-  - GPUImage (HEAD based on 0.1.2)
+  - GPUImage (HEAD based on 0.1.4)
   - Lockbox (1.4.6)
   - LumberjackConsole (1.0.3):
     - CocoaLumberjack (>= 1.6.4)
@@ -20,9 +20,9 @@ PODS:
     - CocoaLumberjack (>= 1.6.4)
     - LumberjackConsole/Base
     - NBUCore (>= 2.0.0)
-  - MotionOrientation@PTEz (1.0.0)
-  - NBUCore (2.0.0)
-  - NBUImagePicker (1.2.0):
+  - MotionOrientation@PTEz (1.1.0)
+  - NBUCore (2.0.2)
+  - NBUImagePicker (1.3.0):
     - NBUImagePicker/Assets
     - NBUImagePicker/Base
     - NBUImagePicker/Camera
@@ -32,71 +32,71 @@ PODS:
     - NBUImagePicker/MediaInfo
     - NBUImagePicker/Picker
     - NBUImagePicker/Resources
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/Assets (1.2.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/Assets (1.3.0):
     - NBUImagePicker/Base
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/Base (1.2.0):
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/Camera (1.2.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/Base (1.3.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/Camera (1.3.0):
     - NBUImagePicker/Assets
-    - NBUKit (>= 2.1.0)
+    - NBUKit (>= 2.2.0)
     - RBVolumeButtons
-  - NBUImagePicker/Filters (1.2.0):
-    - GPUImage (>= 0.1.2)
+  - NBUImagePicker/Filters (1.3.0):
+    - GPUImage (>= 0.1.4)
     - NBUImagePicker/Base
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/Gallery (1.2.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/Gallery (1.3.0):
     - NBUImagePicker/Assets
     - NBUImagePicker/MediaInfo
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/Image (1.2.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/Image (1.3.0):
     - NBUImagePicker/MediaInfo
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/MediaInfo (1.2.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/MediaInfo (1.3.0):
     - NBUImagePicker/Assets
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/Picker (1.2.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/Picker (1.3.0):
     - NBUImagePicker/Camera
     - NBUImagePicker/Gallery
     - NBUImagePicker/Image
     - NBUImagePicker/Resources
-    - NBUKit (>= 2.1.0)
-  - NBUImagePicker/Resources (1.2.0):
-    - NBUKit (>= 2.1.0)
-  - NBUKit (2.1.0):
+    - NBUKit (>= 2.2.0)
+  - NBUImagePicker/Resources (1.3.0):
+    - NBUKit (>= 2.2.0)
+  - NBUKit (2.2.0):
     - Lockbox (>= 1.4.6)
-    - NBUCore (>= 2.0.0)
+    - NBUCore (>= 2.0.2)
     - NBUKit/Additions
     - NBUKit/Base
     - NBUKit/Library
     - NBUKit/UI
-  - NBUKit/Additions (2.1.0):
+  - NBUKit/Additions (2.2.0):
     - Lockbox (>= 1.4.6)
-    - NBUCore (>= 2.0.0)
+    - NBUCore (>= 2.0.2)
     - NBUKit/Base
-  - NBUKit/Base (2.1.0):
+  - NBUKit/Base (2.2.0):
     - Lockbox (>= 1.4.6)
-    - NBUCore (>= 2.0.0)
-  - NBUKit/Library (2.1.0):
+    - NBUCore (>= 2.0.2)
+  - NBUKit/Library (2.2.0):
     - Lockbox (>= 1.4.6)
-    - NBUCore (>= 2.0.0)
+    - NBUCore (>= 2.0.2)
     - NBUKit/Base
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RestKit Support
-  - NBUKit/Library/NBUCompatibility (2.1.0):
+  - NBUKit/Library/NBUCompatibility (2.2.0):
     - Lockbox (>= 1.4.6)
-    - NBUCore (>= 2.0.0)
+    - NBUCore (>= 2.0.2)
     - NBUKit/Base
     - NBUKit/UI
-  - NBUKit/Library/RestKit Support (2.1.0):
+  - NBUKit/Library/RestKit Support (2.2.0):
     - Lockbox (>= 1.4.6)
-    - NBUCore (>= 2.0.0)
+    - NBUCore (>= 2.0.2)
     - NBUKit/Base
-  - NBUKit/UI (2.1.0):
+  - NBUKit/UI (2.2.0):
     - Lockbox (>= 1.4.6)
     - MotionOrientation@PTEz (>= 1.0.0)
-    - NBUCore (>= 2.0.0)
+    - NBUCore (>= 2.0.2)
     - NBUKit/Additions
     - NBUKit/Library/NBUCompatibility
     - NBUKit/Library/RestKit Support
@@ -117,14 +117,14 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 020378ec400d658923bf5887178394f65f052c90
-  GPUImage: 007145faa0e27f1ddbcab93e07f026c9776e2fa2
+  GPUImage: f9b32e12350792a630e596ffc7b050bea3662670
   Lockbox: 56ac5c11e51d46baa4408960a5a35b355a32840e
   LumberjackConsole: 1ce794a493503ae8401adde56e70467c7e317951
-  MotionOrientation@PTEz: 0b987d39639b13ce2769f6dc6f96f59783ca8786
-  NBUCore: 66e33f9426cbefb5ca88f3228cfc2dd36eac6e71
-  NBUImagePicker: e298c79adbd577d63a40244f87d53468743b866e
-  NBUKit: e13f4ef5921e3fe8b4a5282f994c81b17df9a84e
+  MotionOrientation@PTEz: 8765538bc6ff037dc153d1cca83f2b66d9c766b9
+  NBUCore: 85601dd90960d52151d19ae2a42765e0416c4dd8
+  NBUImagePicker: ae5ef182e38eda4892d680c34887a96f1007ba7d
+  NBUKit: 49612940382cc30ddc1c30b20825b03b51b9afe1
   NBULog: 1d8f4f214727199a2a62fb9f4884a0fc06d04bd4
   RBVolumeButtons: 8fc67cc874d6dfa1808f61c91e9931ccabe52ae0
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

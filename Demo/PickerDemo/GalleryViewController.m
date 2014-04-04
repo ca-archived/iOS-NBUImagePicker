@@ -29,13 +29,6 @@
     self.imageLoader = self;
 }
 
-- (void)loadView
-{
-    [NSBundle loadNibNamed:@"GalleryViewController"
-                     owner:self
-                   options:nil];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

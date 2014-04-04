@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/17.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -59,6 +59,65 @@
                                          1.0,
                                          1.0)
                      animated:animated];
+}
+
+#pragma mark - Auto-adjusting
+
+- (void)autoAdjustContentSize
+{
+    // Make sure to make the origin CGPointZero
+    UIView * firstSubview = self.subviews[0];
+    CGRect requiredFrame = CGRectMake(0.0,
+                                      0.0,
+                                      CGRectGetMaxX(firstSubview.frame),
+                                      CGRectGetMaxY(firstSubview.frame));
+    
+    NBULogDebug(@"%@ -> %@", THIS_METHOD, NSStringFromCGSize(requiredFrame.size));
+    self.contentSize = requiredFrame.size;
+}
+
+- (void)autoAdjustInsets
+{
+    UIEdgeInsets insets = self.contentInset;
+    
+    // Inside a controller?
+    UIViewController * controller = self.viewController;
+    if (controller)
+    {
+        CGRect frame = [controller.view convertRect:self.bounds
+                                           fromView:self];
+        CGFloat topLayoutGuide = [controller respondsToSelector:@selector(topLayoutGuide)] ? controller.topLayoutGuide.length : 0.0;
+        CGFloat bottomLayoutGuide = [controller respondsToSelector:@selector(bottomLayoutGuide)] ? controller.bottomLayoutGuide.length : 0.0;
+        insets.top = MAX(topLayoutGuide - frame.origin.y,
+                         0.0);
+        insets.bottom = MAX(bottomLayoutGuide - (CGRectGetMaxY(controller.view.bounds) - CGRectGetMaxY(frame)),
+                            0.0);
+    }
+    // Else just reset insets
+    else
+    {
+        insets.top = 0.0;
+        insets.bottom = 0.0;
+    }
+    
+    // Adjust
+    if (!UIEdgeInsetsEqualToEdgeInsets(self.contentInset, insets))
+    {
+        // Also adjust offset
+        CGPoint offset = self.contentOffset;
+        offset.y -= (insets.top - self.contentInset.top);
+        
+        NBULogDebug(@"%@ %@ -> %@ offset : %@ -> %@",
+                    THIS_METHOD,
+                    NSStringFromUIEdgeInsets(self.contentInset),
+                    NSStringFromUIEdgeInsets(insets),
+                    NSStringFromCGPoint(self.contentOffset),
+                    NSStringFromCGPoint(offset));
+        
+        self.contentInset = insets;
+        self.scrollIndicatorInsets = insets;
+        self.contentOffset = offset;
+    }
 }
 
 @end

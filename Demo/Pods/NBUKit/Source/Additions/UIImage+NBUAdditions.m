@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/06/01.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -195,7 +195,7 @@
     NSUInteger i = 1;
     do
     {
-        path = [NSString stringWithFormat:@"%@/image%03d.jpg", directory, i++];
+        path = [NSString stringWithFormat:@"%@/image%03ld.jpg", directory, (long)i++];
     }
     while ([manager fileExistsAtPath:path]);
     

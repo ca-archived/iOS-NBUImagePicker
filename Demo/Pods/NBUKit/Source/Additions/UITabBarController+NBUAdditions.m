@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/09/18.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,18 +20,27 @@
 
 #import "UITabBarController+NBUAdditions.h"
 #import "NBUKitPrivate.h"
+#import <objc/runtime.h>
 
 @implementation UITabBarController (NBUAdditions)
 
+@dynamic originalViewFrame;
+
 - (BOOL)isTabBarHidden
 {
-    return CGRectGetMaxY([UIScreen mainScreen].applicationFrame) < CGRectGetMaxY(self.view.frame);
+    return CGRectGetMaxY(self.view.frame) > CGRectGetMaxY(self.originalViewFrame);
 }
 
-- (void)setTabBarHidden:(BOOL)tabBarHidden
+- (void)setTabBarHidden:(BOOL)hidden
 {
-    [self setTabBarHidden:tabBarHidden
-                 animated:NO];
+    CGRect frame = self.originalViewFrame;
+    if (hidden)
+    {
+        frame.size.height += self.tabBar.size.height;
+    }
+    
+    NBULogDebug(@"%@ %@ %@", THIS_METHOD, NBUStringFromBOOL(hidden), NSStringFromCGRect(frame));
+    self.view.frame = frame;
 }
 
 - (void)setTabBarHidden:(BOOL)hidden
@@ -44,16 +53,34 @@
                         options:(UIViewAnimationOptionAllowUserInteraction |
                                  UIViewAnimationOptionLayoutSubviews |
                                  UIViewAnimationOptionBeginFromCurrentState)
-                     animations:^{
-                         
-                         CGRect frame = [UIScreen mainScreen].applicationFrame;
-                         if (hidden)
-                         {
-                             frame.size.height += self.tabBar.size.height;
-                         }
-                         self.view.frame = frame;
-                     }
+                     animations:^
+     {
+         self.tabBarHidden = hidden;
+     }
                      completion:NULL];
+}
+
+- (CGRect)originalViewFrame
+{
+    NSValue * value = objc_getAssociatedObject(self,
+                                               @selector(originalViewFrame));
+    if (value)
+    {
+        return value.CGRectValue;
+    }
+    else
+    {
+        self.originalViewFrame = self.view.frame;
+        return self.view.frame;
+    }
+}
+
+- (void)setOriginalViewFrame:(CGRect)originalViewFrame
+{
+    objc_setAssociatedObject(self,
+                             @selector(originalViewFrame),
+                             [NSValue valueWithCGRect:originalViewFrame],
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

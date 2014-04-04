@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/31.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     {
         NSInteger selectedIndex = self.cancelButtonIndex == 0 ? buttonIndex - 1 : buttonIndex;
         
-        NBULogVerbose(@"Selected button at index: %d", selectedIndex);
+        NBULogVerbose(@"Selected button at index: %@", @(selectedIndex));
         
         if (_selectedButtonBlock) _selectedButtonBlock(selectedIndex);
     }

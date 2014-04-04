@@ -3,7 +3,7 @@
 //  NBUCompatibility
 //
 //  Created by Ernesto Rivera on 2012/02/29.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -232,7 +232,7 @@
         return;
     }
     
-    NBULogVerbose(@"layoutSubviews %@ subviews %d", NSStringFromCGSize(self.frame.size), self.subviews.count);
+    NBULogVerbose(@"layoutSubviews %@ subviews %@", NSStringFromCGSize(self.frame.size), @(self.subviews.count));
     
     [super layoutSubviews];
     
@@ -343,8 +343,8 @@
     _currentArea.size = CGSizeMake(MAX(_currentArea.size.width, self.bounds.size.width),
                                    MAX(_currentArea.size.height, 480.0));
     
-    NBULogVerbose(@"reloadGrid: %d visible objects (%d hidden), current area %@, %d reusable views",
-               _visibleObjects.count, self.hiddenObjects.count, NSStringFromCGRect(_currentArea), _reusableViews.count);
+    NBULogVerbose(@"reloadGrid: %@ visible objects (%@ hidden), current area %@, %@ reusable views",
+                  @(_visibleObjects.count), @(self.hiddenObjects.count), NSStringFromCGRect(_currentArea), @(_reusableViews.count));
     
     // Rebuild _viewsOrFrames
     CGRect frame = CGRectMake(self.margin.width,
@@ -463,8 +463,8 @@
     _modelView = nil;
     _useModelView = NO;
     
-    NBULogVerbose(@"reloadGrid finished: frame %@, range %@, %d subviews",
-               NSStringFromCGRect(self.frame), NSStringFromRange(_currentRange), self.currentViews.count);
+    NBULogVerbose(@"reloadGrid finished: frame %@, range %@, %@ subviews",
+                  NSStringFromCGRect(self.frame), NSStringFromRange(_currentRange), @(self.currentViews.count));
     NBULogVerbose(@"%@", _viewsOrFrames);
 }
 
@@ -631,7 +631,7 @@
 //    NSAssert([view isKindOfClass:[UIView class]], @"%@ is not a view", view);
     if (![view isKindOfClass:[UIView class]])
     {
-        NBULogWarn(@"Object at index %d can't be collected (%@ is not a view)", index, view);
+        NBULogWarn(@"Object at index %@ can't be collected (%@ is not a view)", @(index), view);
         return NO;
     }
     

@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/17.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
  */
 @interface UIScrollView (NBUAdditions)
 
-/// @name Scroll to Edges
+/// @name Scrolling to Edges
 
 /// Scroll to the top.
 /// @param animated Whether to animate scrolling or not.
@@ -40,6 +40,15 @@
 /// Scroll to the right.
 /// @param animated Whether to animate scrolling or not.
 - (void)scrollToRightAnimated:(BOOL)animated;
+
+/// @name Auto-Adjusting
+
+/// Try to adjust the content size with the first subview as reference.
+- (void)autoAdjustContentSize;
+
+/// Adjust insets iOS 7-style and make sure to update the contentOffest if needed.
+/// @note You may have to call this method as late as `viewDidAppear:`.
+- (void)autoAdjustInsets;
 
 @end
 

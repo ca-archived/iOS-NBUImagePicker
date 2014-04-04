@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/11/09.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@
 {
     if (!UIDeviceOrientationIsValidInterfaceOrientation(supportedInterfaceOrientations))
     {
-        NBULogError(@"'%d' is not a valid interface orientation mask!", supportedInterfaceOrientations);
+        NBULogError(@"'%@' is not a valid interface orientation mask!", @(supportedInterfaceOrientations));
         return;
     }
     _supportedInterfaceOrientations = supportedInterfaceOrientations;
@@ -108,7 +108,7 @@
         }
     }
     
-    NBULogVerbose(@"%@ %@ %d", NSStringFromClass([self class]), THIS_METHOD, _supportedInterfaceOrientations);
+    NBULogVerbose(@"%@ %@ %@", NSStringFromClass([self class]), THIS_METHOD, @(_supportedInterfaceOrientations));
     return _supportedInterfaceOrientations;
 }
 

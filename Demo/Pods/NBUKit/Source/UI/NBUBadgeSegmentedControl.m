@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/04/20.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -69,9 +69,9 @@ forSegmentAtIndex:(NSUInteger)index
 {
     if (index >= self.numberOfSegments)
     {
-        NBULogError(@"Tried to set a badge for segment %d in control with only %d segments",
-                    index,
-                    self.numberOfSegments);
+        NBULogError(@"Tried to set a badge for segment %@ in control with only %@ segments",
+                    @(index),
+                    @(self.numberOfSegments));
         return;
     }
     

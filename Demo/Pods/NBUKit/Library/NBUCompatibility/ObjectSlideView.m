@@ -3,7 +3,7 @@
 //  NBUCompatibility
 //
 //  Created by Ernesto Rivera on 2011/12/27.
-//  Copyright (c) 2011-2013 CyberAgent Inc.
+//  Copyright (c) 2011-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -211,8 +211,8 @@
     {
         index = floor(([sender locationInView:self].x + _scrollView.contentOffset.x) /
                       (_scrollView.contentSize.width  / _nViews));
-        NBULogVerbose(@"location %f offset %f viewWidth %f index %d",
-                      [sender locationInView:self].x, _scrollView.contentOffset.x, (_scrollView.contentSize.width  / _nViews), index);
+        NBULogVerbose(@"location %f offset %f viewWidth %f index %@",
+                      [sender locationInView:self].x, _scrollView.contentOffset.x, (_scrollView.contentSize.width  / _nViews), @(index));
     }
     
     [self presentModalFromItemAtIndex:index];
@@ -468,8 +468,8 @@
                                          frame.origin.x,
                                          frame.size.height);
     
-    NBULogVerbose(@"content width %f current page %d frame width %f",
-                  _scrollView.contentSize.width, _pageControl.currentPage, _scrollView.frame.size.width);
+    NBULogVerbose(@"content width %f current page %@ frame width %f",
+                  _scrollView.contentSize.width, @(_pageControl.currentPage), _scrollView.frame.size.width);
     
     CGFloat offsetX = _scrollView.pagingEnabled ? _scrollView.frame.size.width * _pageControl.currentPage : _scrollView.contentOffset.x;
     if (offsetX > 0.0 &&

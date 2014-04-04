@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/31.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -30,10 +30,9 @@
 
 /// Initialize and configure parameters by parsing a `mailto:` URL.
 /// @param mailtoURL The `mailto:` URL.
-- (instancetype)initWithMailtoURL:(NSURL *)mailtoURL;
-
-/// An optional block to be called instead of a using the usual delegate methods.
-@property (nonatomic, copy) void (^resultBlock)(MFMailComposeResult result, NSError * error);
+/// @param resultBlock An optional block to be called instead of a using the usual delegate methods.
+- (instancetype)initWithMailtoURL:(NSURL *)mailtoURL
+                      resultBlock:(void (^)(MFMailComposeResult, NSError *))resultBlock;
 
 @end
 

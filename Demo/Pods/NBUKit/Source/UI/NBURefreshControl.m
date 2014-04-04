@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/09/11.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -27,100 +27,83 @@
 
 @implementation NBURefreshControl
 
-- (instancetype)initWithCoder:(NSCoder *)coder
++ (instancetype)controlForScrollView:(UIScrollView *)scrollView
+                             fromNib:(NSString *)nibName
+                          withTarget:(id)target
+                              action:(SEL)action
 {
-    self = [super initWithCoder:coder];
-    if (self)
+    NBURefreshControl * control = [NSBundle loadNibNamed:nibName ? nibName : NSStringFromClass(self)
+                                                   owner:nil
+                                                 options:nil][0];
+    control.scrollView = scrollView;
+    [control addTarget:target
+                action:action
+      forControlEvents:UIControlEventValueChanged];
+    
+    if (target && ![target respondsToSelector:action])
     {
-        [self commonInit];
+        NBULogWarn(@"Target '%@' does not respond to selector '%@'.", target, NSStringFromSelector(action));
     }
-    return self;
+    
+    return control;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self)
-    {
-        [self commonInit];
-    }
-    return self;
-}
-
-- (void)commonInit
-{
-    // Save original height as the heightToRefresh and make the view taller
+    [super awakeFromNib];
+    
+    // Save original height as the heightToRefresh as the view will be stretched later
     CGRect bounds = self.bounds;
-    _heightToRefresh = bounds.size.height;
-    bounds.size.height += 320;
-    self.bounds = bounds;
-}
-
-- (void)setStatusLabel:(UILabel *)statusLabel
-{
-    _statusLabel = statusLabel;
+    self.heightToRefresh = bounds.size.height;
     
     // Set initial status
-    self.status = _status;
-}
-
-- (void)setLastUpdateLabel:(UILabel *)lastUpdateLabel
-{
-    _lastUpdateLabel = lastUpdateLabel;
-    
-    // Set last update time
-    self.lastUpdateDate = _lastUpdateDate;
+    self.status = NBURefreshStatusIdle;
+    self.lastUpdateDate = nil;
 }
 
 - (void)setScrollView:(UIScrollView *)scrollView
 {
-    if (_scrollView == scrollView)
-        return;
-    
     _scrollView = scrollView;
     
-    // Adjust frame
-    [self adjustFrame];
-    
-    // Add to scrollview if needed
-    if (self.superview != scrollView)
+    // Make sure we have a proper superview
+    if (!scrollView.superview)
     {
-        [scrollView addSubview:self];
+        NBULogError(@"%@ The scrollView should have a valid superview.", THIS_METHOD);
+        return;
     }
-}
-
-#pragma mark - Key-value observing
-
-- (void)willMoveToSuperview:(UIView *)superview
-{
-    [super willMoveToSuperview:superview];
     
-    // Stop KVO
-    [self.superview removeObserver:self
-                        forKeyPath:@"contentOffset"];
-    [self.superview removeObserver:self
-                        forKeyPath:@"contentSize"];
-    [self.superview removeObserver:self
-                        forKeyPath:@"bounds"];
-}
+    // Make sure the scrollView is transparent!
+    CGFloat alpha = CGColorGetAlpha(scrollView.backgroundColor.CGColor);
+    if (alpha != 0.0)
+    {
+        NBULogWarn(@"%@ The scrollView should have a clear color background.", THIS_METHOD);
+    }
+    
+    // Make sure the scrollView always bounces vertically
+    scrollView.alwaysBounceVertical = YES;
 
-- (void)didMoveToSuperview
-{
-    [super didMoveToSuperview];
+    // Add to scrollview's superview if needed
+    [scrollView.superview insertSubview:self
+                           belowSubview:scrollView];
     
     // Start KVO
-    [self.superview addObserver:self
-                     forKeyPath:@"contentOffset"
-                        options:NSKeyValueObservingOptionOld
-                        context:nil];
-    [self.superview addObserver:self
-                     forKeyPath:@"contentSize"
-                        options:0
-                        context:nil];
-    [self.superview addObserver:self
-                     forKeyPath:@"bounds"
-                        options:0
-                        context:nil];
+    [scrollView addObserver:self
+                 forKeyPath:@"contentOffset"
+                    options:NSKeyValueObservingOptionOld
+                    context:nil];
+    [scrollView addObserver:self
+                 forKeyPath:@"contentInset"
+                    options:0
+                    context:nil];
+}
+
+- (void)dealloc
+{
+    // Stop KVO
+    [self.scrollView removeObserver:self
+                         forKeyPath:@"contentOffset"];
+    [self.scrollView removeObserver:self
+                         forKeyPath:@"contentInset"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -131,43 +114,68 @@
     // Offset changed
     if ([keyPath isEqualToString:@"contentOffset"])
     {
-        CGPoint oldOffset = [(NSValue *)change[NSKeyValueChangeOldKey] CGPointValue];
-        
-        // No changes? Do nothing
-        if (_scrollView.contentOffset.y == oldOffset.y)
+        // Ignore if visible
+        if (self.visible)
             return;
         
-        // Enough to refresh?
-        if (_scrollView.contentOffset.y < -_heightToRefresh)
+        // Ignore if not NBURefreshStatusReleaseToRefresh and not being dragged
+        if (self.status != NBURefreshStatusReleaseToRefresh && !self.scrollView.isDragging)
+            return;
+        
+        // Start idle
+        NBURefreshStatus status = NBURefreshStatusIdle;
+        
+        // Dragged enough to refresh?
+        if (self.scrollView.contentOffset.y <= -self.heightToRefresh - self.scrollView.contentInset.top)
         {
-            self.visible = YES;
-            
-            // Send action
-            if (_status != NBURefreshStatusLoading)
+            // But still dragging?
+            if (self.scrollView.isDragging)
             {
-                [NSObject cancelPreviousPerformRequestsWithTarget:self];
-                
+                status = NBURefreshStatusReleaseToRefresh;
+            }
+            // Go!
+            else
+            {
                 NBULogVerbose(@"Pulled to refresh");
-                
-                self.status = NBURefreshStatusLoading;
-                [self sendActionsForControlEvents:UIControlEventValueChanged];
+                status = NBURefreshStatusLoading;
             }
         }
+        
+        // Update status
+        if (self.status != status)
+            self.status = status;
     }
     
-    // Bounds or content size changed
+    // Insets changed
     else
     {
-        [self adjustFrame];
+        // Refresh layout
+        [self setNeedsLayout];
     }
 }
 
-- (void)adjustFrame
+- (void)layoutSubviews
 {
-    self.frame = CGRectMake(0.0,
-                            0.0 - self.size.height,
-                            MAX(_scrollView.contentSize.width, _scrollView.bounds.size.width),
-                            self.size.height);
+    // Ignore when we are visible
+    if (self.visible)
+        return;
+    
+    // Position below scrollview's contents
+    UIEdgeInsets insets = self.scrollView.contentInset;
+    CGRect frame = self.scrollView.frame;
+    frame.origin.y += insets.top;
+    
+    // Strech it but not too much
+    frame.size.height = MIN((frame.size.height - frame.origin.y) / 2.0, // Half the scrollview's height
+                            self.scrollView.contentSize.height / 2.0);  // ...or half the content's height
+    
+    // Not too short!
+    frame.size.height = MAX(frame.size.height,
+                            self.heightToRefresh);
+    
+    NBULogVerbose(@"%@ -> %@", THIS_METHOD, NSStringFromCGRect(frame));
+    
+    self.frame = frame;
 }
 
 #pragma mark - Status
@@ -181,32 +189,39 @@
 - (void)setStatus:(NBURefreshStatus)status
       withMessage:(NSString *)message
 {
-    NBULogVerbose(@"setStatus: %d withMessage: %@", status, message);
+    NBULogDebug(@"setStatus: %@ withMessage: %@", @(status), message);
     
     _status = status;
     
+    // Cancel any timed requests
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
+    // Update
     switch (_status)
     {
         case NBURefreshStatusIdle:
         {
-            self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Drag to refresh", @"Drag to refresh");
-            _idleView.hidden = NO;
-            _loadingView.hidden = YES;
+            self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Drag to refresh", @"Pull to refresh");
+            break;
+        }
+        case NBURefreshStatusReleaseToRefresh:
+        {
+            self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Release to refresh", @"Release to refresh");
             break;
         }
         case NBURefreshStatusLoading:
         {
             self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Reloading", @"Reloading...");
-            _idleView.hidden = YES;
-            _loadingView.hidden = NO;
+            [self show:self];
+            
+            // Send actions
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
             break;
         }
         case NBURefreshStatusUpdated:
         {
             self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Updated", @"Updated");
             self.lastUpdateDate = [NSDate date];
-            _idleView.hidden = YES;
-            _loadingView.hidden = YES;
             [self hideAfterDelay:1.5];
             break;
         }
@@ -214,57 +229,50 @@
         {
             _status = NBURefreshStatusError;
             self.statusLabel.text = message ? message : NBULocalizedString(@"NBURefreshControl Error", @"Update error");
-            _idleView.hidden = YES;
-            _loadingView.hidden = YES;
             [self hideAfterDelay:2.0];
             break;
         }
     }
+    self.idleView.hidden = status != NBURefreshStatusIdle && status != NBURefreshStatusReleaseToRefresh;
+    self.loadingView.hidden = status != NBURefreshStatusLoading;
 }
 
 - (void)setVisible:(BOOL)visible
 {
-    if (_visible == visible ||
-        !self.superview)
-    {
+    if (_visible == visible)
         return;
-    }
+    
+    // Cancel pending calls
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
     _visible = visible;
     
     NBULogVerbose(@"setVisible: %@", NBUStringFromBOOL(visible));
     
-    // Make visible
     if (visible)
     {
-        _scrollView.contentInset = UIEdgeInsetsMake(_heightToRefresh,
-                                                    _scrollView.contentInset.left,
-                                                    _scrollView.contentInset.bottom,
-                                                    _scrollView.contentInset.right);
+        UIEdgeInsets insets = self.scrollView.contentInset;
+        insets.top += self.heightToRefresh;
+        self.scrollView.contentInset = insets;
     }
-    // Displace
     else
     {
-        self.status = NBURefreshStatusIdle;
-        _scrollView.contentInset = UIEdgeInsetsMake(0.0,
-                                                    _scrollView.contentInset.left,
-                                                    _scrollView.contentInset.bottom,
-                                                    _scrollView.contentInset.right);
+        [self.scrollView autoAdjustInsets];
+        // TODO: Adjust scroll offset when user slided already scrolled
     }
 }
 
 - (void)setLastUpdateDate:(NSDate *)lastUpdateDate
 {
     _lastUpdateDate = lastUpdateDate;
-    if (lastUpdateDate)
-    {
-        _lastUpdateLabel.text = [NSString stringWithFormat:NBULocalizedString(@"NBURefreshControl last updated", @"Last updated %@"),
-                                 [self.dateFormatter stringFromDate:lastUpdateDate]];
-    }
-    else
-    {
-        _lastUpdateLabel.text = NBULocalizedString(@"NBURefreshControl last update unknown", @"Last update date unknown");
-    }
+    
+    if (!self.lastUpdateLabel)
+        return;
+    
+    self.lastUpdateLabel.text = (lastUpdateDate ?
+                                 [NSString stringWithFormat:NBULocalizedString(@"NBURefreshControl last updated", @"Last updated %@"),
+                                  [self.dateFormatter stringFromDate:lastUpdateDate]] :
+                                 NBULocalizedString(@"NBURefreshControl last update unknown", @"Last update date unknown"));
 }
 
 - (NSDateFormatter *)dateFormatter
@@ -280,37 +288,30 @@
 
 #pragma mark - Actions/Methods
 
-- (void)show:(id)sender
+- (IBAction)show:(id)sender
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    
-    NBULogTrace();
-    NBULogVerbose(@"subviews %@", _scrollView.subviews);
-    
-    self.visible = YES;
-    [_scrollView setContentOffset:CGPointMake(_scrollView.contentOffset.x,
-                                              -_scrollView.contentInset.top)
-                         animated:YES];
+    [UIView animateWithDuration:0.15
+                     animations:^
+     {
+         self.visible = YES;
+     }];
 }
 
-- (void)hide:(id)sender
+- (IBAction)hide:(id)sender
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    
-    if (!_visible)
-        return;
-    
-    NBULogTrace();
-    
-    [UIView animateWithDuration:0.3
-                     animations:^{ self.visible = NO; }];
+    [UIView animateWithDuration:0.25
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^
+     {
+         self.visible = NO;
+     }
+                     completion:NULL];
 }
 
 - (void)hideAfterDelay:(NSTimeInterval)delay
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    
-    if (!_visible)
+    if (!self.visible)
         return;
     
     NBULogTrace();
@@ -318,20 +319,6 @@
     [self performSelector:@selector(hide:)
                withObject:self
                afterDelay:delay];
-}
-
-- (void)updated:(id)sender
-{
-    NBULogTrace();
-    
-    self.status = NBURefreshStatusUpdated;
-}
-
-- (void)failedToUpdate:(id)sender
-{
-    NBULogTrace();
-    
-    self.status = NBURefreshStatusError;
 }
 
 @end

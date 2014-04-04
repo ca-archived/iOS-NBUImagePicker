@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/10/15.
-//  Copyright (c) 2012-2013 CyberAgent Inc.
+//  Copyright (c) 2012-2014 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -34,6 +34,9 @@
 /// Whether the button should be hidden.
 @property(nonatomic, getter=isHidden)   BOOL hidden;
 
+// The tint color to apply to the button.
+@property(nonatomic, retain)            UIColor * tintColor;
+
 @end
 
 
@@ -41,12 +44,6 @@
  Implementation of the UIButton protocol for UIButton objects.
  */
 @interface UIButton (NBUAdditions) <UIButton>
-
-///// The button title.
-//@property(nonatomic, copy)              NSString * title;
-//
-///// Whether the button should be enabled or not.
-//@property(nonatomic, getter=isEnabled)  BOOL enabled;
 
 @end
 

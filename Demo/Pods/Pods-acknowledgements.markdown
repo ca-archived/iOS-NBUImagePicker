@@ -470,7 +470,7 @@ limitations under the License.
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2012-2013 CyberAgent Inc.
+   Copyright 2012-2014 CyberAgent Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -882,7 +882,7 @@ Apache License
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2012-2013 CyberAgent Inc.
+   Copyright 2012-2014 CyberAgent Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
