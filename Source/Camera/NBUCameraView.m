@@ -572,8 +572,8 @@
              UIImage * image = [UIImage imageWithData:
                                 [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer]];
              
-             NBULogInfo(@"Captured jpeg image: %@ of size: %@ orientation: %ld",
-                        image, NSStringFromCGSize(image.size), image.imageOrientation);
+             NBULogInfo(@"Captured jpeg image: %@ of size: %@ orientation: %@",
+                        image, NSStringFromCGSize(image.size), @(image.imageOrientation));
 #else
              // Mock simulator
              UIImage * image = _mockImage;
