@@ -91,6 +91,7 @@
              {
                  self.navigationItem.title = error.localizedDescription;
              }
+             self.accessDeniedView.hidden = NO;
          }
          
          self.loading = NO;

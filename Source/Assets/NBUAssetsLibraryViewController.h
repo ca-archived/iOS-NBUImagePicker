@@ -51,6 +51,9 @@
 /// The assets group controller to be pushed by default.
 @property (strong, nonatomic) IBOutlet              NBUAssetsGroupViewController * assetsGroupController;
 
+/// An optional view to be shown (`hidden = NO`) when the user has denied access to the assets library.
+@property (strong, nonatomic) IBOutlet              UIView * accessDeniedView;
+
 /// @name Actions
 
 /// Notify controller when a NBUAssetsGroupView has been tapped.
