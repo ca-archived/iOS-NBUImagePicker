@@ -54,6 +54,7 @@
     PointOfInterestView * _poiView;
     NSDate * _lastSequenceCaptureDate;
     UIImageOrientation _sequenceCaptureOrientation;
+    BOOL _captureInProgress;
     
 #if TARGET_IPHONE_SIMULATOR
     // Mock image for simulator
@@ -168,20 +169,25 @@
 #endif
     }
     
-    // Start session
-    [_captureSession startRunning];
-    _shootButton.enabled = YES;
-    NBULogVerbose(@"Capture session: {\n%@} started running", _captureSession);
+    // Start session if needed
+    if (!_captureSession.running)
+    {
+        [_captureSession startRunning];
+        _shootButton.enabled = YES;
+        NBULogVerbose(@"Capture session: {\n%@} started running", _captureSession);
+    }
 }
 
 - (void)viewWillDisappear
 {
     [super viewWillDisappear];
     
-    // Stop session
-    _shootButton.enabled = NO;
-    [_captureSession stopRunning];
-    NBULogVerbose(@"Capture session: {\n%@} stopped running", _captureSession);
+    // Stop session if possible
+    if (_captureSession.running && !_captureInProgress)
+    {
+        [_captureSession stopRunning];
+        NBULogVerbose(@"Capture session: {\n%@} stopped running", _captureSession);
+    }
 }
 
 #pragma mark - Handle orientation changes
@@ -544,9 +550,16 @@
 {
     NBULogTrace();
     
+    // Ignore while busy
+    if (_captureInProgress)
+    {
+        NBULogWarn(@"%@ Ignored as a capture is already in progress.", THIS_METHOD);
+        return;
+    }
+    _captureInProgress = YES;
+    
     // Update UI
     _shootButton.enabled = NO;
-    self.window.userInteractionEnabled = NO;
     [self flashHighlightMask];
     
 #if !TARGET_IPHONE_SIMULATOR
@@ -555,11 +568,19 @@
                                                      completionHandler:^(CMSampleBufferRef imageDataSampleBuffer,
                                                                          NSError * error)
      {
+         _captureInProgress = NO;
+         
+         // Stop session if needed
+         if (!self.window && _captureSession.running)
+         {
+             [_captureSession stopRunning];
+             NBULogVerbose(@"Capture session: {\n%@} stopped running", _captureSession);
+         }
+         
          if (error)
          {
              NBULogError(@"Error: %@", error);
              _shootButton.enabled = YES;
-             self.window.userInteractionEnabled = YES;
              
              // Execute result blocks
              if (_captureResultBlock) _captureResultBlock(nil, error);
@@ -614,7 +635,6 @@
                           preview.hidden = YES;
                           
                           _shootButton.enabled = YES;
-                          self.window.userInteractionEnabled = YES;
                       }];
                  }
                  else
@@ -623,13 +643,11 @@
                      _lastPictureImageView.image = image;
                      
                      _shootButton.enabled = YES;
-                     self.window.userInteractionEnabled = YES;
                  }
              }
              else
              {
                  _shootButton.enabled = YES;
-                 self.window.userInteractionEnabled = YES;
              }
              
              // Execute capture block
