@@ -38,9 +38,6 @@ static int _appModuleLogLevel[MAX_MODULES];
 @implementation NBULog
 
 static id<DDLogFormatter> _nbuLogFormatter;
-static BOOL _ttyLoggerAdded;
-static BOOL _aslLoggerAdded;
-static BOOL _fileLoggerAdded;
 
 // Configure a formatter, default levels and add default loggers
 + (void)initialize
@@ -55,7 +52,6 @@ static BOOL _fileLoggerAdded;
 #ifdef DEBUG
     [self addTTYLogger];
 #endif
-
 }
 
 + (id<DDLogFormatter>)nbuLogFormater
@@ -112,7 +108,7 @@ static BOOL _fileLoggerAdded;
     if (_dashboardLoggerAdded)
         return;
     
-    [self addLogger:[PTEDashboard sharedDashboard].logger];
+    [PTEDashboard.sharedDashboard show];
     
     _dashboardLoggerAdded = YES;
 #else
@@ -122,76 +118,73 @@ static BOOL _fileLoggerAdded;
 
 + (void)addASLLogger
 {
-    if (_aslLoggerAdded)
-        return;
-    
-    DDASLLogger * logger = [DDASLLogger sharedInstance];
-    logger.logFormatter = [self nbuLogFormater];
-    [self addLogger:logger];
-    
-    _aslLoggerAdded = YES;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        DDASLLogger * logger = [DDASLLogger sharedInstance];
+        logger.logFormatter = [self nbuLogFormater];
+        [self addLogger:logger];
+    });
 }
 
 + (void)addTTYLogger
 {
-    if (_ttyLoggerAdded)
-        return;
-    
-    DDTTYLogger * ttyLogger = [DDTTYLogger sharedInstance];
-    ttyLogger.logFormatter = [self nbuLogFormater];
-    [self addLogger:ttyLogger];
-    
-    // XcodeColors installed and enabled?
-    char *xcode_colors = getenv("XcodeColors");
-    if (xcode_colors && (strcmp(xcode_colors, "YES") == 0))
-    {
-        // Set default colors
-        [ttyLogger setForegroundColor:[UIColor colorWithRed:0.65
-                                                      green:0.65
-                                                       blue:0.65
-                                                      alpha:1.0]
-                      backgroundColor:nil
-                              forFlag:LOG_FLAG_VERBOSE];
-        [ttyLogger setForegroundColor:[UIColor colorWithRed:0.4
-                                                      green:0.4
-                                                       blue:0.4
-                                                      alpha:1.0]
-                      backgroundColor:nil
-                              forFlag:LOG_FLAG_DEBUG];
-        [ttyLogger setForegroundColor:[UIColor colorWithRed:26.0/255.0
-                                                      green:158.0/255.0
-                                                       blue:4.0/255.0
-                                                      alpha:1.0]
-                      backgroundColor:nil
-                              forFlag:LOG_FLAG_INFO];
-        [ttyLogger setForegroundColor:[UIColor colorWithRed:244.0/255.0
-                                                      green:103.0/255.0
-                                                       blue:8.0/255.0
-                                                      alpha:1.0]
-                      backgroundColor:nil
-                              forFlag:LOG_FLAG_WARN];
-        [ttyLogger setForegroundColor:[UIColor redColor]
-                      backgroundColor:nil
-                              forFlag:LOG_FLAG_ERROR];
-        
-        // Enable colors
-        [ttyLogger setColorsEnabled:YES];
-    }
-    
-    _ttyLoggerAdded = YES;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      DDTTYLogger * ttyLogger = [DDTTYLogger sharedInstance];
+                      ttyLogger.logFormatter = [self nbuLogFormater];
+                      [self addLogger:ttyLogger];
+                      
+                      // XcodeColors installed and enabled?
+                      char *xcode_colors = getenv("XcodeColors");
+                      if (xcode_colors && (strcmp(xcode_colors, "YES") == 0))
+                      {
+                          // Set default colors
+                          [ttyLogger setForegroundColor:[UIColor colorWithRed:0.65
+                                                                        green:0.65
+                                                                         blue:0.65
+                                                                        alpha:1.0]
+                                        backgroundColor:nil
+                                                forFlag:LOG_FLAG_VERBOSE];
+                          [ttyLogger setForegroundColor:[UIColor colorWithRed:0.4
+                                                                        green:0.4
+                                                                         blue:0.4
+                                                                        alpha:1.0]
+                                        backgroundColor:nil
+                                                forFlag:LOG_FLAG_DEBUG];
+                          [ttyLogger setForegroundColor:[UIColor colorWithRed:26.0/255.0
+                                                                        green:158.0/255.0
+                                                                         blue:4.0/255.0
+                                                                        alpha:1.0]
+                                        backgroundColor:nil
+                                                forFlag:LOG_FLAG_INFO];
+                          [ttyLogger setForegroundColor:[UIColor colorWithRed:244.0/255.0
+                                                                        green:103.0/255.0
+                                                                         blue:8.0/255.0
+                                                                        alpha:1.0]
+                                        backgroundColor:nil
+                                                forFlag:LOG_FLAG_WARN];
+                          [ttyLogger setForegroundColor:[UIColor redColor]
+                                        backgroundColor:nil
+                                                forFlag:LOG_FLAG_ERROR];
+                          
+                          // Enable colors
+                          [ttyLogger setColorsEnabled:YES];
+                      }
+                  });
 }
 
 + (void)addFileLogger
 {
-    if (_fileLoggerAdded)
-        return;
-    
-    DDFileLogger * fileLogger = [DDFileLogger new];
-    fileLogger.logFileManager.maximumNumberOfLogFiles = 10;
-    fileLogger.logFormatter = [self nbuLogFormater];
-    [self addLogger:fileLogger];
-    
-    _fileLoggerAdded = YES;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      DDFileLogger * fileLogger = [DDFileLogger new];
+                      fileLogger.logFileManager.maximumNumberOfLogFiles = 10;
+                      fileLogger.logFormatter = [self nbuLogFormater];
+                      [self addLogger:fileLogger];
+                  });
 }
 
 #pragma mark - Registering custom log contexts

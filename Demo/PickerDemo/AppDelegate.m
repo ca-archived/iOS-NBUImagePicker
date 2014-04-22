@@ -32,7 +32,7 @@
     
     NBULogTrace();
     
-    // Customize iOS 7 apperance
+    // Customize iOS 7 appearance
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
         UIColor * tintColor = [UIColor colorWithRed:76.0/255.0
@@ -46,9 +46,8 @@
         [UISwitch appearance].tintColor = tintColor;
         [UISwitch appearance].onTintColor = tintColor;
         
-        // Configure appearance
-        //    [[UINavigationBar appearance] setBarTintColor:];
-        //    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        // [[UINavigationBar appearance] setBarTintColor:];
+        // [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     }
     
     return YES;
