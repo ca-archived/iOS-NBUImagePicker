@@ -597,6 +597,7 @@
                         image, NSStringFromCGSize(image.size), @(image.imageOrientation));
 #else
              // Mock simulator
+             _captureInProgress = NO;
              UIImage * image = _mockImage;
              NBULogInfo(@"Captured mock image: %@ of size: %@",
                         image, NSStringFromCGSize(_mockImage.size));
