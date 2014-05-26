@@ -22,10 +22,6 @@
 #import "NBUImagePickerPrivate.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_ASSETS
-
 @implementation NBUAssetsLibraryViewController
 {
     BOOL _shouldUpdateNavigationItemTitle;

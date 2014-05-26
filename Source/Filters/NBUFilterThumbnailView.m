@@ -21,10 +21,6 @@
 #import "NBUFilterThumbnailView.h"
 #import "NBUImagePickerPrivate.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
-
 static NBUSelectionType _selectionType = NBUSelectionTypeDefault;
 
 @implementation NBUFilterThumbnailView

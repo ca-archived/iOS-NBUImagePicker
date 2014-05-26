@@ -21,10 +21,6 @@
 #import "NBUFilterProvider.h"
 #import "NBUImagePickerPrivate.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
-
 // Built-in filter types
 NSString * const NBUFilterTypeNone              = @"none";
 NSString * const NBUFilterTypeContrast          = @"contrast";

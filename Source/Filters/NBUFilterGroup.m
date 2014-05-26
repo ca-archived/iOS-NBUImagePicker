@@ -21,10 +21,6 @@
 #import "NBUFilterGroup.h"
 #import "NBUImagePickerPrivate.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
-
 @implementation NBUFilterGroup
 
 + (instancetype)filterGroupWithName:(NSString *)name

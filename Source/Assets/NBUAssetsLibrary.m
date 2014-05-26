@@ -23,10 +23,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import "NBUImagePickerPrivate.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_ASSETS
-
 NSString * const NBUAssetsErrorDomain = @"NBUAssetsErrorDomain";
 
 static NBUAssetsLibrary * _sharedLibrary = nil;

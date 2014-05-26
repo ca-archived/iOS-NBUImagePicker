@@ -22,10 +22,6 @@
 #import "NBUImagePickerPrivate.h"
 #import <QuartzCore/QuartzCore.h>
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
-
 // Class extension
 @interface NBUCropView () <UIScrollViewDelegate>
 

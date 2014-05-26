@@ -25,10 +25,6 @@
 #import "RKOrderedDictionary.h"
 #import <MotionOrientation@PTEz/MotionOrientation.h>
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_CAMERA
-
 // Class extension
 @interface NBUCameraView () <AVCaptureFileOutputRecordingDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 

@@ -22,10 +22,6 @@
 #import "NBUImagePickerPrivate.h"
 #import <RBVolumeButtons/RBVolumeButtons.h>
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_CAMERA
-
 @implementation NBUCameraViewController
 {
     RBVolumeButtons * _buttonStealer;

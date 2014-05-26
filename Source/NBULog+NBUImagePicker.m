@@ -23,10 +23,7 @@
 #import "NBULog+NBUImagePicker.h"
 #import <NBULog/NBULogContextDescription.h>
 
-#define MAX_MODULES 10
-
 static int _imagePickerLogLevel;
-static int _imagePickerModulesLogLevel[MAX_MODULES];
 
 @implementation NBULog (NBUImagePicker)
 
@@ -38,14 +35,11 @@ static int _imagePickerModulesLogLevel[MAX_MODULES];
     // Register the NBUImagePicker log context
     [NBULog registerContextDescription:[NBULogContextDescription descriptionWithName:@"NBUImagePicker"
                                                                              context:NBUIMAGEPICKER_LOG_CONTEXT
-                                                                     modulesAndNames:@{@(NBUIMAGEPICKER_MODULE_CAMERA)  : @"Camera",
-                                                                                       @(NBUIMAGEPICKER_MODULE_ASSETS)  : @"Assets",
-                                                                                       @(NBUIMAGEPICKER_MODULE_IMAGE)   : @"Image",
-                                                                                       @(NBUIMAGEPICKER_MODULE_GALLERY) : @"Gallery"}
+                                                                     modulesAndNames:nil
                                                                    contextLevelBlock:^{ return [NBULog imagePickerLogLevel]; }
                                                                 setContextLevelBlock:^(int level) { [NBULog setImagePickerLogLevel:level]; }
-                                                          contextLevelForModuleBlock:^(int module) { return [NBULog imagePickerLogLevelForModule:module]; }
-                                                       setContextLevelForModuleBlock:^(int module, int level) { [NBULog setImagePickerLogLevel:level forModule:module]; }]];
+                                                          contextLevelForModuleBlock:NULL
+                                                       setContextLevelForModuleBlock:NULL]];
 }
 
 + (int)imagePickerLogLevel
@@ -60,27 +54,6 @@ static int _imagePickerModulesLogLevel[MAX_MODULES];
 #else
     _imagePickerLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_WARN : LOG_LEVEL_XXX;
 #endif
-    
-    // Reset all modules' levels
-    for (int i = 0; i < MAX_MODULES; i++)
-    {
-        [self setImagePickerLogLevel:LOG_LEVEL_DEFAULT
-                   forModule:i];
-    }
-}
-
-+ (int)imagePickerLogLevelForModule:(int)NBUIMAGEPICKER_MODULE_XXX
-{
-    int logLevel = _imagePickerModulesLogLevel[NBUIMAGEPICKER_MODULE_XXX];
-    
-    // Fallback to the default log level if necessary
-    return logLevel == LOG_LEVEL_DEFAULT ? _imagePickerLogLevel : logLevel;
-}
-
-+ (void)setImagePickerLogLevel:(int)LOG_LEVEL_XXX
-             forModule:(int)NBUIMAGEPICKER_MODULE_XXX
-{
-    _imagePickerModulesLogLevel[NBUIMAGEPICKER_MODULE_XXX] = LOG_LEVEL_XXX;
 }
 
 @end

@@ -23,10 +23,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_ASSETS
-
 // Private classes
 @interface NBUALAsset : NBUAsset
 

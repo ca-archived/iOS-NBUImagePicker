@@ -22,10 +22,6 @@
 #import "NBUImagePickerPrivate.h"
 #import <GPUImage/GPUImage.h>
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
-
 // Private class
 @interface NBUGPUMultiInputImageFilterGroup : GPUImageFilterGroup
 

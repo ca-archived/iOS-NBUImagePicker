@@ -22,10 +22,6 @@
 #import "NBUImagePickerPrivate.h"
 #import "NBUAssetsLibraryViewController.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_ASSETS
-
 static UIImage * _noContentsImage;
 
 @implementation NBUAssetsGroupView

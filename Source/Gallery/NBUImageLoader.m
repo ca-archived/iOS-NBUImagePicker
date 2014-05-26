@@ -21,10 +21,6 @@
 #import "NBUImageLoader.h"
 #import "NBUImagePickerPrivate.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_GALLERY
-
 NSString * const NBUImageLoaderErrorDomain = @"NBUImageLoaderErrorDomain";
 
 static NBUImageLoader * _sharedLoader;

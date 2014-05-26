@@ -23,14 +23,12 @@
 #import <NBULog/NBULog.h>
 
 /// NBUImagePicker log context
-#define NBUIMAGEPICKER_LOG_CONTEXT          120
+#ifndef NBUIMAGEPICKER_LOG_CONTEXT
+    #define NBUIMAGEPICKER_LOG_CONTEXT      120
+#endif
 
 /// NBUImagePicker modules
 #define NBUIMAGEPICKER_MODULE_DEFAULT       0
-#define NBUIMAGEPICKER_MODULE_CAMERA        1
-#define NBUIMAGEPICKER_MODULE_ASSETS        2
-#define NBUIMAGEPICKER_MODULE_IMAGE         3
-#define NBUIMAGEPICKER_MODULE_GALLERY       4
 
 /**
  NBULog category used to set/get NBUImagePicker log levels.
@@ -51,16 +49,6 @@
 /// @param LOG_LEVEL_XXX The desired log level.
 /// @note Setting this value clears all modules' levels.
 + (void)setImagePickerLogLevel:(int)LOG_LEVEL_XXX;
-
-/// Get the current NBUImagePicker log level for a given module.
-/// @param NBUIMAGEPICKER_MODULE_XXX The target module.
-+ (int)imagePickerLogLevelForModule:(int)NBUIMAGEPICKER_MODULE_XXX;
-
-/// Dynamically set the NBUImagePicker log level for a given module.
-/// @param LOG_LEVEL_XXX The desired log level.
-/// @param NBUIMAGEPICKER_MODULE_XXX The target module.
-+ (void)setImagePickerLogLevel:(int)LOG_LEVEL_XXX
-                     forModule:(int)NBUIMAGEPICKER_MODULE_XXX;
 
 @end
 

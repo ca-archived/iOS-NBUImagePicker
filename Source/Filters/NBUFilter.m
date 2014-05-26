@@ -21,10 +21,6 @@
 #import "NBUFilter.h"
 #import "NBUImagePickerPrivate.h"
 
-// Define module
-#undef  NBUIMAGEPICKER_MODULE
-#define NBUIMAGEPICKER_MODULE   NBUIMAGEPICKER_MODULE_IMAGE
-
 // Attributes' keys
 NSString * const NBUFilterValueDescriptionKey   = @"description";
 NSString * const NBUFilterValueTypeKey          = @"valueType";
