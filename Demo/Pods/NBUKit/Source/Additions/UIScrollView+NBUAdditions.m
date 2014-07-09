@@ -34,6 +34,11 @@
                      animated:animated];
 }
 
+- (IBAction)scrollToTop:(id)sender
+{
+    [self scrollToTopAnimated:YES];
+}
+
 - (void)scrollToBottomAnimated:(BOOL)animated
 {
     [self scrollRectToVisible:CGRectMake(self.contentOffset.x,
@@ -86,6 +91,8 @@
     {
         CGRect frame = [controller.view convertRect:self.bounds
                                            fromView:self];
+        if (self == controller.view)
+            frame.origin = CGPointZero;
         CGFloat topLayoutGuide = [controller respondsToSelector:@selector(topLayoutGuide)] ? controller.topLayoutGuide.length : 0.0;
         CGFloat bottomLayoutGuide = [controller respondsToSelector:@selector(bottomLayoutGuide)] ? controller.bottomLayoutGuide.length : 0.0;
         insets.top = MAX(topLayoutGuide - frame.origin.y,

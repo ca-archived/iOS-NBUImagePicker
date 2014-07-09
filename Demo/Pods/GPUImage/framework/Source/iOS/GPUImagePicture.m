@@ -62,8 +62,10 @@
     
     hasProcessedImage = NO;
     self.shouldSmoothlyScaleOutput = smoothlyScaleOutput;
-    imageUpdateSemaphore = dispatch_semaphore_create(1);
-    
+    imageUpdateSemaphore = dispatch_semaphore_create(0);
+    dispatch_semaphore_signal(imageUpdateSemaphore);
+
+
     // TODO: Dispatch this whole thing asynchronously to move image loading off main thread
     CGFloat widthOfImage = CGImageGetWidth(newImageSource);
     CGFloat heightOfImage = CGImageGetHeight(newImageSource);
@@ -97,7 +99,7 @@
     }
     
     GLubyte *imageData = NULL;
-    CFDataRef dataFromImageDataProvider;
+    CFDataRef dataFromImageDataProvider = NULL;
     GLenum format = GL_BGRA;
     
     if (!shouldRedrawUsingCoreGraphics) {
@@ -204,7 +206,10 @@
     }
     else
     {
-        CFRelease(dataFromImageDataProvider);
+        if (dataFromImageDataProvider)
+        {
+            CFRelease(dataFromImageDataProvider);
+        }
     }
     
     return self;
@@ -216,7 +221,7 @@
     [outputFramebuffer enableReferenceCounting];
     [outputFramebuffer unlock];
 
-#if ( (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0) || (!defined(__IPHONE_7_0)) )
+#if ( (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0) || (!defined(__IPHONE_6_0)) )
     if (imageUpdateSemaphore != NULL)
     {
         dispatch_release(imageUpdateSemaphore);

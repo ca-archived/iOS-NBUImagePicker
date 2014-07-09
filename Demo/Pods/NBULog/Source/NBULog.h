@@ -67,6 +67,13 @@
 #define NBULogVerboseWithModule(mod, frmt, ...) LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_VERBOSE, LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
 #define NBULogTraceWithModule(mod)              NBULogDebugForModule(mod, @"%@", THIS_METHOD)
 
+// Assertions
+#define NBUAssert(condition, frmt, ...) if (!(condition)) {                                                           \
+                                            NSString * description = [NSString stringWithFormat:frmt, ##__VA_ARGS__]; \
+                                            NBULogError(@"%@", description);                                          \
+                                            NSAssert(NO, description); }
+#define NBUAssertCondition(condition) NBUAssert(condition, @"Condition not satisfied: %s", #condition)
+
 @class NBULogContextDescription;
 
 /**
@@ -141,6 +148,14 @@
 
 /// An ordered array of all registered contexts.
 + (NSArray *)orderedRegisteredContexts;
+
+/// @name Saving and Restoring Log Levels
+
+/// Save the current log leves configuration to NSUserDefaults.
++ (void)saveLogLevels;
+
+/// Restore log leves from NSUserDefaults.
++ (void)restoreLogLevels;
 
 @end
 

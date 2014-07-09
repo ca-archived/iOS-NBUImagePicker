@@ -70,7 +70,8 @@ NSString *const kGPUImagePassthroughFragmentShaderString = SHADER_STRING
     backgroundColorGreen = 0.0;
     backgroundColorBlue = 0.0;
     backgroundColorAlpha = 0.0;
-    imageCaptureSemaphore = dispatch_semaphore_create(1);
+    imageCaptureSemaphore = dispatch_semaphore_create(0);
+    dispatch_semaphore_signal(imageCaptureSemaphore);
 
     runSynchronouslyOnVideoProcessingQueue(^{
         [GPUImageContext useImageProcessingContext];
@@ -155,7 +156,7 @@ NSString *const kGPUImagePassthroughFragmentShaderString = SHADER_STRING
 
 - (void)dealloc
 {
-#if ( (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0) || (!defined(__IPHONE_7_0)) )
+#if ( (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0) || (!defined(__IPHONE_6_0)) )
     if (imageCaptureSemaphore != NULL)
     {
         dispatch_release(imageCaptureSemaphore);
@@ -511,11 +512,14 @@ NSString *const kGPUImagePassthroughFragmentShaderString = SHADER_STRING
 
 - (void)setFloatArray:(GLfloat *)arrayValue length:(GLsizei)arrayLength forUniform:(GLint)uniform program:(GLProgram *)shaderProgram;
 {
+    // Make a copy of the data, so it doesn't get overwritten before async call executes
+    NSData* arrayData = [NSData dataWithBytes:arrayValue length:arrayLength * sizeof(arrayValue[0])];
+
     runAsynchronouslyOnVideoProcessingQueue(^{
         [GPUImageContext setActiveShaderProgram:shaderProgram];
         
         [self setAndExecuteUniformStateCallbackAtIndex:uniform forProgram:shaderProgram toBlock:^{
-            glUniform1fv(uniform, arrayLength, arrayValue);
+            glUniform1fv(uniform, arrayLength, [arrayData bytes]);
         }];
     });
 }

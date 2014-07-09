@@ -7,6 +7,7 @@
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
     CVPixelBufferRef renderTarget;
     CVOpenGLESTextureRef renderTexture;
+    NSUInteger readLockCount;
 #else
 #endif
     NSUInteger framebufferReferenceCount;
@@ -191,9 +192,11 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size);
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _texture, 0);
         }
         
+        #ifndef NS_BLOCK_ASSERTIONS
         GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-        
         NSAssert(status == GL_FRAMEBUFFER_COMPLETE, @"Incomplete filter FBO: %d", status);
+        #endif
+        
         glBindTexture(GL_TEXTURE_2D, 0);
     });
 }
@@ -326,10 +329,9 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size)
             NSUInteger paddedWidthOfImage = CVPixelBufferGetBytesPerRow(renderTarget) / 4.0;
             NSUInteger paddedBytesForImage = paddedWidthOfImage * (int)_size.height * 4;
             
-            //        glFlush();
             glFinish();
             CFRetain(renderTarget); // I need to retain the pixel buffer here and release in the data source callback to prevent its bytes from being prematurely deallocated during a photo write operation
-            CVPixelBufferLockBaseAddress(renderTarget, 0);
+            [self lockForReading];
             rawImagePixels = (GLubyte *)CVPixelBufferGetBaseAddress(renderTarget);
             dataProvider = CGDataProviderCreateWithData((__bridge_retained void*)self, rawImagePixels, paddedBytesForImage, dataProviderUnlockCallback);
             [[GPUImageContext sharedFramebufferCache] addFramebufferToActiveImageCaptureList:self]; // In case the framebuffer is swapped out on the filter, need to have a strong reference to it somewhere for it to hang on while the image is in existence
@@ -371,7 +373,7 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size)
 - (void)restoreRenderTarget;
 {
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
-    CVPixelBufferUnlockBaseAddress(renderTarget, 0);
+    [self unlockAfterReading];
     CFRelease(renderTarget);
 #else
 #endif
@@ -379,6 +381,35 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size)
 
 #pragma mark -
 #pragma mark Raw data bytes
+
+- (void)lockForReading
+{
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+    if ([GPUImageContext supportsFastTextureUpload])
+    {
+        if (readLockCount == 0)
+        {
+            CVPixelBufferLockBaseAddress(renderTarget, 0);
+        }
+        readLockCount++;
+    }
+#endif
+}
+
+- (void)unlockAfterReading
+{
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+    if ([GPUImageContext supportsFastTextureUpload])
+    {
+        NSAssert(readLockCount > 0, @"Unbalanced call to -[GPUImageFramebuffer unlockAfterReading]");
+        readLockCount--;
+        if (readLockCount == 0)
+        {
+            CVPixelBufferUnlockBaseAddress(renderTarget, 0);
+        }
+    }
+#endif
+}
 
 - (NSUInteger)bytesPerRow;
 {
@@ -399,13 +430,19 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size)
 - (GLubyte *)byteBuffer;
 {
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
-    CVPixelBufferLockBaseAddress(renderTarget, 0);
+    [self lockForReading];
     GLubyte * bufferBytes = CVPixelBufferGetBaseAddress(renderTarget);
-    CVPixelBufferUnlockBaseAddress(renderTarget, 0);
+    [self unlockAfterReading];
     return bufferBytes;
 #else
     return NULL; // TODO: do more with this on the non-texture-cache side
 #endif
+}
+
+- (GLuint)texture;
+{
+//    NSLog(@"Accessing texture: %d from FB: %@", _texture, self);
+    return _texture;
 }
 
 @end

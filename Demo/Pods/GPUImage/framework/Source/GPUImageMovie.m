@@ -10,7 +10,7 @@
     AVAssetReader *reader;
     AVPlayerItemVideoOutput *playerItemOutput;
     CADisplayLink *displayLink;
-    CMTime previousFrameTime;
+    CMTime previousFrameTime, processingFrameTime;
     CFAbsoluteTime previousActualFrameTime;
     BOOL keepLooping;
 
@@ -174,17 +174,15 @@
     GPUImageMovie __block *blockSelf = self;
     
     [inputAsset loadValuesAsynchronouslyForKeys:[NSArray arrayWithObject:@"tracks"] completionHandler: ^{
-        runSynchronouslyOnVideoProcessingQueue(^{
-            NSError *error = nil;
-            AVKeyValueStatus tracksStatus = [inputAsset statusOfValueForKey:@"tracks" error:&error];
-            if (!tracksStatus == AVKeyValueStatusLoaded)
-            {
-                return;
-            }
-            blockSelf.asset = inputAsset;
-            [blockSelf processAsset];
-            blockSelf = nil;
-        });
+        NSError *error = nil;
+        AVKeyValueStatus tracksStatus = [inputAsset statusOfValueForKey:@"tracks" error:&error];
+        if (!tracksStatus == AVKeyValueStatusLoaded)
+        {
+            return;
+        }
+        blockSelf.asset = inputAsset;
+        [blockSelf processAsset];
+        blockSelf = nil;
     }];
 }
 
@@ -410,7 +408,8 @@
     }
     else if (synchronizedMovieWriter != nil)
     {
-        if (reader.status == AVAssetReaderStatusCompleted)
+        if (reader.status == AVAssetReaderStatusCompleted || reader.status == AVAssetReaderStatusFailed ||
+            reader.status == AVAssetReaderStatusCancelled)
         {
             [self endProcessing];
         }
@@ -425,7 +424,27 @@
     
     CMTime currentSampleTime = CMSampleBufferGetOutputPresentationTimeStamp(movieSampleBuffer);
     CVImageBufferRef movieFrame = CMSampleBufferGetImageBuffer(movieSampleBuffer);
+
+    processingFrameTime = currentSampleTime;
     [self processMovieFrame:movieFrame withSampleTime:currentSampleTime];
+}
+
+- (float)progress
+{
+    if ( AVAssetReaderStatusReading == reader.status )
+    {
+        float current = processingFrameTime.value * 1.0f / processingFrameTime.timescale;
+        float duration = self.asset.duration.value * 1.0f / self.asset.duration.timescale;
+        return current / duration;
+    }
+    else if ( AVAssetReaderStatusCompleted == reader.status )
+    {
+        return 1.f;
+    }
+    else
+    {
+        return 0.f;
+    }
 }
 
 - (void)processMovieFrame:(CVPixelBufferRef)movieFrame withSampleTime:(CMTime)currentSampleTime

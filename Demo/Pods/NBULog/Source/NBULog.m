@@ -31,6 +31,7 @@
 #define MAX_MODULES 20
 
 static NSMutableDictionary * _registeredContexts;
+static NSMutableArray * _orderedContexts;
 
 static int _appLogLevel;
 static int _appModuleLogLevel[MAX_MODULES];
@@ -104,15 +105,14 @@ static id<DDLogFormatter> _nbuLogFormatter;
 + (void)addDashboardLogger
 {
 #ifdef COCOAPODS_POD_AVAILABLE_LumberjackConsole
-    static BOOL _dashboardLoggerAdded = NO;
-    if (_dashboardLoggerAdded)
-        return;
-    
-    [PTEDashboard.sharedDashboard show];
-    
-    _dashboardLoggerAdded = YES;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+                  {
+                      [self restoreLogLevels];
+                      [PTEDashboard.sharedDashboard show];
+                  });
 #else
-    NBULogError(@"%@ error: LumberjackConsole is required", THIS_METHOD);
+    NBULogError(@"%@ Error: LumberjackConsole is required", THIS_METHOD);
 #endif
 }
 
@@ -120,11 +120,11 @@ static id<DDLogFormatter> _nbuLogFormatter;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
-    {
-        DDASLLogger * logger = [DDASLLogger sharedInstance];
-        logger.logFormatter = [self nbuLogFormater];
-        [self addLogger:logger];
-    });
+                  {
+                      DDASLLogger * logger = [DDASLLogger sharedInstance];
+                      logger.logFormatter = [self nbuLogFormater];
+                      [self addLogger:logger];
+                  });
 }
 
 + (void)addTTYLogger
@@ -212,17 +212,83 @@ static id<DDLogFormatter> _nbuLogFormatter;
     {
         [_registeredContexts setObject:contextDescription
                                 forKey:@(contextDescription.logContext)]; // Can't use subscript here on iOS 5 because this method gets called from +(void)load methods
+        _orderedContexts = nil;
     }
 }
 
 + (NSArray *)orderedRegisteredContexts
 {
-    NSMutableArray * orderedContexts = [NSMutableArray array];
-    for (id key in [_registeredContexts.allKeys sortedArrayUsingSelector:@selector(compare:)])
+    if (!_orderedContexts)
     {
-        [orderedContexts addObject:_registeredContexts[key]];
+        _orderedContexts = [NSMutableArray array];
+        for (id key in [_registeredContexts.allKeys sortedArrayUsingSelector:@selector(compare:)])
+        {
+            [_orderedContexts addObject:_registeredContexts[key]];
+        }
     }
-    return orderedContexts;
+    return _orderedContexts;
+}
+
+#pragma mark - Saving and restoring log levels
+
++ (void)saveLogLevels
+{
+    NSMutableArray * contextLevels = [NSMutableArray array];
+    
+    // Save each context level
+    NSMutableDictionary * moduleLevels;
+    for (NBULogContextDescription * context in [self orderedRegisteredContexts])
+    {
+        // And each module level
+        moduleLevels = [NSMutableDictionary dictionary];
+        for (NSNumber * module in context.orderedModules)
+        {
+            moduleLevels[module.description] = @(context.contextLevelForModule(module.intValue));
+        }
+        
+        [contextLevels addObject:@{@"context"       : @(context.logContext),
+                                   @"contextLevel"  : @(context.contextLevel()),
+                                   @"modules"       : moduleLevels}];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:contextLevels
+                                              forKey:@"NBULogSavedLevels"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)restoreLogLevels
+{
+    NSArray * contextLevels = [[NSUserDefaults standardUserDefaults] objectForKey:@"NBULogSavedLevels"];
+    
+    // Restore each context level
+    int logContext;
+    NBULogContextDescription * context;
+    NSDictionary * moduleLevels;
+    for (NSDictionary * contextDictionary in contextLevels)
+    {
+        logContext = ((NSNumber *)contextDictionary[@"context"]).intValue;
+        
+        // Get the context description, modules and levels
+        context = nil;
+        for (context  in [self orderedRegisteredContexts])
+        {
+            if (context.logContext == logContext)
+                break;
+        }
+        
+        if (!context)
+            continue;
+        
+        // Set the context level
+        context.setContextLevel(((NSNumber *)contextDictionary[@"contextLevel"]).intValue);
+        
+        // Set each module's level
+        moduleLevels = contextDictionary[@"modules"];
+        for (NSString * module in moduleLevels)
+        {
+            context.setContextLevelForModule(module.intValue, ((NSNumber *)moduleLevels[module]).intValue);
+        }
+    }
 }
 
 @end
