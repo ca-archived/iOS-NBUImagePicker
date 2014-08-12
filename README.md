@@ -5,6 +5,7 @@ NBUImagePicker
 [![Platform: iOS](https://img.shields.io/cocoapods/p/NBUImagePicker.svg?style=flat)](http://cocoadocs.org/docsets/NBUImagePicker/)
 [![Version: 1.3.3](https://img.shields.io/cocoapods/v/NBUImagePicker.svg?style=flat)](http://cocoadocs.org/docsets/NBUImagePicker/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBUImagePicker.svg?style=flat)](http://cocoadocs.org/docsets/NBUImagePicker/)
+[![Dependency Status](https://www.versioneye.com/objective-c/NBUImagePicker/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBUImagePicker)
 [![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBUImagePicker/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBUImagePicker)
 
 Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery.
