@@ -283,6 +283,8 @@ static id<DDLogFormatter> _nbuLogFormatter;
         context.setContextLevel(((NSNumber *)contextDictionary[@"contextLevel"]).intValue);
         
         // Set each module's level
+        if (!context.setContextLevelForModule)
+            continue;
         moduleLevels = contextDictionary[@"modules"];
         for (NSString * module in moduleLevels)
         {

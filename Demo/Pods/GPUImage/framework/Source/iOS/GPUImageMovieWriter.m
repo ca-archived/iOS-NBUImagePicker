@@ -254,7 +254,6 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
 - (void)startRecording;
 {
     alreadyFinishedRecording = NO;
-    isRecording = YES;
     startTime = kCMTimeInvalid;
     runSynchronouslyOnContextQueue(_movieWriterContext, ^{
         if (audioInputReadyCallback == NULL)
@@ -262,6 +261,7 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             [assetWriter startWriting];
         }
     });
+    isRecording = YES;
 	//    [assetWriter startSessionAtSourceTime:kCMTimeZero];
 }
 
@@ -385,6 +385,29 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
         }
 
         previousAudioTime = currentSampleTime;
+        
+        //if the consumer wants to do something with the audio samples before writing, let him.
+        if (self.audioProcessingCallback) {
+            //need to introspect into the opaque CMBlockBuffer structure to find its raw sample buffers.
+            CMBlockBufferRef buffer = CMSampleBufferGetDataBuffer(audioBuffer);
+            CMItemCount numSamplesInBuffer = CMSampleBufferGetNumSamples(audioBuffer);
+            AudioBufferList audioBufferList;
+            
+            CMSampleBufferGetAudioBufferListWithRetainedBlockBuffer(audioBuffer,
+                                                                    NULL,
+                                                                    &audioBufferList,
+                                                                    sizeof(audioBufferList),
+                                                                    NULL,
+                                                                    NULL,
+                                                                    kCMSampleBufferFlag_AudioBufferList_Assure16ByteAlignment,
+                                                                    &buffer
+                                                                    );
+            //passing a live pointer to the audio buffers, try to process them in-place or we might have syncing issues.
+            for (int bufferCount=0; bufferCount < audioBufferList.mNumberBuffers; bufferCount++) {
+                SInt16 *samples = (SInt16 *)audioBufferList.mBuffers[bufferCount].mData;
+                self.audioProcessingCallback(&samples, numSamplesInBuffer);
+            }
+        }
         
 //        NSLog(@"Recorded audio sample time: %lld, %d, %lld", currentSampleTime.value, currentSampleTime.timescale, currentSampleTime.epoch);
         void(^write)() = ^() {

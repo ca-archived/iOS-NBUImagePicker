@@ -8,27 +8,33 @@
 
 // CocoaLumberjack
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 1
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack 9
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 1
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 2
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack 0
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 0
+
+// CocoaLumberjack/CLI
+#define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_CLI
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_CLI 2
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_CLI 0
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_CLI 0
 
 // CocoaLumberjack/Core
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Core
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 1
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 9
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 1
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 2
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 0
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 0
 
 // CocoaLumberjack/Extensions
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Extensions
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Extensions 1
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 9
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 1
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Extensions 2
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 0
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 0
 
 // GPUImage
 #define COCOAPODS_POD_AVAILABLE_GPUImage
 #define COCOAPODS_VERSION_MAJOR_GPUImage 0
 #define COCOAPODS_VERSION_MINOR_GPUImage 1
-#define COCOAPODS_VERSION_PATCH_GPUImage 4
+#define COCOAPODS_VERSION_PATCH_GPUImage 5
 
 // Lockbox
 #define COCOAPODS_POD_AVAILABLE_Lockbox
@@ -39,8 +45,8 @@
 // LumberjackConsole
 #define COCOAPODS_POD_AVAILABLE_LumberjackConsole
 #define COCOAPODS_VERSION_MAJOR_LumberjackConsole 2
-#define COCOAPODS_VERSION_MINOR_LumberjackConsole 0
-#define COCOAPODS_VERSION_PATCH_LumberjackConsole 2
+#define COCOAPODS_VERSION_MINOR_LumberjackConsole 1
+#define COCOAPODS_VERSION_PATCH_LumberjackConsole 0
 
 // MotionOrientation@PTEz
 #define COCOAPODS_POD_AVAILABLE_MotionOrientation_PTEz
@@ -58,61 +64,61 @@
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker 3
 
 // NBUImagePicker/Assets
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Assets
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Assets 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Assets 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Assets 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Assets 3
 
 // NBUImagePicker/Base
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Base
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Base 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Base 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Base 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Base 3
 
 // NBUImagePicker/Camera
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Camera
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Camera 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Camera 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Camera 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Camera 3
 
 // NBUImagePicker/Filters
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Filters 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Filters 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Filters 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Filters 3
 
 // NBUImagePicker/Gallery
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Gallery
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Gallery 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Gallery 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Gallery 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Gallery 3
 
 // NBUImagePicker/Image
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Image
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Image 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Image 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Image 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Image 3
 
 // NBUImagePicker/MediaInfo
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_MediaInfo
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_MediaInfo 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_MediaInfo 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_MediaInfo 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_MediaInfo 3
 
 // NBUImagePicker/Picker
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Picker
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Picker 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Picker 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Picker 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Picker 3
 
 // NBUImagePicker/Resources
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Resources
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Resources 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Resources 3
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Resources 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Resources 3
 
 // NBUKit
 #define COCOAPODS_POD_AVAILABLE_NBUKit
@@ -159,12 +165,12 @@
 // NBULog
 #define COCOAPODS_POD_AVAILABLE_NBULog
 #define COCOAPODS_VERSION_MAJOR_NBULog 1
-#define COCOAPODS_VERSION_MINOR_NBULog 0
-#define COCOAPODS_VERSION_PATCH_NBULog 8
+#define COCOAPODS_VERSION_MINOR_NBULog 1
+#define COCOAPODS_VERSION_PATCH_NBULog 0
 
-// RBVolumeButtons
-#define COCOAPODS_POD_AVAILABLE_RBVolumeButtons
-#define COCOAPODS_VERSION_MAJOR_RBVolumeButtons 0
-#define COCOAPODS_VERSION_MINOR_RBVolumeButtons 0
-#define COCOAPODS_VERSION_PATCH_RBVolumeButtons 1
+// RBVolumeButtons@PTEz
+#define COCOAPODS_POD_AVAILABLE_RBVolumeButtons_PTEz
+#define COCOAPODS_VERSION_MAJOR_RBVolumeButtons_PTEz 0
+#define COCOAPODS_VERSION_MINOR_RBVolumeButtons_PTEz 1
+#define COCOAPODS_VERSION_PATCH_RBVolumeButtons_PTEz 0
 

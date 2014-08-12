@@ -57,7 +57,7 @@
 #define NBULogInfo(frmt, ...)    LOG_OBJC_MAYBE(LOG_ASYNC_INFO,    LOG_LEVEL, LOG_FLAG_INFO,    LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
 #define NBULogDebug(frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_DEBUG,   LOG_LEVEL, LOG_FLAG_DEBUG,   LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
 #define NBULogVerbose(frmt, ...) LOG_OBJC_MAYBE(LOG_ASYNC_VERBOSE, LOG_LEVEL, LOG_FLAG_VERBOSE, LOG_CONTEXT + LOG_MODULE, frmt, ##__VA_ARGS__)
-#define NBULogTrace()            NBULogDebug(@"%@", THIS_METHOD)
+#define NBULogTrace()            NBULogDebug(@"%s", __PRETTY_FUNCTION__)
 
 /// Log with specific module that may be different from the currently defined LOG_MODULE
 #define NBULogErrorWithModule(mod, frmt, ...)   LOG_OBJC_MAYBE(LOG_ASYNC_ERROR,   LOG_LEVEL_FOR_MODULE(mod), LOG_FLAG_ERROR,   LOG_CONTEXT + mod, frmt, ##__VA_ARGS__)
