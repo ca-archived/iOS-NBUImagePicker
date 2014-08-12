@@ -20,7 +20,7 @@
 
 #import "NBUCameraViewController.h"
 #import "NBUImagePickerPrivate.h"
-#import <RBVolumeButtons/RBVolumeButtons.h>
+#import <RBVolumeButtons@PTEz/RBVolumeButtons.h>
 
 @implementation NBUCameraViewController
 {
