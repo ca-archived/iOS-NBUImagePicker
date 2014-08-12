@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
         sub.source_files    = 'Source/Filters/*.{h,m}'
         sub.frameworks      = 'CoreImage'
         sub.dependency      'NBUImagePicker/Base'
-        sub.dependency      'GPUImage', '>= 0.1.4'
+        sub.dependency      'GPUImage', '>= 0.1.5'
     end
     
     s.subspec 'Image' do |sub|
