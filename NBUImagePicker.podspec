@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "NBUImagePicker"
-    s.version       = "1.3.2"
+    s.version       = "1.3.3"
     s.summary       = "Modular image picker with Simulator-compatible AVFondation camera, assets library, filters and more."
     s.description   = "Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery. Change element's sizes, position, customize picker workflow, add/remove/rename filters, localize for other languages, use cropping features from other libraries, etc."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUImagePicker/"
