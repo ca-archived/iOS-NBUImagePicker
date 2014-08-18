@@ -154,8 +154,12 @@
             NBULogVerbose(@"Assets group %@ count changed: %@ -> %@", _name, @(_lastAssetsCount), @(newCount));
             
             _lastAssetsCount = newCount;
-            [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
-                                                                object:self];
+            
+            dispatch_async(dispatch_get_main_queue(), ^
+                           {
+                               [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
+                                                                                   object:self];
+                           });
         }
         return;
     }
@@ -178,8 +182,11 @@
                  NBULogVerbose(@"Assets group %@ count changed: %@ -> %@",
                                _name, @(oldCount), @(self.imageAssetsCount));
                  
-                 [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
-                                                                     object:self];
+                 dispatch_async(dispatch_get_main_queue(), ^
+                                {
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:NBUObjectUpdatedNotification
+                                                                                        object:self];
+                                });
              }
          }
          else
