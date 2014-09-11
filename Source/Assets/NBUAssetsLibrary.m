@@ -529,7 +529,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                 }
                 
                 // Return
-                resultBlock(assetURLs,
+                resultBlock(assets,
                             resultError);
             }
         }];
