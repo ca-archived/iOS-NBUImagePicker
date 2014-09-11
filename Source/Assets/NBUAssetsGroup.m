@@ -333,8 +333,11 @@
 - (void)iOS8CountHack
 {
     [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
+    [_ALAssetsGroup numberOfAssets];
     [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allVideos]];
+    [_ALAssetsGroup numberOfAssets];
     [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allAssets]];
+    [_ALAssetsGroup numberOfAssets];
 }
 
 - (NSUInteger)assetsCount
