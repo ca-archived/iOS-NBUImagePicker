@@ -143,9 +143,9 @@
                  _assets = assets;
                  
                  // Update from time to time only...
-                 if (assets.count == 100 ||
-                     assets.count == 400 ||
-                     assets.count == totalCount)
+                 if ((assets.count == _loadSize)    ||
+                     (assets.count == _loadSize * 4)||
+                     (assets.count == totalCount))
                  {
                      NBULogDebug(@"...%@ images loaded", @(assets.count));
                      

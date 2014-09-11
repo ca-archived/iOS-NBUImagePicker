@@ -308,7 +308,7 @@
             }
             else
             {
-                NBULogVerbose(@"Loading %@ finished: %@ assets with filter %@", _name, @(assets.count), filter);
+                NBULogVerbose(@"Loading '%@' finished: %@ assets with filter %@", _name, @(assets.count), filter);
                 
                 resultBlock(assets, nil);
             }
