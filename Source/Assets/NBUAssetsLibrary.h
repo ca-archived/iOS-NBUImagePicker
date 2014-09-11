@@ -26,7 +26,7 @@
 /// NBUAsset return block types.
 typedef void (^NBUAssetsGroupsResultBlock)(NSArray * groups, NSError * error);
 typedef void (^NBUAssetsGroupResultBlock)(NBUAssetsGroup * group, NSError * error);
-typedef void (^NBUAssetsResultBlock)(NSArray * assets, NSError * error);
+typedef void (^NBUAssetsResultBlock)(NSArray * assets, BOOL finished, NSError * error);
 typedef void (^NBUAssetResultBlock)(NBUAsset * imageAsset, NSError * error);
 typedef void (^NBUAssetURLResultBlock)(NSURL * assetURL, NSError * error);
 

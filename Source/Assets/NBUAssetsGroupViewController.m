@@ -136,6 +136,7 @@
                                  reverseOrder:_reverseOrder
                           incrementalLoadSize:_loadSize
                                   resultBlock:^(NSArray * assets,
+                                                BOOL finished,
                                                 NSError * error)
          {
              if (!error)
@@ -143,14 +144,14 @@
                  _assets = assets;
                  
                  // Update from time to time only...
-                 if ((assets.count == _loadSize)    ||
-                     (assets.count == _loadSize * 4)||
-                     (assets.count == totalCount))
+                 if (finished ||
+                     (assets.count == _loadSize) ||
+                     (assets.count == _loadSize * 4))
                  {
                      NBULogDebug(@"...%@ images loaded", @(assets.count));
                      
-                     // Stop loading?
-                     if (assets.count == totalCount)
+                     // Finished?
+                     if (finished)
                      {
                          NBULogInfo(@"Finished loading %@ images", @(assets.count));
                          

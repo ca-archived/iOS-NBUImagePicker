@@ -34,6 +34,7 @@
     [super viewDidLoad];
     
     [[NBUAssetsLibrary sharedLibrary] allImageAssetsWithResultBlock:^(NSArray * assets,
+                                                                      BOOL finished,
                                                                       NSError * error)
     {
         if (!error)

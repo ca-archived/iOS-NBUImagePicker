@@ -263,7 +263,7 @@
     NSMutableArray * assets = [NSMutableArray array];
     if (countToReach == 0)
     {
-        resultBlock(assets, nil);
+        resultBlock(assets, YES, nil);
         return;
     }
     
@@ -295,7 +295,7 @@
             {
                 NBULogVerbose(@"%@ Incrementally loaded: %@ assets", _name, @(assets.count));
                 
-                resultBlock(assets, nil);
+                resultBlock(assets, NO, nil);
             }
         }
         
@@ -309,8 +309,13 @@
             else
             {
                 NBULogVerbose(@"Loading '%@' finished: %@ assets with filter %@", _name, @(assets.count), filter);
+                if (assets.count != countToReach)
+                {
+                    NBULogWarn(@"iOS bug: AssetsLibrary returned only %@ assets but numberOfAssets was %@.",
+                               @(assets.count), @(countToReach));
+                }
                 
-                resultBlock(assets, nil);
+                resultBlock(assets, YES, nil);
             }
         }
     };
@@ -497,11 +502,11 @@ static CGSize _thumbnailSize;
             (assets.count % loadSize) == 0 &&
             assets.count != fileURLs.count)
         {
-            resultBlock(assets, nil);
+            resultBlock(assets, NO, nil);
         }
     }
     
-    resultBlock(assets, nil);
+    resultBlock(assets, YES, nil);
 }
 
 @end

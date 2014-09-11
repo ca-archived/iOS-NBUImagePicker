@@ -403,7 +403,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                         error1.code == ALAssetsLibraryAccessGloballyDeniedError))   // Location is not enabled
          {
              // No need to continue
-             resultBlock(nil, error1);
+             resultBlock(nil, YES, error1);
              return;
          }
          if (cameraRollGroup)
@@ -413,6 +413,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                                  reverseOrder:NO
                           incrementalLoadSize:0
                                   resultBlock:^(NSArray * cameraRollAssets,
+                                                BOOL finished,
                                                 NSError * error2)
               {
                   NBULogVerbose(@"All assets: adding %@ from camera roll...", @(cameraRollAssets.count));
@@ -429,6 +430,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                                                  reverseOrder:NO
                                           incrementalLoadSize:0
                                                   resultBlock:^(NSArray * photoLibraryAssets,
+                                                                BOOL finished,
                                                                 NSError * error4)
                             {
                                 NBULogVerbose(@"All assets: adding %@ from photo library...", @(photoLibraryAssets.count));
@@ -436,7 +438,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                                 
                                 // Finally return the assets
                                 NBULogVerbose(@"All assets: Returning %@ assets", @(assets.count));
-                                resultBlock(assets, nil);
+                                resultBlock(assets, YES, nil);
                             }];
                        }
                    }];
@@ -529,8 +531,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
                 }
                 
                 // Return
-                resultBlock(assets,
-                            resultError);
+                resultBlock(assets, YES, resultError);
             }
         }];
     }
