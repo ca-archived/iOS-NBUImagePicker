@@ -330,23 +330,30 @@
      }
 }
 
+- (void)iOS8CountHack
+{
+    [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
+    [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allVideos]];
+    [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allAssets]];
+}
+
 - (NSUInteger)assetsCount
 {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [_ALAssetsGroup numberOfAssets];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [self iOS8CountHack];
     [_ALAssetsGroup setAssetsFilter:nil];
     return (NSUInteger)[_ALAssetsGroup numberOfAssets];
 }
 
 - (NSUInteger)imageAssetsCount
 {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [_ALAssetsGroup numberOfAssets];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [self iOS8CountHack];
     [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
     return (NSUInteger)[_ALAssetsGroup numberOfAssets];
 }
 
 - (NSUInteger)videoAssetsCount
 {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [_ALAssetsGroup numberOfAssets];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [self iOS8CountHack];
     [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allVideos]];
     return (NSUInteger)[_ALAssetsGroup numberOfAssets];
 }
