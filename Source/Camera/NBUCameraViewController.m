@@ -55,7 +55,7 @@
     self.savePicturesToLibrary = _savePicturesToLibrary;
     self.targetLibraryAlbumName = _targetLibraryAlbumName;
     
-    __unsafe_unretained NBUCameraViewController * weakSelf = self;
+    __weak NBUCameraViewController * weakSelf = self;
     _cameraView.flashButtonConfigurationBlock = ^(id<UIButton> button, AVCaptureFlashMode mode)
     {
         weakSelf.flashLabel.hidden = button.hidden;
@@ -106,7 +106,7 @@
     {
         if (!_buttonStealer)
         {
-            __unsafe_unretained NBUCameraViewController * weakSelf = self;
+            __weak NBUCameraViewController * weakSelf = self;
             ButtonBlock block = ^
             {
                 [weakSelf.cameraView takePicture:weakSelf];
