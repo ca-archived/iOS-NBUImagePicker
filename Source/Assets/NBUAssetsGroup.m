@@ -332,18 +332,21 @@
 
 - (NSUInteger)assetsCount
 {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [_ALAssetsGroup numberOfAssets];
     [_ALAssetsGroup setAssetsFilter:nil];
     return (NSUInteger)[_ALAssetsGroup numberOfAssets];
 }
 
 - (NSUInteger)imageAssetsCount
 {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [_ALAssetsGroup numberOfAssets];
     [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
     return (NSUInteger)[_ALAssetsGroup numberOfAssets];
 }
 
 - (NSUInteger)videoAssetsCount
 {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) [_ALAssetsGroup numberOfAssets];
     [_ALAssetsGroup setAssetsFilter:[ALAssetsFilter allVideos]];
     return (NSUInteger)[_ALAssetsGroup numberOfAssets];
 }
