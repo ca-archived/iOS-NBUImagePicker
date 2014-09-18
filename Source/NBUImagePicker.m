@@ -24,7 +24,7 @@
 
 + (NSString *)version
 {
-    return @"1.3.4";
+    return @"1.4.0";
 }
 
 + (NSBundle *)bundle
