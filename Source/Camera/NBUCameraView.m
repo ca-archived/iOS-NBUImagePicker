@@ -289,7 +289,7 @@
     {
         return [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusDenied;
     }
-    return YES;
+    return NO;
 }
 
 - (BOOL)restrictedAccess
@@ -298,7 +298,7 @@
     {
         return [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusRestricted;
     }
-    return YES;
+    return NO;
 }
 
 #pragma mark - Properties
