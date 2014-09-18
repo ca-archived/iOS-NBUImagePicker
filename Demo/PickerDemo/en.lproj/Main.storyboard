@@ -406,6 +406,13 @@
                                     <outlet property="whiteBalanceButton" destination="JXW-WU-OA9" id="ZFO-j2-dDc"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Camera Access Denied" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ll9-Xg-sPV">
+                                <rect key="frame" x="70" y="249" width="180" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SGS-HU-EhR">
                                 <rect key="frame" x="270" y="99" width="44" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -463,6 +470,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Camera" image="second" id="Tu0-74-PMd"/>
                     <connections>
+                        <outlet property="accessDeniedView" destination="ll9-Xg-sPV" id="4q2-fb-mEm"/>
                         <outlet property="cameraView" destination="EzM-Ut-7cG" id="PmE-97-pLk"/>
                         <outlet property="shootButton" destination="Zq9-gS-AhA" id="rkp-M7-FdE"/>
                         <outlet property="slideView" destination="WSV-eL-jve" id="zAZ-nO-IPw"/>

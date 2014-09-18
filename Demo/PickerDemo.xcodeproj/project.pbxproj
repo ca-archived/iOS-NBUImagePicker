@@ -110,6 +110,7 @@
 		E57AC38318618D8E00BDE659 /* RJ29.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = RJ29.acv; sourceTree = "<group>"; };
 		E57AC38418618D8E00BDE659 /* RJ30.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = RJ30.acv; sourceTree = "<group>"; };
 		E57AC38518618D8E00BDE659 /* Toy.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Toy.acv; sourceTree = "<group>"; };
+		E57FDDF519CAC50A0011B4E5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E58DA581184339C100D60BBC /* PickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58DA584184339C100D60BBC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E58DA586184339C100D60BBC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -344,6 +345,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = E58DA578184339C100D60BBC;
 			productRefGroup = E58DA582184339C100D60BBC /* Products */;
@@ -458,6 +460,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E58DA58E184339C100D60BBC /* en */,
+				E57FDDF519CAC50A0011B4E5 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

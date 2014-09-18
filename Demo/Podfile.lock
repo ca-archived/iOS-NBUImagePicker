@@ -10,9 +10,9 @@ PODS:
     - CocoaLumberjack/Core
   - GPUImage (HEAD based on 0.1.5)
   - Lockbox (1.4.9)
-  - LumberjackConsole (2.1.0):
+  - LumberjackConsole (2.2.1):
     - CocoaLumberjack (>= 2.0.0-beta)
-    - NBUCore (>= 2.0.2)
+    - NBUCore (>= 2.0.3)
   - MotionOrientation@PTEz (1.1.0)
   - NBUCore (2.0.3)
   - NBUImagePicker (1.3.4):
@@ -112,7 +112,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
   GPUImage: 5114a47f5fc33eb312f3731550a3cea379416d04
   Lockbox: cfe87dbbce6b5c6d7cfeefc3fe6594ef55919b11
-  LumberjackConsole: d3f161cfebc1a3a0f9c4d8d731f0ca0dccc5d8ab
+  LumberjackConsole: 53cf2f5917d114ce637825d065e2c91a3ed1d785
   MotionOrientation@PTEz: ec58ced639faa14d30e63db9ef5cba8ded38b3b5
   NBUCore: 397184612d5f05d7730aaad98d6bc0a75b7984ef
   NBUImagePicker: fd6bbe8aca95f933c2fed972ff8e857a0f45d6c6
