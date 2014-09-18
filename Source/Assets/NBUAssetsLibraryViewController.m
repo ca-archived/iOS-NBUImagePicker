@@ -80,12 +80,12 @@
          }
          else
          {
-             NBULogWarn(@"The user has denied access!");
+             NBULogWarn(@"Access to library denied");
              
              // Update UI
              if (_shouldUpdateNavigationItemTitle)
              {
-                 self.navigationItem.title = error.localizedDescription;
+                 self.navigationItem.title = NBULocalizedString(@"NBUAssetsLibraryViewController LibraryAccessDeniedTitle", @"Access Denied");
              }
              self.accessDeniedView.hidden = NO;
          }
