@@ -114,12 +114,19 @@
     if (!_controls)
     {
         _controls = [NSMutableArray array];
-        if (_shootButton) [_controls addObject:_shootButton];
         if (_toggleCameraButton) [_controls addObject:_toggleCameraButton];
         if (_flashButton) [_controls addObject:_flashButton];
         if (_focusButton) [_controls addObject:_focusButton];
         if (_exposureButton) [_controls addObject:_exposureButton];
         if (_whiteBalanceButton) [_controls addObject:_whiteBalanceButton];
+    }
+    
+    // Access denied?
+    if (self.userDeniedAccess || self.restrictedAccess)
+    {
+        NBULogWarn(@"Access to camera denied");
+        [self updateUI];
+        return;
     }
     
     // Create a capture session if needed
@@ -379,11 +386,13 @@
 - (void)updateUI
 {
     // Enable/disable controls
-    _toggleCameraButton.enabled = _availableCaptureDevices.count > 1;
-    _flashButton.enabled = _availableFlashModes.count > 1;
-    _focusButton.enabled = _availableFocusModes.count > 1;
-    _exposureButton.enabled = _availableExposureModes.count > 1;
-    _whiteBalanceButton.enabled = _availableWhiteBalanceModes.count > 1;
+    BOOL accessDenied = self.userDeniedAccess || self.restrictedAccess;
+    _toggleCameraButton.enabled = !accessDenied && _availableCaptureDevices.count > 1;
+    _flashButton.enabled = !accessDenied && _availableFlashModes.count > 1;
+    _focusButton.enabled = !accessDenied && _availableFocusModes.count > 1;
+    _exposureButton.enabled = !accessDenied && _availableExposureModes.count > 1;
+    _whiteBalanceButton.enabled = !accessDenied && _availableWhiteBalanceModes.count > 1;
+    _shootButton.enabled = !accessDenied;
     
     // Hide disabled controls?
     if (!_showDisabledControls)
@@ -566,12 +575,18 @@
 {
     NBULogTrace();
     
-    // Ignore while busy
+    // Ignore?
     if (_captureInProgress)
     {
         NBULogWarn(@"%@ Ignored as a capture is already in progress.", THIS_METHOD);
         return;
     }
+    if (self.userDeniedAccess || self.restrictedAccess)
+    {
+        NBULogWarn(@"%@ Aborted, camera access denied.", THIS_METHOD);
+        return;
+    }
+    
     _captureInProgress = YES;
     
     // Update UI
