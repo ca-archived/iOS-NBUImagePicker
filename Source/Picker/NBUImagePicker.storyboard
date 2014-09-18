@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="t2c-CE-JOu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="t2c-CE-JOu">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <development version="5100" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Camera View Controller - @@CameraTitle-->
+        <!--@@CameraTitle-->
         <scene sceneID="v82-Lg-zNU">
             <objects>
                 <viewController storyboardIdentifier="cameraController" automaticallyAdjustsScrollViewInsets="NO" id="t2c-CE-JOu" customClass="NBUCameraViewController" sceneMemberID="viewController">
@@ -122,8 +123,6 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                        <simulatedMetricsInferredSentinel key="simulatedStatusBarMetrics"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="@@CameraTitle" id="rux-U1-0yC">
@@ -148,7 +147,7 @@
             </objects>
             <point key="canvasLocation" x="-299" y="-443"/>
         </scene>
-        <!--Assets Library View Controller - @@LibraryLoadingTitle-->
+        <!--@@LibraryLoadingTitle-->
         <scene sceneID="2Ll-hk-3pp">
             <objects>
                 <viewController storyboardIdentifier="libraryController" id="y7l-XI-RTA" customClass="NBUAssetsLibraryViewController" sceneMemberID="viewController">
@@ -173,7 +172,6 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                                 <connections>
                                     <outlet property="noContentsView" destination="lTZ-58-nmd" id="OoI-IQ-IxX"/>
                                 </connections>
@@ -203,7 +201,7 @@
             </objects>
             <point key="canvasLocation" x="-456" y="125"/>
         </scene>
-        <!--Assets Group View Controller - @@AssetsGroupName-->
+        <!--@@AssetsGroupName-->
         <scene sceneID="wUc-Ol-PJ8">
             <objects>
                 <viewController storyboardIdentifier="assetsGroupController" id="Qqm-Wy-WtE" customClass="NBUAssetsGroupViewController" sceneMemberID="viewController">
@@ -237,7 +235,6 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                                 <connections>
                                     <outlet property="noContentsView" destination="QqZ-uV-Pz9" id="NjG-Nq-0QB"/>
                                 </connections>
@@ -318,10 +315,8 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                             </view>
                         </subviews>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </scrollView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="8c5-N5-gne">
@@ -399,7 +394,7 @@
             </objects>
             <point key="canvasLocation" x="263" y="-162"/>
         </scene>
-        <!--Gallery View Controller - @@ConfirmTitle-->
+        <!--@@ConfirmTitle-->
         <scene sceneID="C63-Rb-dF9">
             <objects>
                 <viewController storyboardIdentifier="confirmController" automaticallyAdjustsScrollViewInsets="NO" id="v5Y-Bh-wjK" customClass="NBUGalleryViewController" sceneMemberID="viewController">
@@ -491,16 +486,12 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                                 <connections>
                                     <outlet property="scrollView" destination="ZCO-AD-qc6" id="y7V-nh-juT"/>
                                     <outlet property="viewToCrop" destination="Ndt-y3-X3R" id="sJc-wb-BvE"/>
                                 </connections>
                             </view>
                         </subviews>
-                        <simulatedMetricsInferredSentinel key="simulatedStatusBarMetrics"/>
-                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                        <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     </scrollView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="hbe-qD-FI7">
@@ -591,7 +582,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                             </view>
                         </subviews>
                     </scrollView>
