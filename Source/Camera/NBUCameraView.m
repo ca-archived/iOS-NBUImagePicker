@@ -274,6 +274,26 @@
     }
 }
 
+#pragma mark - Access permissions
+
+- (BOOL)userDeniedAccess
+{
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        return [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusDenied;
+    }
+    return YES;
+}
+
+- (BOOL)restrictedAccess
+{
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        return [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusRestricted;
+    }
+    return YES;
+}
+
 #pragma mark - Properties
 
 - (void)setCurrentCaptureDevice:(NSString *)currentCaptureDevice

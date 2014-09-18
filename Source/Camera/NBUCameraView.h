@@ -110,6 +110,14 @@ typedef void (^NBUButtonConfigurationBlock)(id<UIButton> button,
 @property (nonatomic, readonly,
            getter=isRecording)          BOOL recording;
 
+/// @name Access Permissions
+
+/// Whether the user has actively denied access to the camera.
+@property (nonatomic, readonly)             BOOL userDeniedAccess;
+
+/// Whether parental controls have denied access to the camera.
+@property (nonatomic, readonly)             BOOL restrictedAccess;
+
 /// @name Capture Devices and Modes
 
 /// The available capture devices' uniqueID's (ex. Front, Back camera).
