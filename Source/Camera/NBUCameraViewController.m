@@ -81,6 +81,11 @@
     if (!self.navigationItem.titleView && [self.navigationItem.title hasPrefix:@"@@"])
     {
         self.navigationItem.title = NBULocalizedString(@"NBUImagePickerController CameraTitle", @"Camera");
+    
+    // Configure access denied view if needed
+    if (_accessDeniedView)
+    {
+        _accessDeniedView.hidden = (!_cameraView.userDeniedAccess && !_cameraView.restrictedAccess);
     }
 }
 

@@ -59,6 +59,9 @@
 /// The camera underlying view.
 @property (weak, nonatomic) IBOutlet    NBUCameraView * cameraView;
 
+/// An optional view to be shown (`hidden = NO`) when the user has denied access to the camera.
+@property (strong, nonatomic) IBOutlet  UIView * accessDeniedView;
+
 /// A label that displays the [NBUCameraView currentFlashMode].
 @property (weak, nonatomic) IBOutlet    UILabel * flashLabel;
 
