@@ -389,9 +389,8 @@
             _assetsGroupController.clearsSelectionOnViewWillAppear = YES;
             
             __weak NBUImagePickerController * weakSelf = self;
-            _assetsGroupController.selectionChangedBlock = ^()
+            _assetsGroupController.selectionChangedBlock = ^(NSArray * selectedAssets)
             {
-                NSArray * selectedAssets = weakSelf.assetsGroupController.selectedAssets;
                 if (selectedAssets.count > 0)
                 {
                     [weakSelf _finishAssetsSelection];

@@ -240,7 +240,7 @@
     }
     
     // Call the selection changed block
-    if (_selectionChangedBlock) _selectionChangedBlock();
+    if (_selectionChangedBlock) _selectionChangedBlock(self.selectedAssets);
 }
 
 - (NSArray *)selectedAssetsFromAssets:(NSArray *)assets
@@ -349,7 +349,7 @@
     _continueButton.enabled = _selectedAssets.count > 0;
     
     // Call the selection changed block
-    if (_selectionChangedBlock) _selectionChangedBlock();
+    if (_selectionChangedBlock) _selectionChangedBlock(self.selectedAssets);
 }
 
 @end

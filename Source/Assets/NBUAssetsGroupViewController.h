@@ -55,7 +55,7 @@
 @property (strong, nonatomic)                       NSArray * selectedAssetsURLs;
 
 /// An optional block to be called when the selection changes.
-@property (nonatomic, copy)                         void (^selectionChangedBlock)();
+@property (nonatomic, copy)                         void (^selectionChangedBlock)(NSArray * selectedAssets);
 
 /// The maximum number of assets that can be selected. Default `0` which means no limit.
 @property (nonatomic)                               NSUInteger selectionCountLimit;
