@@ -597,7 +597,7 @@
         [controllers removeLastObject];
         if (!_controllersToToggleBack)
         {
-            _controllersToToggleBack = [NSArray arrayWithObject:self.libraryController];
+            _controllersToToggleBack = [NSArray arrayWithObjects:self.libraryController, nil];
         }
         [controllers insertObjects:_controllersToToggleBack
                          atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(controllers.count,
@@ -610,7 +610,7 @@
         {
             // One
             [controllers removeLastObject];
-            _controllersToToggleBack = [NSArray arrayWithObject:self.libraryController];
+            _controllersToToggleBack = [NSArray arrayWithObjects:self.libraryController, nil];
         }
         else
         {
