@@ -197,9 +197,9 @@
     }
     
     // Filters not available?
-    #ifndef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
-    NBULogDebug(@"Options: Filters not available.");
-    options |= NBUImagePickerOptionDisableFilters;
+    #if !__has_include("NBUFilters.h")
+        NBULogDebug(@"Options: Filters not available.");
+        options |= NBUImagePickerOptionDisableFilters;
     #endif
     
     NBULogInfo(@"Picker options: %lx", (long)options);

@@ -77,7 +77,7 @@ typedef void (^NBUEditImageResultBlock)(UIImage * image);
 
 /// @name Outlets
 
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+#if __has_include("NBUFilters.h")
 /// The optional NBUPresetFilterView.
 @property (weak, nonatomic) IBOutlet                NBUPresetFilterView * filterView;
 #endif

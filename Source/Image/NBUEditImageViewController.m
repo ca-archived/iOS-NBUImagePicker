@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     
-    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+    #if __has_include("NBUFilters.h")
     // Configure filterView
     if (!_filterView)
     {
@@ -64,7 +64,7 @@
     }
 }
 
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+#if __has_include("NBUFilters.h")
 - (void)setFilters:(NSArray *)filters
 {
     _filters = filters;
@@ -108,7 +108,7 @@
         _cropView.image = self.image;
     }
     
-    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+    #if __has_include("NBUFilters.h")
     // Or just filterView
     else
     {
@@ -128,7 +128,7 @@
         image = _cropView.image;
     }
     
-    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+    #if __has_include("NBUFilters.h")
     // Or from filterView
     else
     {
@@ -155,7 +155,7 @@
     
     self.object = mediaInfo.originalImage;
     
-    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+    #if __has_include("NBUFilters.h")
     // Restore state
     NBUFilter * filter = mediaInfo.attributes[NBUMediaInfoFiltersKey];
     if (filter)
@@ -172,7 +172,7 @@
     {
         _mediaInfo.attributes[NBUMediaInfoCropRectKey] = [NSValue valueWithCGRect:_cropView.currentCropRect];
     }
-    #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+    #if __has_include("NBUFilters.h")
     if (_filterView)
     {
         NBUFilter * currentFilter = _filterView.currentFilter;
@@ -205,7 +205,7 @@
 {
     if (_resultBlock)
     {
-        #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+        #if __has_include("NBUFilters.h")
         _filterView.activityView.hidden = NO;
         #endif
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
@@ -213,7 +213,7 @@
             UIImage * processedImage = self.editedImage;
             dispatch_async(dispatch_get_main_queue(), ^
             {
-                #ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+                #if __has_include("NBUFilters.h")
                 _filterView.activityView.hidden = YES;
                 #endif
                 _resultBlock(processedImage);

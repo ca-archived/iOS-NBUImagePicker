@@ -27,7 +27,7 @@
 
 
 // a) Use NBULog for logging when available
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog.h")
 
 #import "NBULog+NBUImagePicker.h"
 
@@ -42,7 +42,7 @@
 
 
 // b) Else try CocoaLumberjack
-#elif defined(COCOAPODS_POD_AVAILABLE_CocoaLumberjack)
+#elif __has_include("DDLog.h")
 
 #ifdef DEBUG
     #define NBUImagePickerLogLevel LOG_LEVEL_VERBOSE

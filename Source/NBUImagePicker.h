@@ -18,48 +18,45 @@
 //  limitations under the License.
 //
 
-/// Pods Environment
-#import "../Pods-environment.h"
-
 /// NBULog
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog.h")
     #import "NBULog+NBUImagePicker.h"
 #endif
 
 /// Camera
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Camera
+#if __has_include("NBUCamera.h")
     #import "NBUCamera.h"
 #endif
 
 /// Assets
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Assets
+#if __has_include("NBUAssets.h")
     #import "NBUAssets.h"
 #endif
 
 /// Filters
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
+#if __has_include("NBUFilters.h")
     #import "NBUFilters.h"
 #endif
 
 /// Gallery
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Gallery
+#if __has_include("NBUGallery.h")
     #import "NBUGallery.h"
 #endif
 
 /// Image Editing
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Image
+#if __has_include("NBUCropView.h")
     #import "NBUCropView.h"
     #import "NBUEditImageViewController.h"
     #import "NBUEditMultiImageViewController.h"
 #endif
 
 /// Media Info
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_MediaInfo
+#if __has_include("NBUMediaInfo.h")
     #import "NBUMediaInfo.h"
 #endif
 
 /// Image Picker
-#ifdef COCOAPODS_POD_AVAILABLE_NBUImagePicker_Picker
+#if __has_include("NBUImagePickerController.h")
     #import "NBUImagePickerController.h"
 #endif
 
