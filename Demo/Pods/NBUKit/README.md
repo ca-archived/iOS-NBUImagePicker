@@ -3,8 +3,9 @@ NBUKit
 ======
 
 [![Platform: iOS](https://img.shields.io/cocoapods/p/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
-[![Version: 2.2.2](https://img.shields.io/cocoapods/v/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
+[![Version: 2.3.0](https://img.shields.io/cocoapods/v/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
+[![Dependency Status](https://www.versioneye.com/objective-c/NBUKit/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBUKit)
 [![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBUKit/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 UIKit and NSFoundation convenience categories and subclasses.
@@ -14,7 +15,7 @@ Image Picker code moved to [NBUImagePicker](https://github.com/CyberAgent/iOS-NB
 
 ## Demo
 
-There is a NBUKitDemo project included in the repository and can also be tried online [here](https://app.io/4kq2Fz).
+A demo project is [included](Demo) in the repository.
 
 ## Features
 
@@ -45,7 +46,7 @@ There is a NBUKitDemo project included in the repository and can also be tried o
 
 ## Installation
 
-For now add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://docs.cocoapods.org/podfile.html):
+For now add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://guides.cocoapods.org/syntax/podfile.html):
 
 ```ruby
 platform :ios, '5.0'
@@ -65,6 +66,8 @@ http://cocoadocs.org/docsets/NBUKit/
 
 ##License
 
+    Copyright 2012-2014 CyberAgent Inc.
+    
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 
     You may obtain a copy of the License at

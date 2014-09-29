@@ -1,1 +1,0 @@
-../../../../Source/Gallery/NBUGalleryThumbnailView.h

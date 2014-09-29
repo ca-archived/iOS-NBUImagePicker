@@ -1,0 +1,1 @@
+PODS_NBUIMAGEPICKER_OTHER_LDFLAGS = -framework "AVFoundation" -framework "AssetsLibrary" -framework "CoreImage" -framework "CoreVideo"
