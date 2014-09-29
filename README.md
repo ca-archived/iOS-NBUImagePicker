@@ -14,7 +14,7 @@ _Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) and [NBUKit](https://
 
 ## Demo
 
-There is a PickerDemo project included in the repository and can also be tried online [here](https://app.io/hOkuyK).
+A demo project is [included](Demo) in the repository.
 
 ## Features
 
