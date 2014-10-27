@@ -1046,7 +1046,12 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     CGPoint pointOfInterest = CGPointMake(.5f, .5f);
     CGSize frameSize = self.size;
     
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0") ? _previewLayer.isMirrored : _videoConnection.isVideoMirrored)
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0") ?
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        _previewLayer.isMirrored :
+#pragma clang diagnostic pop
+        _videoConnection.isVideoMirrored)
     {
         viewCoordinates.x = frameSize.width - viewCoordinates.x;
     }
@@ -1172,7 +1177,6 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
         self.alpha = 0.0;
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
-        self.contentStretch = CGRectMake(0.2, 0.2, 0.6, 0.6);
         self.autoresizingMask = UIViewAutoresizingNone;
     }
     return self;
@@ -1211,3 +1215,4 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 }
 
 @end
+

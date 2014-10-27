@@ -63,15 +63,16 @@
     _thumbnailMargin = CGSizeMake(4.0, 4.0);
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
-#if XCODE_VERSION_MAJOR >= 0500
         _statusBarStyle = UIStatusBarStyleLightContent;
         _navigationBarStyle = UIBarStyleBlack;
         _navigationBarTranslucent = YES;
-#endif
     }
     else
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         _statusBarStyle = UIStatusBarStyleBlackTranslucent;
+#pragma clang diagnostic pop
         _navigationBarStyle = UIBarStyleBlackTranslucent;
     }
     
@@ -135,7 +136,7 @@
             !self.navigationItem.rightBarButtonItem)
         {
             _toggleThumbnailsViewButton = [[UIBarButtonItem alloc] initWithTitle:nil
-                                                                           style:UIBarButtonItemStyleBordered
+                                                                           style:UIBarButtonItemStylePlain
                                                                           target:self
                                                                           action:@selector(toggleThumbnailsView:)];
             self.navigationItem.rightBarButtonItem = (UIBarButtonItem *)_toggleThumbnailsViewButton;
@@ -328,9 +329,7 @@
     CGFloat topInset = 0.0;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
-#if XCODE_VERSION_MAJOR >= 0500
         topInset = self.topLayoutGuide.length;
-#endif
     }
     else
     {
