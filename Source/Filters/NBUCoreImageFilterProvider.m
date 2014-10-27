@@ -23,11 +23,11 @@
 
 @implementation NBUCoreImageFilterProvider
 
-+ (void)initialize
-{
+//+ (void)initialize
+//{
 //    NBULogInfo(@"Available CI filters on this device: %@", [CIFilter filterNamesInCategories:nil]);
 //    NBULogInfo(@"+++++ %@", [CIFilter filterWithName:@"CIColorMonochrome"].attributes);
-}
+//}
 
 + (CIFilter *)ciFilterWithName:(NSString *)name
 {

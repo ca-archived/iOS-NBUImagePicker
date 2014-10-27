@@ -29,11 +29,10 @@ static NBUImageLoader * _sharedLoader;
 
 + (void)initialize
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^
+    if (self == [NBUImageLoader class])
     {
         _sharedLoader = [NBUImageLoader new];
-    });
+    }
 }
 
 + (NBUImageLoader *)sharedLoader

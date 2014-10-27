@@ -399,7 +399,10 @@ static CGSize _thumbnailSize;
 
 + (void)initialize
 {
-    _thumbnailSize = CGSizeMake(100.0, 100.0);
+    if (self == [NBUDirectoryAssetsGroup class])
+    {
+        _thumbnailSize = CGSizeMake(100.0, 100.0);
+    }
 }
 
 @synthesize name = _name;

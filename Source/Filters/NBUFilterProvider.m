@@ -49,13 +49,16 @@ static NSDictionary * _localizedFilterNames;
 
 + (void)initialize
 {
-    _providers = [NSMutableArray array];
-    
-    // Add GPUImage
-    [self addProvider:[NBUGPUImageFilterProvider class]];
-    
-    // Add CoreImage
-    [self addProvider:[NBUCoreImageFilterProvider class]];
+    if (self == [NBUFilterProvider class])
+    {
+        _providers = [NSMutableArray array];
+        
+        // Add GPUImage
+        [self addProvider:[NBUGPUImageFilterProvider class]];
+        
+        // Add CoreImage
+        [self addProvider:[NBUCoreImageFilterProvider class]];
+    }
 }
 
 + (void)addProvider:(Class<NBUFilterProvider>)provider

@@ -305,7 +305,10 @@ static CGSize _thumbnailSize;
 
 + (void)initialize
 {
-    _thumbnailSize = CGSizeMake(100.0, 100.0);
+    if (self == [NBUFileAsset class])
+    {
+        _thumbnailSize = CGSizeMake(100.0, 100.0);
+    }
 }
 
 - (instancetype)initWithFileURL:(NSURL *)fileURL

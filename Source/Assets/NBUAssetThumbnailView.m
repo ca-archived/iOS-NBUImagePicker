@@ -29,7 +29,10 @@ static BOOL _changesAlphaOnSelection;
 
 + (void)initialize
 {
-    _changesAlphaOnSelection = YES;
+    if (self == [NBUAssetThumbnailView class])
+    {
+        _changesAlphaOnSelection = YES;
+    }
 }
 
 + (void)setChangesAlphaOnSelection:(BOOL)yesOrNo
