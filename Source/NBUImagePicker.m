@@ -22,11 +22,6 @@
 
 @implementation NBUImagePicker
 
-+ (NSString *)version
-{
-    return @"1.4.0";
-}
-
 + (NSBundle *)bundle
 {
     static NSBundle * _resourcesBundle;

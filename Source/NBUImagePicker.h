@@ -65,9 +65,6 @@
  */
 @interface NBUImagePicker : NSObject
 
-/// The current NBUImagePicker library version.
-+ (NSString *)version;
-
 /// The NBUImagePickerResources NSBundle.
 + (NSBundle *)bundle;
 
