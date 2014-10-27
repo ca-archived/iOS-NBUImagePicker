@@ -45,9 +45,9 @@
 #elif __has_include("DDLog.h")
 
 #ifdef DEBUG
-    #define NBUImagePickerLogLevel LOG_LEVEL_VERBOSE
+    #define NBUImagePickerLogLevel DDLogLevelVerbose
 #else
-    #define NBUImagePickerLogLevel LOG_LEVEL_WARN
+    #define NBUImagePickerLogLevel DDLogLevelWarning
 #endif
 
 #define LOG_LEVEL_DEF   NBUImagePickerLogLevel

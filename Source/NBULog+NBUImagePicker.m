@@ -23,7 +23,7 @@
 #import "NBULog+NBUImagePicker.h"
 #import <NBULog/NBULogContextDescription.h>
 
-static int _imagePickerLogLevel;
+static DDLogLevel _imagePickerLogLevel;
 
 @implementation NBULog (NBUImagePicker)
 
@@ -37,22 +37,22 @@ static int _imagePickerLogLevel;
                                                                              context:NBUIMAGEPICKER_LOG_CONTEXT
                                                                      modulesAndNames:nil
                                                                    contextLevelBlock:^{ return [NBULog imagePickerLogLevel]; }
-                                                                setContextLevelBlock:^(int level) { [NBULog setImagePickerLogLevel:level]; }
+                                                                setContextLevelBlock:^(DDLogLevel level) { [NBULog setImagePickerLogLevel:level]; }
                                                           contextLevelForModuleBlock:NULL
                                                        setContextLevelForModuleBlock:NULL]];
 }
 
-+ (int)imagePickerLogLevel
++ (DDLogLevel)imagePickerLogLevel
 {
     return _imagePickerLogLevel;
 }
 
-+ (void)setImagePickerLogLevel:(int)LOG_LEVEL_XXX
++ (void)setImagePickerLogLevel:(DDLogLevel)logLevel
 {
 #ifdef DEBUG
-    _imagePickerLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_INFO : LOG_LEVEL_XXX;
+    _imagePickerLogLevel = logLevel == LOG_LEVEL_DEFAULT ? DDLogLevelInfo : logLevel;
 #else
-    _imagePickerLogLevel = LOG_LEVEL_XXX == LOG_LEVEL_DEFAULT ? LOG_LEVEL_WARN : LOG_LEVEL_XXX;
+    _imagePickerLogLevel = logLevel == LOG_LEVEL_DEFAULT ? DDLogLevelWarning : logLevel;
 #endif
 }
 

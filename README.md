@@ -10,7 +10,7 @@ NBUImagePicker
 
 Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery.
 
-_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit). Supports [NBULog](https://github.com/CyberAgent/iOS-NBULog)._
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit). Supports [NBULog](https://github.com/CyberAgent/NBULog)._
 
 ## Demo
 

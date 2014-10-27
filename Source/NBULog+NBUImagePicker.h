@@ -35,7 +35,7 @@
  
  Default configuration (can be dynamically changed):
  
- - Log level: `LOG_LEVEL_INFO` for `DEBUG`, `LOG_LEVEL_WARN` otherwise.
+ - Log level: `DDLogLevelInfo` for `DEBUG`, `DDLogLevelWarning` otherwise.
  
  */
 @interface NBULog (NBUImagePicker)
@@ -43,12 +43,12 @@
 /// @name Adjusting NBUImagePicker Log Levels
 
 /// The current NBUImagePicker log level.
-+ (int)imagePickerLogLevel;
++ (DDLogLevel)imagePickerLogLevel;
 
 /// Dynamically set the NBUImagePicker log level for all modules at once.
-/// @param LOG_LEVEL_XXX The desired log level.
+/// @param logLevel The desired log level.
 /// @note Setting this value clears all modules' levels.
-+ (void)setImagePickerLogLevel:(int)LOG_LEVEL_XXX;
++ (void)setImagePickerLogLevel:(DDLogLevel)logLevel;
 
 @end
 
