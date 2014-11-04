@@ -27,14 +27,6 @@
 @synthesize mediaInfo = _mediaInfo;
 @synthesize filters = _filters;
 
-- (void)commonInit
-{
-    [super commonInit];
-    
-    _maximumScaleFactor = 1.5;
-    _cropGuideSize = CGSizeMake(300.0, 300.0);
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,6 +51,15 @@
     }
     else
     {
+        if (_maximumScaleFactor == 0.0)
+        {
+            _maximumScaleFactor = 1.5;
+        }
+        if (CGSizeEqualToSize(_cropGuideSize, CGSizeZero))
+        {
+            CGFloat cropGuide = MIN(self.view.bounds.size.width, self.view.bounds.size.height);
+            _cropGuideSize = CGSizeMake(cropGuide - 20.0, cropGuide - 20.0);
+        }
         _cropView.cropGuideSize = _cropGuideSize;
         _cropView.maximumScaleFactor = _maximumScaleFactor;
     }
