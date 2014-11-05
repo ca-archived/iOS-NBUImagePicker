@@ -123,6 +123,7 @@ enum
 
 /// The PhotoStream group with all Camera Roll assets (ALAssetsGroupPhotoStream).
 /// @param resultBlock The block to be called asynchronously with the results.
+/// @note PhotoStream photos may not be downloaded and there is no public API to force download.
 - (void)photoStreamGroupWithResultBlock:(NBUAssetsGroupResultBlock)resultBlock;
 
 /// The group with all iTunes synced assets (ALAssetsGroupLibrary).
@@ -135,6 +136,7 @@ enum
 
 /// Retrieve all directory and AssetsLibrary assets groups in that order.
 /// @param resultBlock The block to be called asynchronously with the results.
+/// @note Does not include photoStreamGroupWithResultBlock results.
 - (void)allGroupsWithResultBlock:(NBUAssetsGroupsResultBlock)resultBlock;
 
 /// Retrieve the group of assets that correspons to a given URL.

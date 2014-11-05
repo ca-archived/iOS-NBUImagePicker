@@ -202,34 +202,25 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
              [groups addObject:cameraRollGroup];
          }
          
-         // Add photostream
-         [self photoStreamGroupWithResultBlock:^(NBUAssetsGroup * photoStreamGroup, NSError * error2)
+         // Add photo library
+         [self photoLibraryGroupWithResultBlock:^(NBUAssetsGroup * photoLibraryGroup, NSError * error2)
           {
-              if (photoStreamGroup)
+              if (photoLibraryGroup)
               {
-                  [groups addObject:photoStreamGroup];
+                  [groups addObject:photoLibraryGroup];
               }
               
-              // Add photo library
-              [self photoLibraryGroupWithResultBlock:^(NBUAssetsGroup * photoLibraryGroup, NSError * error3)
+              // Add albums
+              [self groupsWithTypes:ALAssetsGroupAlbum
+                        resultBlock:^(NSArray * albumGroups, NSError * error3)
                {
-                   if (photoLibraryGroup)
+                   if (albumGroups)
                    {
-                       [groups addObject:photoLibraryGroup];
+                       [groups addObjectsFromArray:albumGroups];
                    }
                    
-                   // Add albums
-                   [self groupsWithTypes:ALAssetsGroupAlbum
-                             resultBlock:^(NSArray * albumGroups, NSError * error4)
-                    {
-                        if (albumGroups)
-                        {
-                            [groups addObjectsFromArray:albumGroups];
-                        }
-                        
-                        // Finally return groups using the result block
-                        resultBlock(groups, nil);
-                    }];
+                   // Finally return groups using the result block
+                   resultBlock(groups, nil);
                }];
           }];
      }];
