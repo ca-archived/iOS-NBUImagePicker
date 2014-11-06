@@ -106,6 +106,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)layoutSubviews 
+{
+	_previewLayer.frame = self.layer.bounds;
+}
+
 - (void)viewWillAppear
 {
     [super viewWillAppear];
