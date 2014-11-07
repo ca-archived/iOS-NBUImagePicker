@@ -108,6 +108,8 @@
 
 - (void)layoutSubviews 
 {
+	[super layoutSubviews];
+
 	_previewLayer.frame = self.layer.bounds;
 }
 
