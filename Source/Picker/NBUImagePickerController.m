@@ -519,6 +519,11 @@
         
         // UI customization
         _editController.navigationItem.rightBarButtonItem.title = NBULocalizedString(@"NBUImagePickerController editController rightBarButtonItem.title", @"Next");
+        if (!_editController.navigationItem.rightBarButtonItem.action)
+        {
+            _editController.navigationItem.rightBarButtonItem.action = @selector(goToNextStep:);
+            _editController.navigationItem.rightBarButtonItem.target = self;
+        }
         _editController.customBackButtonTitle = NBULocalizedString(@"NBUImagePickerController editController.customBackButtonTitle", @"Edit");
         if (_singleImageMode)
         {
