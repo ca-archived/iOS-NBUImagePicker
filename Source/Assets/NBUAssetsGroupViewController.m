@@ -58,7 +58,11 @@
     self.scrollView.alwaysBounceVertical = YES;
     
     // Configure grid view
-    _gridView.margin = CGSizeMake(4.0, 4.0);
+    CGFloat margin = 4.0;
+    NSUInteger numberOfThumbsPerRow = floorf((_gridView.size.width - margin) / (75.0 + margin));
+    CGFloat thumbSize = (_gridView.size.width - (numberOfThumbsPerRow + 1) * margin) / numberOfThumbsPerRow;
+    _gridView.margin = CGSizeMake(margin, margin);
+    _gridView.targetObjectViewSize = CGSizeMake(thumbSize, thumbSize);
     _gridView.nibNameForViews = @"NBUAssetThumbnailView";
     _gridView.equallySizedViews = YES;
     _gridView.animated = NO;
