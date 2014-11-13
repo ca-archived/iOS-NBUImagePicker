@@ -26,7 +26,7 @@
 
 
 // a) Use NBULog for logging when available
-#ifdef COCOAPODS_POD_AVAILABLE_NBULog
+#if __has_include("NBULog.h")
 
 #import "NBULog+NBUKit.h"
 
@@ -41,12 +41,12 @@
 
 
 // b) Else try CocoaLumberjack
-#elif defined(COCOAPODS_POD_AVAILABLE_CocoaLumberjack)
+#elif __has_include("DDLog.h")
 
 #ifdef DEBUG
-    #define NBUKIT_LOG_LEVEL LOG_LEVEL_VERBOSE
+    #define NBUKIT_LOG_LEVEL DDLogLevelVerbose
 #else
-    #define NBUKIT_LOG_LEVEL LOG_LEVEL_WARN
+    #define NBUKIT_LOG_LEVEL DDLogLevelWarning
 #endif
 
 #define LOG_LEVEL_DEF   NBUKIT_LOG_LEVEL

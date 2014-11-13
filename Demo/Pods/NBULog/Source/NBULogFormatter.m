@@ -26,30 +26,33 @@ static NSString * _processName;
 
 + (void)initialize
 {
-    _processName = [[NSProcessInfo processInfo] processName];
+    if (self == [NBULogFormatter class])
+    {
+        _processName = [[NSProcessInfo processInfo] processName];
+    }
 }
 
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
     // One-charecter log level
     NSString * logLevel;
-    switch (logMessage->logFlag)
+    switch (logMessage->_flag)
     {
-        case LOG_FLAG_ERROR : logLevel = @"E"; break;
-        case LOG_FLAG_WARN  : logLevel = @"W"; break;
-        case LOG_FLAG_INFO  : logLevel = @"I"; break;
-        case LOG_FLAG_DEBUG : logLevel = @"D"; break;
-        default             : logLevel = @"V"; break;
+        case DDLogFlagError   : logLevel = @"E"; break;
+        case DDLogFlagWarning : logLevel = @"W"; break;
+        case DDLogFlagInfo    : logLevel = @"I"; break;
+        case DDLogFlagDebug   : logLevel = @"D"; break;
+        default               : logLevel = @"V"; break;
     }
     
-    return [NSString stringWithFormat:@"%@ %@[%@] %@ %@:%d %@",
-            [self stringFromDate:(logMessage->timestamp)],
+    return [NSString stringWithFormat:@"%@ %@[%@] %@ %@:%@ %@",
+            [self stringFromDate:(logMessage->_timestamp)],
             _processName,
             [self queueThreadLabelForLogMessage:logMessage],
             logLevel,
-            logMessage.fileName,
-            logMessage->lineNumber,
-            logMessage->logMsg];
+            logMessage->_fileName,
+            @(logMessage->_line),
+            logMessage->_message];
 }
 
 @end

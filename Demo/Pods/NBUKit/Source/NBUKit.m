@@ -22,11 +22,6 @@
 
 @implementation NBUKit
 
-+ (NSString *)version
-{
-    return @"2.3.0";
-}
-
 + (NSBundle *)bundle
 {
     static NSBundle * _resourcesBundle;

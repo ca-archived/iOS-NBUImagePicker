@@ -32,7 +32,7 @@
     
     // Add a next (continue) button
     _nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next"
-                                                   style:UIBarButtonItemStyleBordered
+                                                   style:UIBarButtonItemStylePlain
                                                   target:self
                                                   action:@selector(pushSlideView:)];
     self.navigationItem.rightBarButtonItem = _nextButton;

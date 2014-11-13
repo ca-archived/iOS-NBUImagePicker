@@ -25,9 +25,12 @@
 
 +(void)initialize
 {
-    // Register our custom directory albums
-    [[NBUAssetsLibrary sharedLibrary] registerDirectoryGroupforURL:[UIApplication sharedApplication].documentsDirectory
-                                                              name:@"App's Documents directory"];
+    if (self == [LibraryViewController class])
+    {
+        // Register our custom directory albums
+        [[NBUAssetsLibrary sharedLibrary] registerDirectoryGroupforURL:[UIApplication sharedApplication].documentsDirectory
+                                                                  name:@"App's Documents directory"];
+    }
 }
 
 - (void)viewDidLoad
@@ -39,8 +42,7 @@
     
     // Customization
     self.customBackButtonTitle = @"Albums";
-    self.assetsGroupController = [[AssetsGroupViewController alloc] initWithNibName:@"NBUAssetsGroupViewController"
-                                                                             bundle:nil];
+    self.assetsGroupController = [self.storyboard instantiateViewControllerWithIdentifier:@"assetsGroupController"];
 }
 
 #pragma mark - Handling access authorization

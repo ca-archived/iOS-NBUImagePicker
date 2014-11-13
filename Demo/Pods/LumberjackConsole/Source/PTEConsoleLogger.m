@@ -78,7 +78,7 @@
         _font = [UIFont systemFontOfSize:_fontSize];
         _lastUpdate = NSDate.date;
         _minIntervalToUpdate = 0.3;
-        _currentLogLevel = LOG_LEVEL_VERBOSE;
+        _currentLogLevel = DDLogLevelVerbose;
         
         // Init queue
         _consoleQueue = dispatch_queue_create("console_queue", NULL);
@@ -114,16 +114,16 @@
 
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
-    if (self->formatter)
+    if (_logFormatter)
     {
-        return [self->formatter formatLogMessage:logMessage];
+        return [_logFormatter formatLogMessage:logMessage];
     }
     else
     {
-        return [NSString stringWithFormat:@"%@:%d %@",
+        return [NSString stringWithFormat:@"%@:%@ %@",
                 logMessage.fileName,
-                logMessage->lineNumber,
-                logMessage->logMsg];
+                @(logMessage->_line),
+                logMessage->_message];
     }
 }
 
@@ -135,7 +135,7 @@
     }
     else
     {
-        return [[logMessage->logMsg
+        return [[logMessage->_message
                  stringByReplacingOccurrencesOfString:@"  " withString:@""]
                 stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     }
@@ -161,7 +161,7 @@
 - (void)addMarker
 {
     PTEMarkerLogMessage * marker = PTEMarkerLogMessage.new;
-    marker->logMsg = [NSString stringWithFormat:@"Marker %@", NSDate.date];
+    marker->_message = [NSString stringWithFormat:@"Marker %@", NSDate.date];
     [self logMessage:marker];
 }
 
@@ -355,9 +355,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     }
     else
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
         size = [string sizeWithFont:_font
                   constrainedToSize:CGSizeMake(tableView.bounds.size.width,
                                                CGFLOAT_MAX)];
+#pragma clang diagnostic pop
     }
     
     return size.height + 20.0;
@@ -442,17 +445,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     // Configure the label
     if (marker)
     {
-        label.text = logMessage->logMsg;
+        label.text = logMessage->_message;
     }
     else
     {
-        switch (logMessage->logFlag)
+        switch (logMessage->_flag)
         {
-            case LOG_FLAG_ERROR : label.textColor = [UIColor redColor];         break;
-            case LOG_FLAG_WARN  : label.textColor = [UIColor orangeColor];      break;
-            case LOG_FLAG_INFO  : label.textColor = [UIColor greenColor];       break;
-            case LOG_FLAG_DEBUG : label.textColor = [UIColor whiteColor];       break;
-            default             : label.textColor = [UIColor lightGrayColor];   break;
+            case DDLogFlagError   : label.textColor = [UIColor redColor];       break;
+            case DDLogFlagWarning : label.textColor = [UIColor orangeColor];    break;
+            case DDLogFlagInfo    : label.textColor = [UIColor greenColor];     break;
+            case DDLogFlagDebug   : label.textColor = [UIColor whiteColor];     break;
+            default               : label.textColor = [UIColor lightGrayColor]; break;
         }
         label.text = [self textForCellWithLogMessage:logMessage];
     }
@@ -463,13 +466,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSString *)textForCellWithLogMessage:(DDLogMessage *)logMessage
 {
     NSString * prefix;
-    switch (logMessage->logFlag)
+    switch (logMessage->_flag)
     {
-        case LOG_FLAG_ERROR : prefix = @"Ⓔ"; break;
-        case LOG_FLAG_WARN  : prefix = @"Ⓦ"; break;
-        case LOG_FLAG_INFO  : prefix = @"Ⓘ"; break;
-        case LOG_FLAG_DEBUG : prefix = @"Ⓓ"; break;
-        default             : prefix = @"Ⓥ"; break;
+        case DDLogFlagError   : prefix = @"Ⓔ"; break;
+        case DDLogFlagWarning : prefix = @"Ⓦ"; break;
+        case DDLogFlagInfo    : prefix = @"Ⓘ"; break;
+        case DDLogFlagDebug   : prefix = @"Ⓓ"; break;
+        default               : prefix = @"Ⓥ"; break;
     }
     
     // Expanded message?
@@ -532,7 +535,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Message is a marker OR (Log flag matches AND (no search text OR contains search text))
     return ([message isKindOfClass:[PTEMarkerLogMessage class]] ||
-            ((message->logFlag & _currentLogLevel) &&
+            ((message->_flag & _currentLogLevel) &&
              (_currentSearchText.length == 0 ||
               [[self formatLogMessage:message] rangeOfString:_currentSearchText
                                                      options:(NSCaseInsensitiveSearch |
@@ -549,7 +552,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
         // Filtering enabled?
         _filteringEnabled = (_currentSearchText.length > 0 ||        // Some text input
-                             _currentLogLevel != LOG_LEVEL_VERBOSE); // Or log level != verbose
+                             _currentLogLevel != DDLogLevelVerbose); // Or log level != verbose
         
         // Force reloading filtered messages
         if (_filteringEnabled)
@@ -567,11 +570,11 @@ selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
 {
     switch (selectedScope)
     {
-        case 0 : _currentLogLevel = LOG_LEVEL_VERBOSE;  break;
-        case 1 : _currentLogLevel = LOG_LEVEL_DEBUG;    break;
-        case 2 : _currentLogLevel = LOG_LEVEL_INFO;     break;
-        case 3 : _currentLogLevel = LOG_LEVEL_WARN;     break;
-        default: _currentLogLevel = LOG_LEVEL_ERROR;    break;
+        case 0  : _currentLogLevel = DDLogLevelVerbose; break;
+        case 1  : _currentLogLevel = DDLogLevelDebug;   break;
+        case 2  : _currentLogLevel = DDLogLevelInfo;    break;
+        case 3  : _currentLogLevel = DDLogLevelWarning; break;
+        default : _currentLogLevel = DDLogLevelError;   break;
     }
     
     [self searchBarStateChanged];

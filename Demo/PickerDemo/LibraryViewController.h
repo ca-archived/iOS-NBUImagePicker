@@ -18,6 +18,8 @@
 //  limitations under the License.
 //
 
+#import <NBUImagePicker/NBUAssetsLibraryViewController.h>
+
 @interface LibraryViewController : NBUAssetsLibraryViewController
 
 // Actions

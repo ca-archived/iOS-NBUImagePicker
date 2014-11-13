@@ -3,14 +3,14 @@ NBUKit
 ======
 
 [![Platform: iOS](https://img.shields.io/cocoapods/p/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
-[![Version: 2.3.0](https://img.shields.io/cocoapods/v/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
+[![Version: 2.4.0](https://img.shields.io/cocoapods/v/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBUKit.svg?style=flat)](http://cocoadocs.org/docsets/NBUKit/)
 [![Dependency Status](https://www.versioneye.com/objective-c/NBUKit/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBUKit)
 [![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBUKit/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBUKit)
 
 UIKit and NSFoundation convenience categories and subclasses.
 
-_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore), supports [NBULog](https://github.com/CyberAgent/iOS-NBULog).  
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore), supports [NBULog](https://github.com/CyberAgent/NBULog).  
 Image Picker code moved to [NBUImagePicker](https://github.com/CyberAgent/iOS-NBUImagePicker)._
 
 ## Demo

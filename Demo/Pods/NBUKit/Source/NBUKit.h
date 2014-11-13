@@ -40,7 +40,6 @@
 #if __has_include("NBUActionSheet.h")
     #import "NBUActionSheet.h"
     #import "NBUAlertView.h"
-    #import "NBUApplicationDelegate.h"
     #import "NBUBadgeSegmentedControl.h"
     #import "NBUBadgeView.h"
     #import "NBUMailComposeViewController.h"
@@ -58,9 +57,6 @@
  NBUKit static library.
  */
 @interface NBUKit : NSObject
-
-/// The current NBUKit library version.
-+ (NSString *)version;
 
 /// The NBUKit NSBundle.
 + (NSBundle *)bundle;

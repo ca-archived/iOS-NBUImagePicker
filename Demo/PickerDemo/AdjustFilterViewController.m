@@ -32,8 +32,11 @@
 
 + (void)initialize
 {
-    // Register our custom provider
-    [NBUFilterProvider addProvider:[CustomGPUImageFilterProvider class]];
+    if (self == [AdjustFilterViewController class])
+    {
+        // Register our custom provider
+        [NBUFilterProvider addProvider:[CustomGPUImageFilterProvider class]];
+    }
 }
 
 - (void)loadView
