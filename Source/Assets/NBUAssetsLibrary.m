@@ -124,7 +124,7 @@ static NBUAssetsLibrary * _sharedLibrary = nil;
 
 - (void)directoryGroupsWithResultBlock:(NBUAssetsGroupsResultBlock)resultBlock
 {
-    dispatch_async(dispatch_get_current_queue(), ^
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
         NSMutableArray * groups = [NSMutableArray array];
         id name;

@@ -473,7 +473,7 @@ static CGSize _thumbnailSize;
     }
     
     // Async create assets
-    dispatch_async(dispatch_get_current_queue(), ^
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
         [self assetsWithFileURLs:contents
              incrementalLoadSize:loadSize
