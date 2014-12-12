@@ -1,6 +1,5 @@
 
 platform :ios, '5.0'
-source 'https://github.com/CocoaPods/Specs.git'
 
 # Recommended to keep GPUImage up-to-date
 pod 'GPUImage', :head

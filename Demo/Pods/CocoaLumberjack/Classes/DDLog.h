@@ -19,6 +19,12 @@
     #import "DDLegacy.h"
 #endif
 
+#if OS_OBJECT_HAVE_OBJC_SUPPORT && !defined(COCOAPODS)
+    #define DISPATCH_QUEUE_REFERENCE_TYPE strong
+#else
+    #define DISPATCH_QUEUE_REFERENCE_TYPE assign
+#endif
+
 @class DDLogMessage;
 @protocol DDLogger;
 @protocol DDLogFormatter;
@@ -156,7 +162,7 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
    function:(const char *)function
        line:(int)line
         tag:(id)tag
-     format:(NSString *)format, ...__attribute__((format(__NSString__, 9, 10)));
+     format:(NSString *)format, ... NS_FORMAT_FUNCTION(9,10);
 
 /**
  * Logging Primitive.
@@ -331,7 +337,7 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  * Thus, a dedicated dispatch queue is used for each logger.
  * Logger implementations may optionally choose to provide their own dispatch queue.
  **/
-@property (nonatomic, readonly) dispatch_queue_t loggerQueue;
+@property (nonatomic, DISPATCH_QUEUE_REFERENCE_TYPE, readonly) dispatch_queue_t loggerQueue;
 
 /**
  * If the logger implementation does not choose to provide its own queue,
@@ -525,8 +531,8 @@ typedef NS_OPTIONS(NSInteger, DDLogMessageOptions) {
     dispatch_queue_t _loggerQueue;
 }
 
-@property (nonatomic, strong)    id <DDLogFormatter> logFormatter;
-@property (nonatomic, readwrite) dispatch_queue_t loggerQueue;
+@property (nonatomic, strong) id <DDLogFormatter> logFormatter;
+@property (nonatomic, DISPATCH_QUEUE_REFERENCE_TYPE) dispatch_queue_t loggerQueue;
 
 // For thread-safety assertions
 @property (nonatomic, readonly, getter=isOnGlobalLoggingQueue)  BOOL onGlobalLoggingQueue;
