@@ -64,61 +64,61 @@
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker 3
 
 // NBUImagePicker/Assets
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Assets
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Assets 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Assets 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Assets 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Assets 3
 
 // NBUImagePicker/Base
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Base
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Base 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Base 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Base 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Base 3
 
 // NBUImagePicker/Camera
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Camera
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Camera 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Camera 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Camera 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Camera 3
 
 // NBUImagePicker/Filters
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Filters
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Filters 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Filters 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Filters 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Filters 3
 
 // NBUImagePicker/Gallery
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Gallery
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Gallery 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Gallery 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Gallery 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Gallery 3
 
 // NBUImagePicker/Image
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Image
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Image 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Image 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Image 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Image 3
 
 // NBUImagePicker/MediaInfo
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_MediaInfo
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_MediaInfo 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_MediaInfo 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_MediaInfo 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_MediaInfo 3
 
 // NBUImagePicker/Picker
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Picker
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Picker 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Picker 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Picker 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Picker 3
 
 // NBUImagePicker/Resources
 #define COCOAPODS_POD_AVAILABLE_NBUImagePicker_Resources
 #define COCOAPODS_VERSION_MAJOR_NBUImagePicker_Resources 1
 #define COCOAPODS_VERSION_MINOR_NBUImagePicker_Resources 5
-#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Resources 2
+#define COCOAPODS_VERSION_PATCH_NBUImagePicker_Resources 3
 
 // NBUKit
 #define COCOAPODS_POD_AVAILABLE_NBUKit
@@ -160,7 +160,7 @@
 #define COCOAPODS_POD_AVAILABLE_NBULog
 #define COCOAPODS_VERSION_MAJOR_NBULog 1
 #define COCOAPODS_VERSION_MINOR_NBULog 2
-#define COCOAPODS_VERSION_PATCH_NBULog 2
+#define COCOAPODS_VERSION_PATCH_NBULog 3
 
 // RBVolumeButtons@PTEz
 #define COCOAPODS_POD_AVAILABLE_RBVolumeButtons_PTEz
