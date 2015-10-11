@@ -292,8 +292,9 @@
             // Auto adjust off?
             if (![filter boolValueForKey:@"autoAdjust"])
                 continue;
-            
-            NSArray * autoFilters = [ciImage autoAdjustmentFilters];
+
+            // `autoAdjustmentFilters` is not available in iOS 9.0 and later.
+            NSArray * autoFilters = [ciImage autoAdjustmentFiltersWithOptions:nil];
             NBULogVerbose(@"Applying auto adjustment filters: %@", autoFilters);
             for (ciFilter in autoFilters)
             {
