@@ -329,6 +329,7 @@
 				E58DA57E184339C100D60BBC /* Frameworks */,
 				E58DA57F184339C100D60BBC /* Resources */,
 				DA7F503918FC4D90A421B067 /* Copy Pods Resources */,
+				2EE08E901C491213E2BBAC65 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -345,11 +346,11 @@
 		E58DA579184339C100D60BBC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "CyberAgent Inc.";
 				TargetAttributes = {
 					E58DA580184339C100D60BBC = {
-						DevelopmentTeam = G7FH63PE76;
+						DevelopmentTeam = UA6QHU98F6;
 					};
 				};
 			};
@@ -417,6 +418,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2EE08E901C491213E2BBAC65 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		97D1299EDB164AF58B312BD8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,6 +525,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -570,10 +587,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ernesto Rivera (486KPGRDM4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PickerDemo/PickerDemo-Prefix.pch";
 				INFOPLIST_FILE = "PickerDemo/PickerDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -595,6 +613,7 @@
 					"TESTING=1",
 				);
 				INFOPLIST_FILE = "PickerDemo/PickerDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.co.cyberagent.nbu.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

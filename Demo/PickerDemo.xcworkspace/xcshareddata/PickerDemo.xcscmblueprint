@@ -1,0 +1,58 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B78A31673868903EF4BE1C75220B68302C2366EF+++53AAE8E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B78A31673868903EF4BE1C75220B68302C2366EF+++53AAE8E" : 0,
+    "AEF8F3FE0C0E13E533A5B61261DE75AE9A0CC4C6+++BEF9716" : 0,
+    "E35EC59C-F0ED-4CB7-9C81-E364546EA415+++3498D97" : 0,
+    "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4+++E1FBE61" : 0,
+    "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4+++FB81C36" : 0,
+    "2204B840-CB09-4B4A-911B-3FD47F1EE2DE+++295B997" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "61ABBE3A-E2A6-4795-ACC2-90C2E5E133CC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B78A31673868903EF4BE1C75220B68302C2366EF+++53AAE8E" : "NBUImagePicker",
+    "AEF8F3FE0C0E13E533A5B61261DE75AE9A0CC4C6+++BEF9716" : "NBUKit",
+    "E35EC59C-F0ED-4CB7-9C81-E364546EA415+++3498D97" : "NBUBase",
+    "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4+++E1FBE61" : "",
+    "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4+++FB81C36" : "",
+    "2204B840-CB09-4B4A-911B-3FD47F1EE2DE+++295B997" : "NBUBase\/NBUKit"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PickerDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Demo\/PickerDemo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/CyberAgent\/iOS-NBUImagePicker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4+++E1FBE61"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/CyberAgent\/iOS-NBUImagePicker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1CE69B63641D4BDEE596AA3BE34F2C59B2C2B1C4+++FB81C36"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/CyberAgent\/iOS-NBUKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2204B840-CB09-4B4A-911B-3FD47F1EE2DE+++295B997"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:CyberAgent\/iOS-NBUKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AEF8F3FE0C0E13E533A5B61261DE75AE9A0CC4C6+++BEF9716"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:CyberAgent\/iOS-NBUImagePicker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B78A31673868903EF4BE1C75220B68302C2366EF+++53AAE8E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/ghe.amb.ca.local\/ameba-smartphone\/iOS-NBUBase.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E35EC59C-F0ED-4CB7-9C81-E364546EA415+++3498D97"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 #import "GPUImage3x3TextureSamplingFilter.h"
 
-@interface GPUimageDirectionalSobelEdgeDetectionFilter : GPUImage3x3TextureSamplingFilter
+@interface GPUImageDirectionalSobelEdgeDetectionFilter : GPUImage3x3TextureSamplingFilter
 
 @end

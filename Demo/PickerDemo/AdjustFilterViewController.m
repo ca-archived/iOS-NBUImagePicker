@@ -3,7 +3,7 @@
 //  PickerDemo
 //
 //  Created by Ernesto Rivera on 2013/02/22.
-//  Copyright (c) 2013-2015 CyberAgent Inc.
+//  Copyright (c) 2013-2016 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.

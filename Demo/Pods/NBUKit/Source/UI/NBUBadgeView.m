@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/04/20.
-//  Copyright (c) 2012-2014 CyberAgent Inc.
+//  Copyright (c) 2012-2016 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -38,10 +38,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    // Even when created programatically we load from Nib!
-    NBUBadgeView * badge = [NBUBadgeView badge];
-    badge.origin = frame.origin;
-    return badge;
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        self = [NBUBadgeView badge];
+        self.origin = frame.origin;
+    }
+    return self;
 }
 
 - (void)commonInit
