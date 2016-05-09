@@ -74,7 +74,7 @@ Change element's sizes, position, customize picker workflow, add/remove/rename f
 Add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://guides.cocoapods.org/syntax/podfile.html):
 
 ```ruby
-platform :ios, '5.0'
+platform :ios, '6.0'
 
 # Recommended to keep GPUImage up-to-date
 pod 'GPUImage', :head
