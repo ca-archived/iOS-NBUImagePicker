@@ -90,7 +90,6 @@
 #endif
     
     // First orientation update
-    [MotionOrientation initialize];
     [self setDeviceOrientation:[MotionOrientation sharedInstance].deviceOrientation];
     
     // Observe orientation changes
