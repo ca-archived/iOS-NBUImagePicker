@@ -52,8 +52,14 @@
         "NBUImagePicker/Assets": [
 
         ],
+        "NBUCore": [
+          ">= 2.0.5"
+        ],
         "RBVolumeButtons@PTEz": [
 
+        ],
+        "MotionOrientation@PTEz": [
+          ">= 1.1.0"
         ]
       }
     },

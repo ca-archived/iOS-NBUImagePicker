@@ -31,6 +31,8 @@ PODS:
   - NBUImagePicker/Base (1.5.4):
     - NBUKit (>= 2.4.2)
   - NBUImagePicker/Camera (1.5.4):
+    - MotionOrientation@PTEz (>= 1.1.0)
+    - NBUCore (>= 2.0.5)
     - NBUImagePicker/Assets
     - NBUKit (>= 2.4.2)
     - RBVolumeButtons@PTEz
@@ -106,7 +108,7 @@ SPEC CHECKSUMS:
   LumberjackConsole: 81bad3312fea315b8a17e53926b014f032ec1f44
   MotionOrientation@PTEz: 5c92c6c1fe6c2cb6c60348ec66b42d466668037f
   NBUCore: bfdce78c97f2a9566c97082f44157547223b22a6
-  NBUImagePicker: e13e0c6c4de1d15292982f57ff0937847bdb0bcc
+  NBUImagePicker: 330b0f84ec0a5bac6e4a8ce94d8c8d6416b151a5
   NBUKit: 918f6f494c2053b61edd1d9d650a1ae82ba464ac
   NBULog: 4003be6706b97a7e376ab4171c666ac7c2fbc2b2
   RBVolumeButtons@PTEz: e1fcc6cf368f908437a2ba91cfec9cb27b723894
