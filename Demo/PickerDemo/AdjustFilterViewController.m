@@ -139,23 +139,20 @@
     }
     
     // Write json
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+    NSError * error;
+    NSData * data = [NSJSONSerialization dataWithJSONObject:configurationDictionary
+                                                    options:NSJSONWritingPrettyPrinted
+                                                      error:&error];
+    if (error)
     {
-        NSError * error;
-        NSData * data = [NSJSONSerialization dataWithJSONObject:configurationDictionary
-                                                        options:NSJSONWritingPrettyPrinted
-                                                          error:&error];
-        if (error)
-        {
-            NBULogError(@"Error converting configuraion to JSON: %@", error);
-            return;
-        }
-        
-        if (![data writeToURL:jsonURL
-                   atomically:NO])
-        {
-            NBULogError(@"Can't save filter configuration JSON: %@",data);
-        }
+        NBULogError(@"Error converting configuraion to JSON: %@", error);
+        return;
+    }
+    
+    if (![data writeToURL:jsonURL
+               atomically:NO])
+    {
+        NBULogError(@"Can't save filter configuration JSON: %@",data);
     }
 }
 
