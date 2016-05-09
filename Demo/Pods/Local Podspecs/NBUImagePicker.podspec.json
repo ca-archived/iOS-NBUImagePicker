@@ -24,7 +24,7 @@
     "http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot1.png"
   ],
   "platforms": {
-    "ios": "5.0"
+    "ios": "6.0"
   },
   "requires_arc": true,
   "preserve_paths": [

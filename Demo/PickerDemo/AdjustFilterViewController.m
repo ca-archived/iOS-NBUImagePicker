@@ -139,7 +139,6 @@
     }
     
     // Write json
-    NSError * error;
     NSData * data = [NSJSONSerialization dataWithJSONObject:configurationDictionary
                                                     options:NSJSONWritingPrettyPrinted
                                                       error:&error];
