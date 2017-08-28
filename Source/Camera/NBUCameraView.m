@@ -23,7 +23,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "RKOrderedDictionary.h"
-#import <MotionOrientation@PTEz/MotionOrientation.h>
+#import <MotionOrientation_PTEz/MotionOrientation.h>
 
 // Class extension
 @interface NBUCameraView () <AVCaptureFileOutputRecordingDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
