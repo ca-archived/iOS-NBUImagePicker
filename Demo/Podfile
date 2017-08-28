@@ -1,8 +1,11 @@
 
-platform :ios, '6.0'
+platform :ios, '8.0'
+use_frameworks!
 
+target 'PickerDemo' do
+    
 # Recommended to keep GPUImage up-to-date
-pod 'GPUImage', :head
+pod 'GPUImage', :git => 'https://github.com/BradLarson/GPUImage.git'
 
 # For regular projects
 #pod 'NBUImagePicker'
@@ -16,3 +19,4 @@ pod 'LumberjackConsole'
 # For development
 pod 'NBUImagePicker', :path => '../'
 
+end
