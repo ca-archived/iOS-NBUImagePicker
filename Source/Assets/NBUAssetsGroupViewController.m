@@ -224,7 +224,7 @@
 
 - (void)setSelectedAssets:(NSArray *)selectedAssets
 {
-    _selectedAssets = [NSMutableArray arrayWithArray:selectedAssets];
+    _selectedAssets = selectedAssets ? [NSMutableArray arrayWithArray:selectedAssets] : [NSMutableArray new];
     
     // Discard assets beyond the selection count limit
     if ((_selectionCountLimit > 0) &&
