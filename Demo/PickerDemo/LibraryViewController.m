@@ -64,7 +64,7 @@
     // User denied access?
     if ([NBUAssetsLibrary sharedLibrary].userDeniedAccess)
     {
-        [[[UIAlertView alloc] initWithTitle:@"Access denied"
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Access denied", nil)
                                     message:@"Please go to Settings:Privacy:Photos to enable library access" delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil] show];
@@ -73,7 +73,7 @@
     // Parental controls
     if ([NBUAssetsLibrary sharedLibrary].restrictedAccess)
     {
-        [[[UIAlertView alloc] initWithTitle:@"Parental restrictions"
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Parental restrictions", nil)
                                     message:@"Please go to Settings:General:Restrictions to enable library access" delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil] show];

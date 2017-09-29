@@ -1,6 +1,6 @@
 {
   "name": "NBUImagePicker",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "summary": "Modular image picker with Simulator-compatible AVFondation camera, assets library, filters and more.",
   "description": "Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery. Change element's sizes, position, customize picker workflow, add/remove/rename filters, localize for other languages, use cropping features from other libraries, etc.",
   "homepage": "http://cyberagent.github.io/iOS-NBUImagePicker/",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/CyberAgent/iOS-NBUImagePicker.git",
-    "tag": "1.5.4"
+    "tag": "1.6.0"
   },
   "screenshots": [
     "http://cyberagent.github.io/iOS-NBUImagePicker/images/screenshot3.png",
@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "NBUKit": [
-      ">= 2.4.2"
+      ">= 2.5.1"
     ]
   },
   "subspecs": [
@@ -53,7 +53,7 @@
 
         ],
         "NBUCore": [
-          ">= 2.0.5"
+          ">= 2.1.0"
         ],
         "RBVolumeButtons@PTEz": [
 

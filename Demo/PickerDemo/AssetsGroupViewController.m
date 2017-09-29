@@ -31,7 +31,7 @@
     self.gridView.nibNameForViews = @"CustomAssetThumbnailView";
     
     // Add a next (continue) button
-    _nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+    _nextButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", nil)
                                                    style:UIBarButtonItemStylePlain
                                                   target:self
                                                   action:@selector(pushSlideView:)];

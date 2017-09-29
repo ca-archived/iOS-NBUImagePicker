@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/08/13.
-//  Copyright (c) 2012-2016 CyberAgent Inc.
+//  Copyright (c) 2012-2017 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -104,6 +104,26 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
         }
     }
     
+    // Or check in the Frameworks directory
+    for (NSString * frameworkPath in [mainBundle pathsForResourcesOfType:@"framework"
+                                                             inDirectory:@"Frameworks"])
+    {
+        NSString * directory = [frameworkPath stringByReplacingOccurrencesOfString:mainBundle.bundlePath withString:@""];
+        for (NSString * bundlePath in [mainBundle pathsForResourcesOfType:@"bundle"
+                                                              inDirectory:directory])
+        {
+            bundle = [NSBundle bundleWithPath:bundlePath];
+            if ([bundle pathForResource:name
+                                 ofType:@"nib"])
+            {
+                NBULogVerbose(@"Loading Nib named: '%@' from bundle: '%@'...", name, bundle.bundleIdentifier);
+                return [bundle loadNibNamed:name
+                                      owner:owner
+                                    options:options];
+            }
+        }
+    }
+    
     NBULogError(@"Couldn't load Nib named: %@", name);
     return nil;
 }
@@ -119,7 +139,7 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
                                                                table:tableName];
     
     // Then try the backup bundle
-    if ([string isEqualToString:NBULocalizedStringNotFound])
+    if (bundle && [string isEqualToString:NBULocalizedStringNotFound])
     {
         string = [bundle localizedStringForKey:key
                                          value:NBULocalizedStringNotFound
@@ -131,7 +151,7 @@ NSString * const NBULocalizedStringNotFound = @"NBULocalizedStringNotFound";
     {
         string = value.length > 0 ? value : key;
         
-        NBULogWarn(@"No localized string for '%@' in '%@', will use '%@'", key, tableName, string);
+        NBULogDebug(@"No localized string for '%@' in '%@', will use '%@'", key, tableName, string);
     }
     
     return string;

@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/07/11.
-//  Copyright (c) 2012-2016 CyberAgent Inc.
+//  Copyright (c) 2012-2017 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -31,6 +31,12 @@
     {
         NSString * bundlePath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUKit.bundle"];
         _resourcesBundle = [NSBundle bundleWithPath:bundlePath];
+        
+        if (!_resourcesBundle)
+        {
+            bundlePath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"Frameworks/NBUKit.framework/NBUKit.bundle"];
+            _resourcesBundle = [NSBundle bundleWithPath:bundlePath];
+        }
     });
     
     return _resourcesBundle;

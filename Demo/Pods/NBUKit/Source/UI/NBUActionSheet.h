@@ -3,7 +3,7 @@
 //  NBUKit
 //
 //  Created by Ernesto Rivera on 2012/11/12.
-//  Copyright (c) 2012-2016 CyberAgent Inc.
+//  Copyright (c) 2012-2017 CyberAgent Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 
 /// Result blocks.
 typedef void (^NBUActionSheetSelectedButtonBlock)(NSInteger buttonIndex);
-typedef void (^NBUActionSheetCancelButtonBlock)();
+typedef void (^NBUActionSheetCancelButtonBlock)(void);
 
 /**
  Block-based UIActionSheet subclass.
