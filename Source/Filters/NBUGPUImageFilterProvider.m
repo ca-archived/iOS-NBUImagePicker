@@ -76,6 +76,13 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
              ];
 }
 
++ (NSString *)completePathInBundleFor:(NSString *)relativePath
+{
+    NSString * bundleDirectory = [NBUImagePicker.bundle.bundlePath stringByReplacingOccurrencesOfString:[NSBundle mainBundle].bundlePath
+                                                                                             withString:@""];
+    return [bundleDirectory stringByAppendingPathComponent:relativePath];
+}
+
 + (NBUFilter *)filterWithName:(NSString *)name
                          type:(NSString *)type
                        values:(NSDictionary *)values
@@ -309,7 +316,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * blurSize     = @"blurSize";
         attributes = @{alphaMask    : @{NBUFilterValueDescriptionKey : @"Alpha mask",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                        NBUFilterDefaultValueKey     : @"NBUImagePicker.bundle/filters/frame.png"},
+                                        NBUFilterDefaultValueKey     : [NBUGPUImageFilterProvider completePathInBundleFor:@"/filters/frame.png"]},
                        blurSize     : @{NBUFilterValueDescriptionKey : @"Blur size",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
                                         NBUFilterDefaultValueKey     : @(2.0),
@@ -357,7 +364,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * secondImage = @"secondImage";
         attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                       NBUFilterDefaultValueKey     : @"NBUImagePicker.bundle/filters/mask.png"}};
+                                       NBUFilterDefaultValueKey     : [NBUGPUImageFilterProvider completePathInBundleFor:@"/filters/mask.png"]}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -389,7 +396,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * secondImage = @"secondImage";
         attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                       NBUFilterDefaultValueKey     : @"NBUImagePicker.bundle/filters/frame.png"}};
+                                       NBUFilterDefaultValueKey     : [NBUGPUImageFilterProvider completePathInBundleFor:@"/filters/frame.png"]}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -422,7 +429,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * mix     = @"mix";
         attributes = @{secondImage  : @{NBUFilterValueDescriptionKey : @"Second image",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                        NBUFilterDefaultValueKey     : @"NBUImagePicker.bundle/filters/frame.png"},
+                                        NBUFilterDefaultValueKey     : [NBUGPUImageFilterProvider completePathInBundleFor:@"/filters/frame.png"]},
                        mix          : @{NBUFilterValueDescriptionKey : @"Mix",
                                         NBUFilterValueTypeKey        : NBUFilterValueTypeFloat,
                                         NBUFilterDefaultValueKey     : @(0.5),
@@ -462,7 +469,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * secondImage = @"secondImage";
         attributes = @{secondImage : @{NBUFilterValueDescriptionKey : @"Second image",
                                        NBUFilterValueTypeKey        : NBUFilterValueTypeImage,
-                                       NBUFilterDefaultValueKey     : @"NBUImagePicker.bundle/filters/frame.png"}};
+                                       NBUFilterDefaultValueKey     : [NBUGPUImageFilterProvider completePathInBundleFor:@"/filters/frame.png"]}};
         block = ^(NBUFilter * filter,
                   NBUGPUMultiInputImageFilterGroup * gpuFilterGroup)
         {
@@ -494,7 +501,7 @@ NSString * const kNBUAlphaMaskShaderString = SHADER_STRING
         NSString * curveFile = @"curveFile";
         attributes = @{curveFile : @{NBUFilterValueDescriptionKey : @"Tone curve file",
                                      NBUFilterValueTypeKey        : NBUFilterValueTypeFile,
-                                     NBUFilterDefaultValueKey     : @"NBUImagePicker.bundle/filters/sample.acv"}};
+                                     NBUFilterDefaultValueKey     : [NBUGPUImageFilterProvider completePathInBundleFor:@"/filters/sample.avc"]}};
         block = ^(NBUFilter * filter,
                   GPUImageToneCurveFilter * gpuFilter)
         {

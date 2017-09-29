@@ -28,10 +28,16 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
-                  {
-                      NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUImagePicker.bundle"];
-                      _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
-                  });
+    {
+          NSString * resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"NBUImagePicker.bundle"];
+          _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
+        
+        if (!_resourcesBundle)
+        {
+            resourcesPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"Frameworks/NBUImagePicker.framework/NBUImagePicker.bundle"];
+            _resourcesBundle = [NSBundle bundleWithPath:resourcesPath];
+        }
+    });
     
     return _resourcesBundle;
 }
