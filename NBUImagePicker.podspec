@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
     
     s.name          = "NBUImagePicker"
-    s.version       = "1.5.4"
+    s.version       = "1.6.0"
     s.summary       = "Modular image picker with Simulator-compatible AVFondation camera, assets library, filters and more."
     s.description   = "Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery. Change element's sizes, position, customize picker workflow, add/remove/rename filters, localize for other languages, use cropping features from other libraries, etc."
     s.homepage      = "http://cyberagent.github.io/iOS-NBUImagePicker/"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     s.requires_arc  = true
     s.preserve_paths = "README.md", "NOTICE"
     
-    s.dependency 'NBUKit',      '>= 2.4.2'
+    s.dependency 'NBUKit',      '>= 2.5.1'
     
     s.subspec 'Base' do |sub|
         sub.source_files  = 'Source/*.{h,m}'
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
         sub.source_files    = 'Source/Camera/*.{h,m}'
         sub.frameworks      = 'AVFoundation', 'CoreVideo'
         sub.dependency      'NBUImagePicker/Assets'
-        sub.dependency      'NBUCore', '>= 2.0.5'
+        sub.dependency      'NBUCore', '>= 2.1.0'
         sub.dependency      'RBVolumeButtons@PTEz'
         sub.dependency      'MotionOrientation@PTEz', '>= 1.1.0'
     end
