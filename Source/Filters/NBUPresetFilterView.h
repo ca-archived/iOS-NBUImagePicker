@@ -18,8 +18,8 @@
 //  limitations under the License.
 //
 
-#import "ObjectView.h"
-#import "UIImageView+NBUAdditions.h"
+#import <NBUKit/ObjectView.h>
+#import <NBUKit/UIImageView+NBUAdditions.h>
 
 @class NBUFilter, ObjectSlideView;
 
