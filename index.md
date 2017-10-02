@@ -1,11 +1,12 @@
-
 [![Platform: iOS](https://img.shields.io/cocoapods/p/NBUImagePicker.svg?style=flat)](http://cocoadocs.org/docsets/NBUImagePicker/)
-[![Version: 1.4.0](https://img.shields.io/cocoapods/v/NBUImagePicker.svg?style=flat)](http://cocoadocs.org/docsets/NBUImagePicker/)
+[![Version: 1.6.0](https://img.shields.io/cocoapods/v/NBUImagePicker.svg?style=flat)](http://cocoadocs.org/docsets/NBUImagePicker/)
 [![License: Apache 2.0](https://img.shields.io/cocoapods/l/NBUImagePicker.svg?style=flat)](http://cocoadocs.org/docsets/NBUImagePicker/)
 [![Dependency Status](https://www.versioneye.com/objective-c/NBUImagePicker/badge.svg?style=flat)](https://www.versioneye.com/objective-c/NBUImagePicker)
 [![Build Status](http://img.shields.io/travis/CyberAgent/iOS-NBUImagePicker/master.svg?style=flat)](https://travis-ci.org/CyberAgent/iOS-NBUImagePicker)
 
-_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit). Supports [NBULog](https://github.com/CyberAgent/iOS-NBULog)._
+Modular and fully customizable UIImagePickerController replacement with Simulator-compatible AVFondation camera, AssetsLibrary and custom directory assets' browser, and image cropping, filters and gallery.
+
+_Uses [NBUCore](https://github.com/CyberAgent/iOS-NBUCore) and [NBUKit](https://github.com/CyberAgent/iOS-NBUKit). Supports [NBULog](https://github.com/CyberAgent/NBULog)._
 
 ## Demo
 
@@ -69,7 +70,7 @@ Change element's sizes, position, customize picker workflow, add/remove/rename f
 Add the following to your [CocoaPods](http://cocoapods.org)' [Podfile](http://guides.cocoapods.org/syntax/podfile.html):
 
 ```ruby
-platform :ios, '5.0'
+platform :ios, '6.0'
 
 # Recommended to keep GPUImage up-to-date
 pod 'GPUImage', :head
@@ -102,7 +103,7 @@ http://cocoadocs.org/docsets/NBUImagePicker/
 
 ## License
 
-    Copyright 2012-2014 CyberAgent Inc.
+    Copyright (c) 2012-2017 CyberAgent Inc.
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License. 
@@ -115,4 +116,3 @@ http://cocoadocs.org/docsets/NBUImagePicker/
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
