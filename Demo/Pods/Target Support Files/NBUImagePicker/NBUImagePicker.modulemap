@@ -1,6 +1,0 @@
-framework module NBUImagePicker {
-  umbrella header "NBUImagePicker-umbrella.h"
-
-  export *
-  module * { export * }
-}

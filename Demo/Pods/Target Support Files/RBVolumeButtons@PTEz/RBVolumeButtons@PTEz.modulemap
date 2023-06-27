@@ -1,6 +1,0 @@
-framework module RBVolumeButtons_PTEz {
-  umbrella header "RBVolumeButtons@PTEz-umbrella.h"
-
-  export *
-  module * { export * }
-}

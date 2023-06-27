@@ -1,6 +1,0 @@
-framework module NBUKit {
-  umbrella header "NBUKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
